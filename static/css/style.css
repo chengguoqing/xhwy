@@ -1,0 +1,68 @@
+.cdrttxewertt .uni-swiper-dots{
+	bottom: 240upx;
+}
+page{
+	background: #F7F7F7;
+}
+.kjnxrter {
+		position: relative;
+		z-index: 100;
+		margin-top: -60upx;
+		padding-bottom: 100upx;
+	}
+
+	.kkjxjeet {
+		width: 100upx;
+		height: 100upx;
+
+	}
+
+	.ddfrtty {
+		box-shadow: 0 0 20upx rgba(0, 0, 0, 0.1);
+		border-radius: 10upx;
+		min-height: 200upx;
+		background-color: #fff;
+	}
+
+	.dfdsrttyxe {
+		line-height: 80upx;
+	}
+
+	.dfrtyxet.act {
+		color: #3DADEB;
+	}
+
+	.kkjjhnxer {
+		border-radius: 10upx;
+		background: #fff;
+		width: 240upx;
+		position: fixed;
+		right: 15upx;
+		top: 20upx;
+		/* #ifdef H5 */
+		top: 110upx;
+		/* #endif */
+		z-index: 100;
+	}
+
+	.sanjidxet {
+		width: 30upx;
+		height: 30upx;
+		background-color: #fff;
+		position: absolute;
+		right: 10upx;
+		top: -15upx;
+		transform: rotate(45deg);
+	}
+
+	.lajixdrtt {
+		width: 30upx;
+	}
+	.kjnxerert {
+		height: 192upx;
+		background: #fff;
+		border-radius: 20upx;
+		box-shadow: 0 0 20upx rgba(0, 0, 0, 0.1);
+		padding-top: 26upx;
+	}
+	

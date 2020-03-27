@@ -7,12 +7,12 @@
 		</swiper>
 		<view class="pd kjnxrter">
 			<view class="kjnxerert row">
-				<view class="col cen">
+				<navigator class="col cen" url="/pages/gongzuo/shenhe/index">
 					<image src="../../static/img/dsfdsa.png" mode="widthFix" class="kkjxjeet"></image>
 					<view class="fz30 z3 ">
 						审核
 					</view>
-				</view>
+				</navigator>
 				<view class="col cen">
 					<image src="../../static/img/dsfdsb.png" mode="widthFix" class="kkjxjeet"></image>
 					<view class="fz30 z3 ">

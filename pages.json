@@ -1,6 +1,27 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/gongzuo/shenhe/shenbinr",
+			"bz": "审核提交内容",
+			"style": {
+				"navigationBarTitleText": "审核",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/gongzuo/shenhe/particulars",
+			"bz": "审核详情",
+			"style": {
+				"navigationBarTitleText": "审核",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/gongzuo/shenhe/index",
+			"bz": "审核",
+			"style": {
+				"navigationBarTitleText": "审核",
+				"enablePullDownRefresh": true
+			}
+		},{
 			"path": "pages/index/index",
 			"bz": "首页",
 			"style": {

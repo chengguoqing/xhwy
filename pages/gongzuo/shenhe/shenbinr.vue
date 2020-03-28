@@ -6,7 +6,6 @@
 			</view>
 		
 		<view class="pl10">
-			
 			<view  class="eerttser ml10 cz mt20 pr "  v-for="(sd,idx) in ujnjse" @tap="closweer(idx)">
 				<image :src="sd" class="fm"></image>
 				<icon type="clear" color="red" class="dsfertxe"></icon>

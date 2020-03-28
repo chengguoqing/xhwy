@@ -13,18 +13,18 @@
 						审核
 					</view>
 				</navigator>
-				<view class="col cen">
+				<navigator url="/pages/gongzuo/guanli/index" class="col cen">
 					<image src="../../static/img/dsfdsb.png" mode="widthFix" class="kkjxjeet"></image>
 					<view class="fz30 z3 ">
 						管理
 					</view>
-				</view>
-				<view class="col cen">
+				</navigator>
+				<navigator url="/pages/gongzuo/shenqing/index" class="col cen">
 					<image src="../../static/img/dsfdsc.png" mode="widthFix" class="kkjxjeet"></image>
 					<view class="fz30 z3 ">
 						申请
 					</view>
-				</view>
+				</navigator>
 				<view class="col cen">
 					<image src="../../static/img/dsfdsd.png" mode="widthFix" class="kkjxjeet"></image>
 					<view class="fz30 z3 ">

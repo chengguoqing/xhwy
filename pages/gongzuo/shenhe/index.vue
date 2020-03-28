@@ -66,30 +66,5 @@
 	}
 </script>
 <style scoped>
-	.hhggbxeer {
-		height: 90upx;
-		line-height: 70upx;
-		background: #fff;
-		padding-top: 10upx;
-		padding-bottom: 10upx;
-		position: sticky;
-		left: 0;
-		top: 0;
-		z-index: 999;
-		/* #ifdef H5 */
-		top: 88upx;
-		/* #endif */
-	}
-
-	.downxeer {
-		width: 34upx;
-		height: 34upx;
-		position: absolute;
-		right: 0;
-		top: 20upx;
-	}
-
-	.jjhnndrrrt {
-		padding-bottom: 160upx;
-	}
+	
 </style>

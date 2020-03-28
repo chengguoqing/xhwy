@@ -1,27 +1,6 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/gongzuo/shenhe/shenbinr",
-			"bz": "审核提交内容",
-			"style": {
-				"navigationBarTitleText": "审核",
-				"enablePullDownRefresh": true
-			}
-		},{
-			"path": "pages/gongzuo/shenhe/particulars",
-			"bz": "审核详情",
-			"style": {
-				"navigationBarTitleText": "审核",
-				"enablePullDownRefresh": true
-			}
-		},{
-			"path": "pages/gongzuo/shenhe/index",
-			"bz": "审核",
-			"style": {
-				"navigationBarTitleText": "审核",
-				"enablePullDownRefresh": true
-			}
-		},{
 			"path": "pages/index/index",
 			"bz": "首页",
 			"style": {
@@ -30,6 +9,76 @@
 				"navigationStyle": "custom"
 			}
 		}, {
+			"path": "pages/gongzuo/guanli/cdfp",
+			"bz": "场地分配",
+			"style": {
+				"navigationBarTitleText": "场地分配"
+			}
+		},{
+			"path": "pages/gongzuo/guanli/cdxx",
+			"bz": "场地信息",
+			"style": {
+				"navigationBarTitleText": "场地信息"
+			}
+		},{
+			"path": "pages/gongzuo/guanli/index",
+			"bz": "管理",
+			"style": {
+				"navigationBarTitleText": "管理",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"fontSrc": "/static/fonts/iconfont.ttf",
+							"text": "\ue611",
+							"fontSize": "18px",
+							"color": "#fff"
+						}]
+					}
+				}
+			}
+		},{
+			"path": "pages/gongzuo/shenqing/kcsq",
+			"bz": "课室申请",
+			"style": {
+				"navigationBarTitleText": "课室申请"
+			}
+		},{
+			"path": "pages/gongzuo/shenqing/cexiao",
+			"bz": "撤销结果",
+			"style": {
+				"navigationBarTitleText": "撤销结果"
+			}
+		},{
+			"path": "pages/gongzuo/shenqing/jiluxq",
+			"bz": "记录详情",
+			"style": {
+				"navigationBarTitleText": "记录详情"
+			}
+		},{
+			"path": "pages/gongzuo/shenqing/index",
+			"bz": "申请",
+			"style": {
+				"navigationBarTitleText": "选择类型"
+			}
+		},{
+			"path": "pages/gongzuo/shenhe/shenbinr",
+			"bz": "审核提交内容",
+			"style": {
+				"navigationBarTitleText": "审核"
+			}
+		},{
+			"path": "pages/gongzuo/shenhe/particulars",
+			"bz": "审核详情",
+			"style": {
+				"navigationBarTitleText": "审核"
+			}
+		},{
+			"path": "pages/gongzuo/shenhe/index",
+			"bz": "审核",
+			"style": {
+				"navigationBarTitleText": "审核"
+			}
+		},{
 			"path": "pages/gongzuo/index",
 			"bz": "工作",
 			"style": {

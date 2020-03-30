@@ -1,5 +1,5 @@
 <template>
-	<view :class="{ 'uni-collapse-cell--disabled': disabled,'uni-collapse-cell--notdisabled': !disabled, 'uni-collapse-cell--open': isOpen,'uni-collapse-cell--hide':!isOpen }" class="uni-collapse-cell">
+	<view :class="{ 'uni-collapse-cell--disabled': disabled,'uni-collapse-cell--notdisabled': !disabled, 'uni-collapse-cell--open': isOpen,'uni-collapse-cell--hide':!isOpen ,'jjhdher':jhghgs==0}" class="uni-collapse-cell">
 		<view class="uni-collapse-cell__title" @click="onClick">
 			<image v-if="thumb" :src="thumb" class="uni-collapse-cell__title-img" />
 			<text class="uni-collapse-cell__title-text">{{ title }}</text>
@@ -8,8 +8,10 @@
 				<uni-icons color="#bbb" size="20" type="arrowdown" />
 			</view>
 			<!-- #endif -->
+			<text class="kjkjdeert" v-if="jhghgs>=0" :class="jhghgs==1?'act':''"></text>
+			
 			<!-- #ifndef MP-ALIPAY -->
-			<uni-icons :class="{ 'uni-collapse-cell__title-arrow-active': isOpen, 'uni-collapse-cell--animation': showAnimation === true }" class="uni-collapse-cell__title-arrow" color="#bbb" size="20" type="arrowdown" />
+			<uni-icons v-if="jhghgs!=0" :class="{ 'uni-collapse-cell__title-arrow-active': isOpen, 'uni-collapse-cell--animation': showAnimation === true }" class="uni-collapse-cell__title-arrow" color="#bbb" size="20" type="arrowdown" />
 			<!-- #endif -->
 		</view>
 		<view :class="{'uni-collapse-cell__content--hide':!isOpen}" class="uni-collapse-cell__content">
@@ -28,6 +30,11 @@
 			uniIcons
 		},
 		props: {
+			jhghgs:{
+				// 列表标题
+				type: Number,
+				default: -1
+			},
 			title: {
 				// 列表标题
 				type: String,
@@ -205,5 +212,20 @@
 	.uni-collapse-cell__content--hide {
 		height: 0px;
 		line-height: 0px;
+	}
+	.kjkjdeert{
+		display: inline-block;
+		width: 30upx;
+		height: 30upx;
+		background:#00C656 ;
+		border-radius: 50%;
+		position: absolute;
+		right: 80upx;
+	}
+	.kjkjdeert.act{
+		background:  rgba(252, 10, 10, 1);;
+	}
+	.jjhdher{
+		background: #fff !important;
 	}
 </style>

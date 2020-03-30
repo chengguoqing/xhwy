@@ -5,6 +5,8 @@ import uniSection from '@/components/uni-section/uni-section.vue'
 import uniList from '@/components/uni-list/uni-list.vue'
 import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 import uniPopup from '@/components/uni-popup/uni-popup.vue'
+import uniCollapse from '@/components/uni-collapse/uni-collapse.vue'
+import uniCollapseItem from '@/components/uni-collapse-item/uni-collapse-item.vue'
 import {
 	base
 } from '@/static/js/base.js'
@@ -29,6 +31,8 @@ Vue.component('uniSection',uniSection)
 Vue.component('uniList',uniList)
 Vue.component('uniListItem',uniListItem)
 Vue.component('uniPopup',uniPopup)
+Vue.component('uniCollapse',uniCollapse)
+Vue.component('uniCollapseItem',uniCollapseItem)
 Vue.use(base)
 App.mpType = 'app'
 const app = new Vue({

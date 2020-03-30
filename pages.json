@@ -8,6 +8,18 @@
 				"enablePullDownRefresh": true, //开启下拉刷新
 				"navigationStyle": "custom"
 			}
+		},{
+			"path": "pages/gongzuo/guanli/jiaoxuelouxq",
+			"bz": "教学楼详情",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},{
+			"path": "pages/gongzuo/guanli/jiaoxuelou",
+			"bz": "教学楼",
+			"style": {
+				"navigationBarTitleText": "教学楼"
+			}
 		}, {
 			"path": "pages/gongzuo/guanli/cdfp",
 			"bz": "场地分配",

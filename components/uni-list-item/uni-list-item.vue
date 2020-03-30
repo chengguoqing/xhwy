@@ -19,7 +19,7 @@
 				<view v-if="thumbs" class="uni-list-item__icon ab">
 					<image :src="thumbs" class="uni-list-item__icon-img cz" />
 				</view>
-				<view v-if="showBadge || showArrow || showSwitch" class="uni-list-item__extra">
+				<view v-if="showBadge || showArrow || showSwitch || rightText" class="uni-list-item__extra">
 					<text v-if="rightText" class="uni-list-item__extra-text z9 fz26">{{rightText}}</text>
 					<uni-badge v-if="showBadge" :type="badgeType" :text="badgeText" />
 					<switch v-if="showSwitch" :disabled="disabled" :checked="switchChecked" @change="onSwitchChange" />

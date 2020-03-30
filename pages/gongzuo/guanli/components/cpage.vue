@@ -3,7 +3,7 @@
 		<view class="z9 fz24 pt20 pm20">
 			请选择教学楼类型
 		</view>
-		<view v-for="sd in 10" class="hhbnmjjcrert pr row pt20 pm20">
+		<navigator url="/pages/gongzuo/guanli/jiaoxuelou" v-for="sd in 10" class="hhbnmjjcrert pr row pt20 pm20">
 			<view class="dsfdsgty">
 				<image src="../../../static/img/louzuo.png" class="sdfgdsgty cz"></image>
 			</view>
@@ -11,7 +11,7 @@
 				第一教学楼
 			</view>
 			<image src="../../../static/img/righth.png" class="fdsgdrftyy"></image>
-		</view>
+		</navigator>
 		
 	</view>
 </template>

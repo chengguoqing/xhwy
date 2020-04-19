@@ -80,7 +80,7 @@
         "usingComponents" : true
     },
     "h5" : {
-        "title" : "驰峰",
+        "title" : "点歌",
         "domain" : "http://duxinggj.com/",
         "router" : {
             "base" : "www/phone/test2020/"

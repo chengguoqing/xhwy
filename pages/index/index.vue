@@ -1,62 +1,143 @@
 <template>
-	<view>
-		<view class="index_bg">
-			<swiper circular class="cdrttxewertt" :indicator-dots="true" indicator-color="#A1B889"  indicator-active-color="#FFC452" :autoplay="true" :interval="6000" :duration="1000">
-				<swiper-item v-for="(sd,idx) in 5" class="cz_w pr">
-					<view class="cen cz_a">
-						<image src="../../static/img/v2_q6q4a3.png" class="dfrrtxe " mode="aspectFill"></image>
-					</view>
-					<view class="cen crrtyser cf fz30">
-						第{{idx+1}}教学楼
-					</view>
-				</swiper-item>
-			</swiper>
+	<view class="pd pt20">
+		<navigator class="kjhhxeret fz26" url="/pages/index/sousuo">
+			<icon type="search" size="16" class="cz" />
+			<text class="cz ml10 ddfrrttyx"> 搜索喜欢的歌曲/歌手</text>
+		</navigator>
+		<swiper class="mt20 ddryyxer deerty ov" indicator-active-color="#FFD33E" indicator-color="#fff" :indicator-dots="true"
+		 :autoplay="true" circular :interval="3000" :duration="1000">
+			<swiper-item v-for="(sd,idx) in 5" :key="idx">
+				<image src="../../static/img/banner.png" class="w100 h100 cz"></image>
+			</swiper-item>
+		</swiper>
+		<view class="mt30 row">
+			<view class="col xdrertty">
+				<navigator class="pr" url="/pages/index/geshouxz">
+					<image src="../../static/img/gdfga.png" class="cz"></image>
+					<text class="neijjxne">歌手</text>
+				</navigator>
+			</view>
+			<view class="col xdrertty ab">
+				<navigator class="pr" url="/pages/index/yuyangyz">
+					<image src="../../static/img/gdfgb.png" class="cz"></image>
+					<text class="neijjxne">语言</text>
+				</navigator>
+			</view>
 		</view>
+		<view class="mt40 parentse">
+			<navigator class="kkhjhxr pr" url="/pages/index/fenlei">
+				<image src="../../static/img/gdfgc.png" class="w100"></image>
+				<text class="cf fz30 drrtty">分类</text>
+			</navigator>
+			<navigator class="kkhjhxr pr" url="/pages/index/fenlei">
+				<image src="../../static/img/gdfgd.png" class="w100"></image>
+				<text class="cf fz30 drrtty">热门</text>
+			</navigator>
+			<navigator class="kkhjhxr pr" url="/pages/index/fenlei">
+				<image src="../../static/img/gdfge.png" class="w100"></image>
+				<text class="cf fz30 drrtty">最新</text>
+			</navigator>
+		</view>
+
 	</view>
 </template>
 <script>
 	export default {
 		data() {
 			return {
-				
+
+			}
+		},
+		onShareAppMessage: function(res) {
+			// 来自页面内分享按钮
+			return {
+				title: "獨行工匠",
+				path: "/pages/index/index"
 			}
 		},
 		components: {
-			
+
 		},
 		methods: {
-			
+
 		},
 		mounted() {
-			
+
 		}
 	}
 </script>
 <style scoped>
-	.index_bg{
-		background: linear-gradient(to bottom,#04133C, #4ABDCE);
-		position: fixed;
+	.ddfrrttyx {
+		position: relative;
+		bottom: 3upx;
+	}
+
+	.kjhhxeret {
+		height: 70upx;
+		line-height: 70upx;
+		border-radius: 60upx;
+		text-align: center;
+		color: #B1B1B1;
+		background: #F2F3F4
+	}
+
+	.ddryyxer {
+		height: 320upx;
+		border-radius: 8upx;
+		overflow: hidden;
+	}
+
+	.deerty {
+		border-radius: 8upx;
+	}
+
+	.xdrertty {
+		padding-right: 15upx;
+
+		height: 100upx;
+	}
+
+	.xdrertty.ab {
+		padding-right: 0;
+		padding-left: 15upx;
+	}
+
+	.xdrertty image {
+		width: 100%;
+
+		height: 100upx;
+		position: absolute;
+	}
+
+	.neijjxne {
+		position: absolute;
 		left: 0;
 		top: 0;
 		width: 100%;
 		height: 100%;
-		/* #ifdef H5 */
-		padding-bottom: 100upx;
-		/* #endif */
-		
+		z-index: 100;
+		font-size: 32upx;
+		line-height: 100upx;
+		text-align: center;
+		color: #fff;
 	}
-	.cdrttxewertt{
-		width: 100%;
-		height: 100%;
+
+	.parentse {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: 1fr;
+		grid-column-gap: 40upx;
+		grid-row-gap: 0px;
 	}
-	.dfrrtxe{
-		width: 560upx;
-		height: 560upx;
+
+	.kkhjhxr image {
+		height: 200upx;
 	}
-	.crrtyser{
+
+	.drrtty {
 		position: absolute;
-		left: 0;
-		bottom: 60upx;
-		width: 100%;
+		color: #fff;
+		right: 20upx;
+		bottom: 20upx;
 	}
 </style>

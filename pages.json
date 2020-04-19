@@ -1,185 +1,101 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [ 
 		{
 			"path": "pages/index/index",
 			"bz": "首页",
 			"style": {
-				"navigationBarTitleText": "名片",
-				"enablePullDownRefresh": true, //开启下拉刷新
+				"navigationBarTitleText": "首页",
 				"navigationStyle": "custom"
 			}
 		},{
-			"path": "pages/gongzuo/guanli/jiaoxuelouxq",
-			"bz": "教学楼详情",
+			"path": "pages/index/sousuojieguo",
+			"bz": "搜索结果",
 			"style": {
 				"navigationBarTitleText": ""
 			}
 		},{
-			"path": "pages/gongzuo/guanli/jiaoxuelou",
-			"bz": "教学楼",
+			"path": "pages/index/sousuo",
+			"bz": "搜索",
 			"style": {
-				"navigationBarTitleText": "教学楼"
+				"navigationBarTitleText": "搜索",
+				"navigationStyle": "custom"
 			}
-		}, {
-			"path": "pages/gongzuo/guanli/cdfp",
-			"bz": "场地分配",
+		},
+		{
+			"path": "pages/index/fenlei",
+			"bz": "分类",
 			"style": {
-				"navigationBarTitleText": "场地分配"
-			}
-		},{
-			"path": "pages/gongzuo/guanli/cdxx",
-			"bz": "场地信息",
-			"style": {
-				"navigationBarTitleText": "场地信息"
+				"navigationBarTitleText": "分类"
 			}
 		},{
-			"path": "pages/gongzuo/guanli/index",
-			"bz": "管理",
+			"path": "pages/index/yuyangyz",
+			"bz": "语言选择",
 			"style": {
-				"navigationBarTitleText": "管理",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"fontSrc": "/static/fonts/iconfont.ttf",
-							"text": "\ue611",
-							"fontSize": "18px",
-							"color": "#fff"
-						}]
-					}
-				}
+				"navigationBarTitleText": "语言选择"
 			}
 		},{
-			"path": "pages/gongzuo/shenqing/kcsq",
-			"bz": "课室申请",
+			"path": "pages/index/geshouxq",
+			"bz": "歌手详情",
 			"style": {
-				"navigationBarTitleText": "课室申请"
+				"navigationBarTitleText": "歌手详情"
 			}
 		},{
-			"path": "pages/gongzuo/shenqing/cexiao",
-			"bz": "撤销结果",
+			"path": "pages/index/geshouxz",
+			"bz": "歌手选择",
 			"style": {
-				"navigationBarTitleText": "撤销结果"
+				"navigationBarTitleText": "歌手选择"
 			}
 		},{
-			"path": "pages/gongzuo/shenqing/jiluxq",
-			"bz": "记录详情",
+			"path": "pages/yixuan/index",
+			"bz": "已选",
 			"style": {
-				"navigationBarTitleText": "记录详情"
+				"navigationBarTitleText": "已选",
+				"navigationStyle": "custom"
 			}
 		},{
-			"path": "pages/gongzuo/shenqing/index",
-			"bz": "申请",
+			"path": "pages/kongzhi/index",
+			"bz": "控制",
 			"style": {
-				"navigationBarTitleText": "选择类型"
+				"navigationBarTitleText": "控制",
+				"navigationStyle": "custom"
 			}
 		},{
-			"path": "pages/gongzuo/shenhe/shenbinr",
-			"bz": "审核提交内容",
+			"path": "pages/qita/index",
+			"bz": "其他",
 			"style": {
-				"navigationBarTitleText": "审核"
-			}
-		},{
-			"path": "pages/gongzuo/shenhe/particulars",
-			"bz": "审核详情",
-			"style": {
-				"navigationBarTitleText": "审核"
-			}
-		},{
-			"path": "pages/gongzuo/shenhe/index",
-			"bz": "审核",
-			"style": {
-				"navigationBarTitleText": "审核"
-			}
-		},{
-			"path": "pages/gongzuo/index",
-			"bz": "工作",
-			"style": {
-				"navigationBarTitleText": "某某某",
-				"enablePullDownRefresh": true, //开启下拉刷新
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"fontSrc": "/static/fonts/iconfont.ttf",
-							"text": "\ue67b",
-							"fontSize": "18px",
-							"color": "#fff"
-						},{
-							"fontSrc": "/static/fonts/iconfont.ttf",
-							"text": "\ue632",
-							"fontSize": "26px",
-							"color": "#fff"
-						}]
-					}
-				}
-			}
-		}, {
-			"path": "pages/user/index",
-			"bz": "我的",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": true ,//开启下拉刷新
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"fontSrc": "/static/fonts/iconfont.ttf",
-							"text": "\ue720",
-							"fontSize": "18px",
-							"color": "#fff"
-						}]
-					}
-				}
-			}
-		}, {
-			"path": "pages/gongzuo/saoyisao",
-			"bz": "扫码",
-			"style": {
-				"navigationBarTitleText": "扫码"
-			}
-		}, {
-			"path": "pages/user/user_center",
-			"bz": "个人中心",
-			"style": {
-				"navigationBarTitleText": "个人中心",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"fontSrc": "/static/fonts/iconfont.ttf",
-							"text": "\ue611",
-							"fontSize": "18px",
-							"color": "#fff"
-						}]
-					}
-				}
+				"navigationBarTitleText": "其他",
+				"navigationStyle": "custom"
 			}
 		}
 	],
 	"tabBar": {
-		"color": "#919191",
-		"selectedColor": "#3DADEB",
-		"borderStyle": "white",
-		"backgroundColor": "#ffffff",
-		"list": [{
-			"pagePath": "pages/index/index",
-			"iconPath": "static/img/bottom/dsfdsa_a.png",
-			"selectedIconPath": "static/img/bottom/dsfdsb_a.png",
-			"text": "主页"
-		}, {
-			"pagePath": "pages/gongzuo/index",
-			"iconPath": "static/img/bottom/dsfdsa_b.png",
-			"selectedIconPath": "static/img/bottom/dsfdsb_b.png",
-			"text": "工作"
-		}, {
-			"pagePath": "pages/user/index",
-			"iconPath": "static/img/bottom/dsfdsa_c.png",
-			"selectedIconPath": "static/img/bottom/dsfdsb_c.png",
-			"text": "我的"
-		}]
-	},
+			"color": "#8C9093",
+			"selectedColor": "#111111",
+			"backgroundColor": "#ffffff",
+			"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/img/bottom/dsfdsa_a.png",
+				"selectedIconPath": "static/img/bottom/dsfdsb_a.png",
+				"text": "点歌"
+			}, {
+				"pagePath": "pages/yixuan/index",
+				"iconPath": "static/img/bottom/dsfdsa_b.png",
+				"selectedIconPath": "static/img/bottom/dsfdsb_b.png",
+				"text": "已选"
+			}, {
+				"pagePath": "pages/kongzhi/index",
+				"iconPath": "static/img/bottom/dsfdsa_c.png",
+				"selectedIconPath": "static/img/bottom/dsfdsb_c.png",
+				"text": "控制"
+			}, {
+				"pagePath": "pages/qita/index",
+				"iconPath": "static/img/bottom/dsfdsa_d.png",
+				"selectedIconPath": "static/img/bottom/dsfdsb_d.png",
+				"text": "其他"
+			}]
+		},
 	"globalStyle": {
-		"backgroundColor": "#F8F8F8",
-		"navigationBarBackgroundColor": "#3DADEB",
-		"usingComponents": {
-			"van-cell-group": "/components/uni-list/uni-list"
-		}
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTextStyle":"black"
 	}
 }

@@ -1,14 +1,12 @@
 <!-- 语言选择 -->
 <template>
 	<view>
-		<view class="khjxrrt">
+		<!-- <view class="khjxrrt">
 			<icon type="search" size="16"></icon>
-		</view>
+		</view> -->
 		<scroll-view scroll-x="true" class="jhggxseert dx_jz w100 ">
 			<view v-for="(sd,idx) in dhxewer" :key="idx" @tap="sddrert(idx)" :class="idx==xseerr?'act':''" class="xwerrtxe fz30 z6 pr cen  ml30 f_b cz">
 				{{sd.name}}
-			</view>
-			<view class="fgrtyyxe">
 			</view>
 		</scroll-view>
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}">
@@ -28,28 +26,39 @@
 				xseerr: 0,
 				xrrtxeertx: '',
 				dhxewer: [{
-					name: "全部",
+					name: this.$store.state.lanser.All,
 					id: ''
 				}, {
-					name: "流行",
+					name: this.$store.state.lanser.SongTypePop,
 					id: ''
 				}, {
-					name: "舞曲",
+					name: this.$store.state.lanser.SongTypeDance,
 					id: ''
 				}, {
-					name: "怀旧",
+					name: this.$store.state.lanser.SongTypeOld,
 					id: ''
 				}, {
-					name: "民歌",
+					name: this.$store.state.lanser.SongTypeFolk,
 					id: ''
 				}, {
-					name: "儿童",
+					name: this.$store.state.lanser.SongTypeChild,
+					id: ''
+				}, {
+					name: this.$store.state.lanser.SongTypeDrama,
+					id: ''
+				}, {
+					name: this.$store.state.lanser.DJ,
 					id: ''
 				}]
 			}
 		},
 		components: {
 			xzyypage
+		},
+		onNavigationBarButtonTap() {
+			uni.navigateTo({
+				url:"/pages/index/sousuo"
+			})
 		},
 		methods: {
 			sddrert(e) {
@@ -59,7 +68,10 @@
 				this.xseerr = e.detail.current
 			}
 		},
-		onLoad() {
+		onLoad(e) {
+			uni.setNavigationBarTitle({
+			    title: e.title
+			});
 			this.xrrtxeertx = uni.getSystemInfoSync().windowHeight - 50
 		},
 		mounted() {

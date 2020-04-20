@@ -22,7 +22,7 @@
 		data() {
 			return {
 				idxse: 0,
-				kjhder: ['全部', '男歌手', '女歌手', '组合', '组合']
+				kjhder: [this.$store.state.lanser.All, this.$store.state.lanser.MaleSingerNew,this.$store.state.lanser.FemaleSingerNew,this.$store.state.lanser.Group]
 			}
 		},
 		components: {

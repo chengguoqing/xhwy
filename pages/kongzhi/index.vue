@@ -2,12 +2,12 @@
 	<view class="btm pt20 pd">
 		<view class=" dfgdftyxewrt">
 			<view class="cf fz32 pt20 cen">
-				音量
+				{{$store.state.lanser.Sound}}
 			</view>
 			<view class="parentse cen mt50 pd">
 				<view class="jjhser">
 					<view class="fz28 cf">
-						音乐
+						{{$store.state.lanser.Music}}
 					</view>
 					<view class="jhbxert">
 						<image src="../../static/img/fgfga.png" class="w100" mode="widthFix"></image>
@@ -16,7 +16,7 @@
 				</view>
 				<view class="jjhser">
 					<view class="fz28 cf">
-						麦克风
+						{{$store.state.lanser.Mic}}
 					</view>
 					<view class="jhbxert">
 						<image src="../../static/img/fgfga.png" class="w100" mode="widthFix"></image>
@@ -25,7 +25,7 @@
 				</view>
 				<view class="jjhser">
 					<view class="fz28 cf">
-						效果器
+						{{$store.state.lanser.Effect}}
 					</view>
 					<view class="jhbxert">
 						<image src="../../static/img/fgfga.png" class="w100" mode="widthFix"></image>
@@ -42,25 +42,25 @@
 				<view class="col">
 					<image src="../../static/img/fgfgc.png" class="kkjxeert"></image>
 					<view class="z6 fz28">
-						欢呼
+						{{$store.state.lanser.MoodWhistle}}
 					</view>
 				</view>
 				<view class="col">
 					<image src="../../static/img/fgfgd.png" class="kkjxeert"></image>
 					<view class="z6 fz28">
-						鼓掌
+						{{$store.state.lanser.MoodApplaudShort}}
 					</view>
 				</view>
 				<view class="col">
 					<image src="../../static/img/fgfge.png" class="kkjxeert"></image>
 					<view class="z6 fz28">
-						嘲笑
+						{{$store.state.lanser.MoodApplaudLong}}
 					</view>
 				</view>
 				<view class="col">
 					<image src="../../static/img/fgfgf.png" class="kkjxeert"></image>
 					<view class="z6 fz28">
-						笑声
+						{{$store.state.lanser.MoodSmile}}
 					</view>
 				</view>
 			</view>
@@ -70,25 +70,25 @@
 				<view class="col">
 					<image src="../../static/img/fgfgg.png" class="kkjxeert"></image>
 					<view class="z6 fz28">
-						重唱
+						{{$store.state.lanser.Replay}}
 					</view>
 				</view>
 				<view class="col">
 					<image src="../../static/img/fgfgh.png" class="kkjxeert"></image>
 					<view class="z6 fz28">
-						伴唱
+						{{$store.state.lanser.SongMode}}
 					</view>
 				</view>
 				<view class="col">
 					<image src="../../static/img/fgfgi.png" class="kkjxeert"></image>
 					<view class="z6 fz28">
-						切歌
+						{{$store.state.lanser.NexSong}}
 					</view>
 				</view>
 				<view class="col">
 					<image src="../../static/img/fgfgj.png" class="kkjxeert"></image>
 					<view class="z6 fz28">
-						播放
+						{{$store.state.lanser.Pause}}
 					</view>
 				</view>
 			</view>
@@ -98,7 +98,7 @@
 				<view class="col" @tap="ljhad">
 					<image src="../../static/img/fgfgk.png" class="kkjxeert"></image>
 					<view class="z6 fz28">
-						蓝牙
+						{{$store.state.lanser.Bluetooth}}
 					</view>
 				</view>
 			</view>
@@ -116,10 +116,15 @@
 		components: {
 			
 		},
+		onLoad() {
+			uni.setNavigationBarTitle({
+			    title: this.$store.state.Control
+			})
+		},
 		methods: {
 			ljhad(){
 				uni.showActionSheet({
-					itemList:['打开蓝牙','关闭蓝牙'],
+					itemList:[this.$store.state.lanser.EnableBluetooth,this.$store.state.lanser.DisableBluetooth],
 					itemColor:"#FFD33E"
 				})
 			}

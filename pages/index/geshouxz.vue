@@ -1,14 +1,9 @@
 <!-- 歌手选择 -->
 <template>
 	<view>
-		<view class="khjxrrt">
-			<icon type="search" size="16"></icon>
-		</view>
 		<scroll-view scroll-x="true" class="jhggxseert dx_jz w100 ">
 			<view v-for="(sd,idx) in dhxewer" :key="idx" @tap="sddrert(idx)" :class="idx==xseerr?'act':''" class="xwerrtxe fz30 z6 pr cen  ml30 f_b cz">
 				{{sd.name}}
-			</view>
-			<view class="fgrtyyxe">
 			</view>
 		</scroll-view>
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}" >
@@ -29,25 +24,30 @@
 				xseerr:0,
 				xrrtxeertx:'',
 				dhxewer: [{
-					name:"全部",
+					name:this.$store.state.lanser.All,
 					id:''
 				},{
-					name:"大陆歌手",
+					name:this.$store.state.lanser.MainlandSinger,
 					id:''
 				},{
-					name:"港台歌手",
+					name:this.$store.state.lanser.IslandSinger,
 					id:''
 				},{
-					name:"维族歌手",
+					name:this.$store.state.lanser.UyghurSinger,
 					id:''
 				},{
-					name:"外国歌手",
+					name:this.$store.state.lanser.ForeignSinger,
 					id:''
 				}]
 			}
 		},
 		components: {
 			pages
+		},
+		onNavigationBarButtonTap() {
+			uni.navigateTo({
+				url:"/pages/index/sousuo"
+			})
 		},
 		methods: {
 			sddrert(e) {
@@ -58,6 +58,9 @@
 			}
 		},
 		onLoad() {
+			uni.setNavigationBarTitle({
+			    title: this.$store.state.lanser.Singers
+			});
 			this.xrrtxeertx = uni.getSystemInfoSync().windowHeight - 50
 		},
 		mounted() {

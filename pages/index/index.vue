@@ -2,7 +2,7 @@
 	<view class="pd pt20">
 		<navigator class="kjhhxeret fz26" url="/pages/index/sousuo">
 			<icon type="search" size="16" class="cz" />
-			<text class="cz ml10 ddfrrttyx"> 搜索喜欢的歌曲/歌手</text>
+			<text class="cz ml10 ddfrrttyx"> {{$store.state.lanser.SearchDescription}}</text>
 		</navigator>
 		<swiper class="mt20 ddryyxer deerty ov" indicator-active-color="#FFD33E" indicator-color="#fff" :indicator-dots="true"
 		 :autoplay="true" circular :interval="3000" :duration="1000">
@@ -14,28 +14,28 @@
 			<view class="col xdrertty">
 				<navigator class="pr" url="/pages/index/geshouxz">
 					<image src="../../static/img/gdfga.png" class="cz"></image>
-					<text class="neijjxne">歌手</text>
+					<text class="neijjxne">{{$store.state.lanser.Singers}}</text>
 				</navigator>
 			</view>
 			<view class="col xdrertty ab">
-				<navigator class="pr" url="/pages/index/yuyangyz">
+				<navigator class="pr" :url='"/pages/index/yuyangyz?title="+$store.state.lanser.Language'>
 					<image src="../../static/img/gdfgb.png" class="cz"></image>
-					<text class="neijjxne">语言</text>
+					<text class="neijjxne">{{$store.state.lanser.Language}}</text>
 				</navigator>
 			</view>
 		</view>
 		<view class="mt40 parentse">
-			<navigator class="kkhjhxr pr" url="/pages/index/fenlei">
+			<navigator class="kkhjhxr pr" :url='"/pages/index/fenlei?title="+$store.state.lanser.Type'>
 				<image src="../../static/img/gdfgc.png" class="w100"></image>
-				<text class="cf fz30 drrtty">分类</text>
+				<text class="cf fz30 drrtty">{{$store.state.lanser.Type}}</text>
 			</navigator>
-			<navigator class="kkhjhxr pr" url="/pages/index/fenlei">
+			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+$store.state.lanser.Hot'>
 				<image src="../../static/img/gdfgd.png" class="w100"></image>
-				<text class="cf fz30 drrtty">热门</text>
+				<text class="cf fz30 drrtty">{{$store.state.lanser.Hot}}</text>
 			</navigator>
-			<navigator class="kkhjhxr pr" url="/pages/index/fenlei">
+			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+$store.state.lanser.New'>
 				<image src="../../static/img/gdfge.png" class="w100"></image>
-				<text class="cf fz30 drrtty">最新</text>
+				<text class="cf fz30 drrtty">{{$store.state.lanser.New}}</text>
 			</navigator>
 		</view>
 
@@ -60,6 +60,11 @@
 		},
 		methods: {
 
+		},
+		onLoad() {
+			uni.setNavigationBarTitle({
+			    title: this.$store.state.Select
+			})
 		},
 		mounted() {
 

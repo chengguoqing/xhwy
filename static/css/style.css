@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'oybab tuz';
+    src: url('https://oybab.net/res/fonts/oybabtuz-webfont.eot');
+    src: url('https://oybab.net/res/fonts/oybabtuz-webfont.eot?#iefix') format('embedded-opentype'),url('https://oybab.net/res/fonts/oybabtuz-webfont.woff') format('woff'),url('https://oybab.net/res/fonts/oybabtuz-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal
+}
+view,div{
+	  font-family:"oybab tuz";
+	  font-style:normal;
+}
 .jhggxseert {
 		height: 88upx;
 		line-height: 80upx;

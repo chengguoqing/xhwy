@@ -9,9 +9,9 @@
 					<input type="text" value="" v-model="khsdre" placeholder="大家都在搜 孙燕姿" class="fz30  " />
 					<view class="kjjddeert fz28" v-if="khsdre">
 						<view class="ye pd pt20 pm20 bbm">
-							搜索“{{khsdre}}”
+							{{$store.state.lanser.Search}}“{{khsdre}}”
 						</view>
-						<view class="z6 pd pt20 pm20 bbm" v-for="sd in 5">
+						<view class="z6 pd pt20 pm20 bbm" v-for="sd in 5" @tap="fdgfgf">
 							<icon type="search" size="16" class="cz mr10"></icon>周杰伦
 						</view>
 					</view>
@@ -23,7 +23,7 @@
 				</view>
 			</view>
 			<view class="fz30 z3 ml20">
-				搜索
+				{{$store.state.lanser.Search}}
 			</view>
 		</view>
 		<view class="mt60 row pd">
@@ -37,7 +37,7 @@
 		</view>
 		<view class="mt60 pd">
 			<view class="z3 fz32">
-				热门搜索
+				{{$store.state.lanser.Hot}}{{$store.state.lanser.Search}}
 			</view>
 			<publiclist isyhgg="2"></publiclist>
 		</view>
@@ -50,12 +50,17 @@
 		data() {
 			return {
 				idxsw:0,
-				ddfrt:['歌手','歌曲'],
+				ddfrt:[this.$store.state.lanser.Singers,this.$store.state.lanser.Song],
 				khsdre:''
 			}
 		},
 		components: {
 			publiclist
+		},
+		onLoad() {
+			uni.setNavigationBarTitle({
+			    title: this.$store.state.Search
+			})
 		},
 		methods: {
 			housd(){
@@ -68,7 +73,7 @@
 			},
 			fdgfgf(){
 				uni.navigateTo({
-					url:'pages/index/sousuojieguo?ihhdf='+this.khsdre
+					url:'/pages/index/sousuojieguo?ihhdf='+this.khsdre
 				})
 			}
 		},

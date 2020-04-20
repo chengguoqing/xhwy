@@ -2,7 +2,7 @@
 	<view class="btm">
 		<uni-list>
 			<uni-list-item thumb="../../static/img/banner.png" @tap="hf('/pages/index/geshouxq')">
-				<view>歌手：<text class="ye f_b">周杰伦</text></view>
+				<view>{{$store.state.lanser.Singers}}：<text class="ye f_b">周杰伦</text></view>
 			</uni-list-item>
 		</uni-list>
 		<publiclist isyhgg="2"></publiclist>
@@ -24,7 +24,7 @@
 		},
 		onLoad(e) {
 			uni.setNavigationBarTitle({
-				title:"搜索："+e.ihhdf
+				title:this.$store.state.lanser.Search+"："+e.ihhdf
 			})
 		},
 		mounted() {

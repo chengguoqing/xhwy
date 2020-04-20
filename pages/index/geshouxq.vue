@@ -27,6 +27,11 @@
 		methods: {
 			
 		},
+		onLoad() {
+			uni.setNavigationBarTitle({
+			    title: this.$store.state.lanser.Singers
+			});
+		},
 		mounted() {
 			
 		}

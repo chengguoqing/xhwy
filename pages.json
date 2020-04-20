@@ -1,19 +1,18 @@
 {
-	"pages": [ 
-		{
+	"pages": [{
 			"path": "pages/index/index",
 			"bz": "首页",
 			"style": {
 				"navigationBarTitleText": "首页",
 				"navigationStyle": "custom"
 			}
-		},{
+		}, {
 			"path": "pages/index/sousuojieguo",
 			"bz": "搜索结果",
 			"style": {
 				"navigationBarTitleText": ""
 			}
-		},{
+		}, {
 			"path": "pages/index/sousuo",
 			"bz": "搜索",
 			"style": {
@@ -25,41 +24,74 @@
 			"path": "pages/index/fenlei",
 			"bz": "分类",
 			"style": {
-				"navigationBarTitleText": "分类"
+				"navigationBarTitleText": "分类",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [ //原生标题栏按钮配置,
+							{
+								"text": "\ue60a",
+								"fontSize": "22",
+								"fontSrc": "/static/fonts/iconfont.ttf"
+							}
+						]
+					}
+				}
 			}
-		},{
+		}, {
 			"path": "pages/index/yuyangyz",
 			"bz": "语言选择",
 			"style": {
-				"navigationBarTitleText": "语言选择"
+				"navigationBarTitleText": "语言选择",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [ //原生标题栏按钮配置,
+							{
+								"text": "\ue60a",
+								"fontSize": "22",
+								"fontSrc": "/static/fonts/iconfont.ttf"
+							}
+						]
+					}
+				}
 			}
-		},{
+		}, {
 			"path": "pages/index/geshouxq",
 			"bz": "歌手详情",
 			"style": {
 				"navigationBarTitleText": "歌手详情"
 			}
-		},{
+		}, {
 			"path": "pages/index/geshouxz",
 			"bz": "歌手选择",
 			"style": {
-				"navigationBarTitleText": "歌手选择"
+				"navigationBarTitleText": "歌手选择",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [ //原生标题栏按钮配置,
+							{
+								"text": "\ue60a",
+								"fontSize": "22",
+								"fontSrc": "/static/fonts/iconfont.ttf"
+							}
+						]
+					}
+				}
 			}
-		},{
+		}, {
 			"path": "pages/yixuan/index",
 			"bz": "已选",
 			"style": {
 				"navigationBarTitleText": "已选",
 				"navigationStyle": "custom"
 			}
-		},{
+		}, {
 			"path": "pages/kongzhi/index",
 			"bz": "控制",
 			"style": {
 				"navigationBarTitleText": "控制",
 				"navigationStyle": "custom"
 			}
-		},{
+		}, {
 			"path": "pages/qita/index",
 			"bz": "其他",
 			"style": {
@@ -69,33 +101,33 @@
 		}
 	],
 	"tabBar": {
-			"color": "#8C9093",
-			"selectedColor": "#111111",
-			"backgroundColor": "#ffffff",
-			"list": [{
-				"pagePath": "pages/index/index",
-				"iconPath": "static/img/bottom/dsfdsa_a.png",
-				"selectedIconPath": "static/img/bottom/dsfdsb_a.png",
-				"text": "点歌"
-			}, {
-				"pagePath": "pages/yixuan/index",
-				"iconPath": "static/img/bottom/dsfdsa_b.png",
-				"selectedIconPath": "static/img/bottom/dsfdsb_b.png",
-				"text": "已选"
-			}, {
-				"pagePath": "pages/kongzhi/index",
-				"iconPath": "static/img/bottom/dsfdsa_c.png",
-				"selectedIconPath": "static/img/bottom/dsfdsb_c.png",
-				"text": "控制"
-			}, {
-				"pagePath": "pages/qita/index",
-				"iconPath": "static/img/bottom/dsfdsa_d.png",
-				"selectedIconPath": "static/img/bottom/dsfdsb_d.png",
-				"text": "其他"
-			}]
-		},
+		"color": "#8C9093",
+		"selectedColor": "#111111",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/img/bottom/dsfdsa_a.png",
+			"selectedIconPath": "static/img/bottom/dsfdsb_a.png",
+			"text": "点歌"
+		}, {
+			"pagePath": "pages/yixuan/index",
+			"iconPath": "static/img/bottom/dsfdsa_b.png",
+			"selectedIconPath": "static/img/bottom/dsfdsb_b.png",
+			"text": "已选"
+		}, {
+			"pagePath": "pages/kongzhi/index",
+			"iconPath": "static/img/bottom/dsfdsa_c.png",
+			"selectedIconPath": "static/img/bottom/dsfdsb_c.png",
+			"text": "控制"
+		}, {
+			"pagePath": "pages/qita/index",
+			"iconPath": "static/img/bottom/dsfdsa_d.png",
+			"selectedIconPath": "static/img/bottom/dsfdsb_d.png",
+			"text": "其他"
+		}]
+	},
 	"globalStyle": {
 		"navigationBarBackgroundColor": "#fff",
-		"navigationBarTextStyle":"black"
+		"navigationBarTextStyle": "black"
 	}
 }

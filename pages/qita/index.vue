@@ -7,9 +7,9 @@
 			</view>
 		</view>
 		<uni-list class="mt40 ghyyusert">
-			<uni-list-item title="语言选择" thumb="../../static/img/ffgfb.png" @tap="yuyans"></uni-list-item>
-			<uni-list-item title="发送文字" thumb="../../static/img/ffgfc.png" @tap="dfdg=true"></uni-list-item>
-			<uni-list-item title="上传文件" thumb="../../static/img/ffgfd.png"></uni-list-item>
+			<uni-list-item :title="$store.state.lanser.ChangeLanguage" thumb="../../static/img/ffgfb.png" @tap="yuyans"></uni-list-item>
+			<uni-list-item :title="$store.state.lanser.SendMessage"  thumb="../../static/img/ffgfc.png" @tap="dfdg=true"></uni-list-item>
+			<uni-list-item :title="$store.state.lanser.UploadFile"  thumb="../../static/img/ffgfd.png"></uni-list-item>
 		</uni-list>
 		<view class="hhghgxert" v-if="dfdg">
 			<view class="kjhxertyx pd">
@@ -17,10 +17,10 @@
 					<textarea value=""  class="fz30 z3 fdrtyuser w100 pt20" placeholder="在此输入内容" />
 					<view class="row fz32 z9 cen fdgtyy7sze">
 						<view class="col"  @tap="dfdg=false">
-							取消
+							{{$store.state.lanser.Close}}
 						</view>
 						<view class="col ye" @tap="dfdg=false">
-							发送
+							{{$store.state.lanser.SendMessage}}
 						</view>
 					</view>
 				</view>
@@ -35,19 +35,24 @@
 				dfdg:false
 			}
 		},
-		components: {
-			
-		},
+		components: {},
 		methods: {
 			yuyans () {
 				uni.showActionSheet({
-					itemList:['英文','中文'],
-					itemColor:"#FFD33E"
+					itemList:['中文','English','ئۇيغۇرچە'     ],
+					itemColor:"#FFD33E",
+					success: (a) => {
+						this.$store.commit('setlanser',a.tapIndex)
+					}
 				})
 			}
 		},
+		onShow() {
+			uni.setNavigationBarTitle({
+			    title: this.$store.state.Other
+			})
+		},
 		mounted() {
-			
 		}
 	}
 </script>

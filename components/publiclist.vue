@@ -14,15 +14,15 @@
 							{{sd.gename}}
 						</view>
 					</view>
-					<view class="mt20">
+					<view class="mt20" v-if="idx!=0">
 						<view class="f_b" v-if="isyhgg!=2">
 							<image src="../static/img/zhiding.png" class="cdftyxzer cz" mode="widthFix" @tap="jhhxdrer(idx)"></image>
 							<image src="../static/img/sanchu.png" class="cdftyxzer  cz" mode="widthFix" @tap="hgsert(idx)"></image>
 							
 						</view>
 						<view class="f_b" v-if="isyhgg!=1">
-							<text class="kjjhxher cz" v-if="!sd.cls" @tap="kjhser(sd,1)">点歌</text>
-							<text v-else class="kjjhxher cz ab" @tap="kjhser(sd,2)">已加入</text>
+							<text class="kjjhxher cz" v-if="!sd.cls" @tap="kjhser(sd,1)">{{$store.state.lanser.Select}}</text>
+							<text v-else class="kjjhxher cz ab" @tap="kjhser(sd,2)">{{$store.state.lanser.Selected}}</text>
 												
 						</view>
 					</view>
@@ -127,7 +127,7 @@
 	}
 	.cdftyxzer{
 		width: 44upx;
-		margin-right: 20upx;
+		margin-right: 40upx;
 	}
 	.kjjhxher{
 		color: #FFD748;

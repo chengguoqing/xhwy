@@ -1,14 +1,9 @@
 <!-- 语言选择 -->
 <template>
 	<view>
-		<view class="khjxrrt">
-			<icon type="search" size="16"></icon>
-		</view>
 		<scroll-view scroll-x="true" class="jhggxseert dx_jz w100 ">
 			<view v-for="(sd,idx) in dhxewer" :key="idx" @tap="sddrert(idx)" :class="idx==xseerr?'act':''" class="xwerrtxe fz30 z6 pr cen  ml30 f_b cz">
 				{{sd.name}}
-			</view>
-			<view class="fgrtyyxe">
 			</view>
 		</scroll-view>
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}">
@@ -28,19 +23,28 @@
 				xseerr: 0,
 				xrrtxeertx: '',
 				dhxewer: [{
-					name: "全部",
+					name:this.$store.state.lanser.All,
 					id: ''
 				}, {
-					name: "中国大陆",
+					name: this.$store.state.lanser.Country_China,
 					id: ''
 				}, {
-					name: "中国港台",
+					name: this.$store.state.lanser.China_GT,
 					id: ''
 				}, {
-					name: "中国维语",
+					name: this.$store.state.lanser.CountryChinaUG,
 					id: ''
 				}, {
-					name: "日韩",
+					name: this.$store.state.lanser.CountryKoriya,
+					id: ''
+				}, {
+					name: this.$store.state.lanser.CountryIndia,
+					id: ''
+				}, {
+					name: this.$store.state.lanser.CountryUzbik,
+					id: ''
+				}, {
+					name: this.$store.state.lanser.CountryEnglish,
 					id: ''
 				}]
 			}
@@ -56,7 +60,10 @@
 				this.xseerr = e.detail.current
 			}
 		},
-		onLoad() {
+		onLoad(e) {
+			uni.setNavigationBarTitle({
+			    title: e.title
+			});
 			this.xrrtxeertx = uni.getSystemInfoSync().windowHeight - 50
 		},
 		mounted() {

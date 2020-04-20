@@ -3,16 +3,16 @@
 		<view class="jhggxseert dx_jz w100 row cen">
 			<view class="col">
 				<view class="xwerrtxe fz30 z6 pr cen   f_b cz " :class="kjhse==0?'act':''" @tap="kjhse=0">
-					已点歌曲
+					{{$store.state.lanser.SelectedSongs}}
 				</view>
 			</view>
 			<view class="col">
 				<view class="xwerrtxe fz30 z6 pr cen   f_b cz" :class="kjhse==1?'act':''" @tap="kjhse=1">
-					已唱歌曲
+					{{$store.state.lanser.SingedSongs}}
 				</view>
 			</view>
 		</view>
-		
+
 		<publiclist :isyhgg="1" v-if="kjhse==0"></publiclist>
 		<publiclist v-if="kjhse==1"></publiclist>
 	</view>
@@ -22,14 +22,19 @@
 	export default {
 		data() {
 			return {
-				kjhse:0
+				kjhse: 0
 			}
 		},
 		components: {
-publiclist
+			publiclist
 		},
 		methods: {
 
+		},
+		onLoad() {
+			uni.setNavigationBarTitle({
+			    title: this.$store.state.Selected
+			})
 		},
 		mounted() {
 
@@ -37,10 +42,11 @@ publiclist
 	}
 </script>
 <style scoped>
-	.jhggxseert{
+	.jhggxseert {
 		top: 0;
 	}
-	.xwerrtxe{
+
+	.xwerrtxe {
 		display: inline-block;
 	}
 </style>

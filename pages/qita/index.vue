@@ -7,20 +7,20 @@
 			</view>
 		</view>
 		<uni-list class="mt40 ghyyusert">
-			<uni-list-item :title="$store.state.lanser.ChangeLanguage" thumb="../../static/img/ffgfb.png" @tap="yuyans"></uni-list-item>
-			<uni-list-item :title="$store.state.lanser.SendMessage"  thumb="../../static/img/ffgfc.png" @tap="dfdg=true"></uni-list-item>
-			<uni-list-item :title="$store.state.lanser.UploadFile"  thumb="../../static/img/ffgfd.png"></uni-list-item>
+			<uni-list-item :title="kjhx.ChangeLanguage" thumb="../../static/img/ffgfb.png" @tap="yuyans"></uni-list-item>
+			<uni-list-item :title="kjhx.SuggestionAndRequests"  thumb="../../static/img/yiians.png" @tap="dfdg=true"></uni-list-item>
+			<uni-list-item :title="kjhx.UploadFile"  thumb="../../static/img/ffgfd.png"></uni-list-item>
 		</uni-list>
 		<view class="hhghgxert" v-if="dfdg">
 			<view class="kjhxertyx pd">
 				<view class="kjhjxderert bgff pd pt30 ">
-					<textarea value=""  class="fz30 z3 fdrtyuser w100 pt20" placeholder="在此输入内容" />
+					<textarea value=""  class="fz30 z3 fdrtyuser w100 pt20" :placeholder="kjhx.TypeContentInHere" />
 					<view class="row fz32 z9 cen fdgtyy7sze">
 						<view class="col"  @tap="dfdg=false">
-							{{$store.state.lanser.Close}}
+							{{kjhx.Close}}
 						</view>
 						<view class="col ye" @tap="dfdg=false">
-							{{$store.state.lanser.SendMessage}}
+							{{kjhx.SendMessage}}
 						</view>
 					</view>
 				</view>
@@ -39,12 +39,17 @@
 		methods: {
 			yuyans () {
 				uni.showActionSheet({
-					itemList:['中文','English','ئۇيغۇرچە'     ],
+					itemList:['中文','ئۇيغۇرچە'      ,'English'],
 					itemColor:"#FFD33E",
 					success: (a) => {
 						this.$store.commit('setlanser',a.tapIndex)
 					}
 				})
+			}
+		},
+		computed:{
+			kjhx(){
+				return this.$store.state.lanser
 			}
 		},
 		onShow() {

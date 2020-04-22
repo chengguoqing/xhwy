@@ -12,7 +12,9 @@
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}">
 			<swiper class="h100" @change="jhxerert" :current="xseerr">
 				<swiper-item v-for="(sd,idx) in dhxewer">
-					<xzyypage></xzyypage>
+					<keep-alive>
+						<component is="xzyypage" v-if="idx==xseerr" :SongTypeId="sd.id"></component>
+					</keep-alive>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -27,28 +29,32 @@
 				xrrtxeertx: '',
 				dhxewer: [{
 					name: this.$store.state.lanser.All,
-					id: ''
+					id: 1
 				}, {
 					name: this.$store.state.lanser.SongTypePop,
-					id: ''
+					id: 2
 				}, {
 					name: this.$store.state.lanser.SongTypeDance,
-					id: ''
+					id: 3
 				}, {
 					name: this.$store.state.lanser.SongTypeOld,
-					id: ''
+					id:4
 				}, {
 					name: this.$store.state.lanser.SongTypeFolk,
-					id: ''
+					id: 5
 				}, {
 					name: this.$store.state.lanser.SongTypeChild,
-					id: ''
+					id: 6
 				}, {
 					name: this.$store.state.lanser.SongTypeDrama,
-					id: ''
+					id:7
 				}, {
 					name: this.$store.state.lanser.DJ,
-					id: ''
+					id: 8
+				},
+				{
+					name:this.$store.state.lanser.Other,
+					id:9
 				}]
 			}
 		},
@@ -66,7 +72,8 @@
 			},
 			jhxerert(e) {
 				this.xseerr = e.detail.current
-			}
+			},
+			
 		},
 		onLoad(e) {
 			uni.setNavigationBarTitle({
@@ -75,7 +82,7 @@
 			this.xrrtxeertx = uni.getSystemInfoSync().windowHeight - 50
 		},
 		mounted() {
-
+			
 		}
 	}
 </script>

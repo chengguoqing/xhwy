@@ -19,11 +19,11 @@ const store = new Vuex.Store({
 			if (data==0){ // 0汉语
 				state.lanser = LanguageZH
 			}
-			if (data==1){ // 1英语
-				state.lanser = LanguageEN
+			if (data==1){ // 
+				state.lanser = LanguageUG
 			}
 			if (data==2){ // 
-				state.lanser = LanguageUG
+				state.lanser = LanguageEN
 			}
 			uni.setStorage({
 				key:"lanindex",

@@ -36,8 +36,8 @@ const MescrollMoreItemMixin = {
 		mescrollInit(mescroll) {
 			this.mescroll = mescroll;
 			this.mescrollInitByRef && this.mescrollInitByRef(); // 兼容字节跳动小程序 (mescroll-mixins.js)
-			// 第一个tab,自动加载数据
-			if(this.i === 0){
+			// 自动加载当前tab的数据
+			if(this.i === this.index){
 				this.isInit = true; // 标记为true
 				this.mescroll.triggerDownScroll();
 			}

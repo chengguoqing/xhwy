@@ -1,5 +1,10 @@
 var url_d = "https://v.zulinma.com/v1/",
 	urlse = 'http://yapi.demo.qunar.com/mock/53256/'
+
+var ServerAddress = "http://o234q27456.iok.la:80/"; //COOKIE里的获取后把后缀加上, 形成完整的地址 :ServerAddress
+var SessionId = "6c1a27ada975470797a5da352c30aeef"; // 这些需要COOKIE里获取 :SessionId
+var ClientId = "cd055149098d4798b9445aa00c0f9284"; // 这些需要COOKIE里获取 :ClientId
+var OrderId = "0000000"; // 这些需要COOKIE里获取 :OrderId
 exports.base = {
 	install: function(Vue, options) {
 		Vue.prototype.version = "9.2.1"
@@ -18,35 +23,73 @@ exports.base = {
 			return _result.join('&');
 		};
 
-		Vue.prototype.post = function(url, canshu, ty) {
+		Vue.prototype.post = function(Address, MessageType, Value,ty) {
+			// 创建一个JSON
+			var Message = {
+				SessionId: SessionId,
+				ClientId: ClientId,
+				OrderId: OrderId,
+				MessageType: MessageType,
+				MessageContent: null
+			};
+			if (null != Value) {
+				var MessageContent = ''
+				if (ty == 2){
+					MessageContent = Value
+				} else {
+					MessageContent = {
+						Value: Value
+					};
+				}
+				// 这个MessageContent就是一个JSON, 我们把它转成string字符串  (虽然它现在值Value是个string, 但是如果以后获取歌曲或歌手时, 它是个Json, 具体JSON格式看协议, 搜索之所以用JSON主要是用于发送, 要获取的页, 获取列表数量...等)
+				Message.MessageContent = JSON.stringify(MessageContent);
+			}
+
 			return new Promise((resolve, reject) => {
 				uni.request({
-					url: url_d + url,
+					url: ServerAddress + Address,
 					method: "POST",
 					header: {
 						"content-type": "application/x-www-form-urlencoded"
 					},
-					data: canshu,
+					data: Message,
 					success: (res) => {
-						resolve(res.data)
+						var result = res.data;
+						if (result.hasOwnProperty('IsExpired') && result.IsExpired == true) {
+							uni.showToast({
+								icon:"none",
+								title:"这情况就是回话过期, 需要重新扫码了!"
+							})
+							return
+						}
+						if (result.hasOwnProperty('IsError') && result.IsError == true) {
+							uni.showToast({
+								icon:"none",
+								title:"操作失败了, 应该是服务器发生错误了!"
+							})
+							return
+						}
+						if (result.hasOwnProperty('Result') && result.Result == true) {
+							if(ty!=2){
+								uni.showToast({
+									title:"操作成功！"
+								})
+							}
+						}
+						resolve(result)
 					}
 				});
 			})
 		}
 		Vue.prototype.get = function(urls, canshu, ty) {
+			uni.showLoading()
 			return new Promise((resolve, reject) => {
 				uni.request({
-					url: url_d + urls,
+					url: urls,
 					method: "get",
 					data: canshu,
 					success: (res) => {
-						if (res.data.status !="200"){
-							uni.showToast({
-								icon:"none",
-								title:res.data.message
-							})
-							return
-						}
+						uni.hideLoading()
 						resolve(res.data)
 					}
 				});
@@ -55,7 +98,8 @@ exports.base = {
 		Vue.prototype.getdizhi = function(diz) {
 			return new Promise((resolve, reject) => {
 				uni.request({
-					url: 'https://restapi.amap.com/v3/geocode/geo?key=1ca50beb27f893268297a00cdb0acdf3&address='+diz+'&city=%E5%85%A8%E5%9B%BD',
+					url: 'https://restapi.amap.com/v3/geocode/geo?key=1ca50beb27f893268297a00cdb0acdf3&address=' + diz +
+						'&city=%E5%85%A8%E5%9B%BD',
 					method: "get",
 					success: (res) => {
 						resolve(res.data.geocodes[0].location)

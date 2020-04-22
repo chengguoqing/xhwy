@@ -3,12 +3,12 @@
 		<view class="jhggxseert dx_jz w100 row cen">
 			<view class="col">
 				<view class="xwerrtxe fz30 z6 pr cen   f_b cz " :class="kjhse==0?'act':''" @tap="kjhse=0">
-					{{$store.state.lanser.SelectedSongs}}
+					{{kjhx.SelectedSongs}}
 				</view>
 			</view>
 			<view class="col">
 				<view class="xwerrtxe fz30 z6 pr cen   f_b cz" :class="kjhse==1?'act':''" @tap="kjhse=1">
-					{{$store.state.lanser.SingedSongs}}
+					{{kjhx.SingedSongs}}
 				</view>
 			</view>
 		</view>
@@ -23,6 +23,11 @@
 		data() {
 			return {
 				kjhse: 0
+			}
+		},
+		computed:{
+			kjhx(){
+				return this.$store.state.lanser
 			}
 		},
 		components: {

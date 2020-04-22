@@ -1,6 +1,6 @@
 <template>
 	<view class="pd">
-		<view class=" pt20 pm20 btm row" v-for="(sd,idx) in jhgsee">
+		<view class=" pt20 pm20 btm row" v-for="(sd,idx) in SongList">
 			<view class="fgfdtyyxe fz28 z6" v-if="isyhgg!=2">
 				{{idx<10?'0'+(idx+1):(idx+1)}}
 			</view>
@@ -8,10 +8,10 @@
 				<view class="row">
 					<view class="col">
 						<view class="dian fz32 z3">
-							{{sd.name}}
+							{{sd.SongName}}
 						</view>
 						<view class="z9 fz24 mt10">
-							{{sd.gename}}
+							{{sd.Id}}
 						</view>
 					</view>
 					<view class="mt20" v-if="idx!=0">
@@ -21,8 +21,8 @@
 							
 						</view>
 						<view class="f_b" v-if="isyhgg!=1">
-							<text class="kjjhxher cz" v-if="!sd.cls" @tap="kjhser(sd,1)">{{$store.state.lanser.Select}}</text>
-							<text v-else class="kjjhxher cz ab" @tap="kjhser(sd,2)">{{$store.state.lanser.Selected}}</text>
+							<text class="kjjhxher cz" v-if="!sd.cls" @tap="kjhser(sd,1)">{{kjhx.Select}}</text>
+							<text v-else class="kjjhxher cz ab" @tap="kjhser(sd,2)">{{kjhx.Selected}}</text>
 												
 						</view>
 					</view>
@@ -36,6 +36,9 @@
 		props:{
 			isyhgg:{ // 1隐藏点歌 2 搜索
 				type:Number
+			},
+			SongList:{
+				type:Array
 			}
 		},
 		data() {
@@ -61,24 +64,17 @@
 						name:'五年',
 						gename:'华晨宇',
 						cls:''
-					},{
-						name:'六年',
-						gename:'华晨宇',
-						cls:''
-					},{
-						name:'七年',
-						gename:'华晨宇',
-						cls:''
-					},{
-						name:'十年',
-						gename:'华晨宇',
-						cls:''
 					}
 				]
 			}
 		},
 		components: {
 			
+		},
+		computed:{
+			kjhx(){
+				return this.$store.state.lanser
+			}
 		},
 		methods: {
 			kjhser (sd,idx) {
@@ -95,15 +91,17 @@
 				},2000)
 			},
 			jhhxdrer (idx) {
-				let xcrtra = this.jhgsee[idx-1],
-				xcrtrb = this.jhgsee[idx]
-				this.$set(this.jhgsee, idx, xcrtra)
-				this.$set(this.jhgsee, idx-1, xcrtrb)
+				let xcrtra = this.SongList[0],
+				xcrtrb = this.SongList[idx]
+				this.$set(this.SongList, idx, xcrtra)
+				this.$set(this.SongList, 0, xcrtrb)
 			},
 			hgsert(idx){
 				let th=this
 				uni.showModal({
-					content:"确定删除吗？",
+					content:this.$store.state.lanser.ConfirmDelete,
+					cancelText:this.$store.state.lanser.Cancel,
+					confirmText:this.$store.state.lanser.OK,
 					success(e) {
 						if(e.confirm){
 							

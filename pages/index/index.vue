@@ -1,8 +1,13 @@
 <template>
 	<view class="pd pt20">
 		<navigator class="kjhhxeret fz26" url="/pages/index/sousuo">
+			<!-- #ifdef MP-WEIXIN || APP-PLUS -->
+			<icon type="search" size="16" class="dfrertt" />
+			<!-- #endif -->
+			<!-- #ifdef H5 -->
 			<icon type="search" size="16" class="cz" />
-			<text class="cz ml10 ddfrrttyx"> {{$store.state.lanser.SearchDescription}}</text>
+			<!-- #endif -->
+			<text class="cz ml10 ddfrrttyx"> {{kjhx.SearchDescription}}</text>
 		</navigator>
 		<swiper class="mt20 ddryyxer deerty ov" indicator-active-color="#FFD33E" indicator-color="#fff" :indicator-dots="true"
 		 :autoplay="true" circular :interval="3000" :duration="1000">
@@ -14,28 +19,28 @@
 			<view class="col xdrertty">
 				<navigator class="pr" url="/pages/index/geshouxz">
 					<image src="../../static/img/gdfga.png" class="cz"></image>
-					<text class="neijjxne">{{$store.state.lanser.Singers}}</text>
+					<text class="neijjxne">{{kjhx.Singers}}</text>
 				</navigator>
 			</view>
 			<view class="col xdrertty ab">
-				<navigator class="pr" :url='"/pages/index/yuyangyz?title="+$store.state.lanser.Language'>
+				<navigator class="pr" :url='"/pages/index/yuyangyz?title="+kjhx.Language'>
 					<image src="../../static/img/gdfgb.png" class="cz"></image>
-					<text class="neijjxne">{{$store.state.lanser.Language}}</text>
+					<text class="neijjxne">{{kjhx.Language}}</text>
 				</navigator>
 			</view>
 		</view>
 		<view class="mt40 parentse">
-			<navigator class="kkhjhxr pr" :url='"/pages/index/fenlei?title="+$store.state.lanser.Type'>
+			<navigator class="kkhjhxr pr" :url='"/pages/index/fenlei?title="+kjhx.Type'>
 				<image src="../../static/img/gdfgc.png" class="w100"></image>
-				<text class="cf fz30 drrtty">{{$store.state.lanser.Type}}</text>
+				<text class="cf fz30 drrtty">{{kjhx.Type}}</text>
 			</navigator>
-			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+$store.state.lanser.Hot'>
+			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+kjhx.Hot'>
 				<image src="../../static/img/gdfgd.png" class="w100"></image>
-				<text class="cf fz30 drrtty">{{$store.state.lanser.Hot}}</text>
+				<text class="cf fz30 drrtty">{{kjhx.Hot}}</text>
 			</navigator>
-			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+$store.state.lanser.New'>
+			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+kjhx.New'>
 				<image src="../../static/img/gdfge.png" class="w100"></image>
-				<text class="cf fz30 drrtty">{{$store.state.lanser.New}}</text>
+				<text class="cf fz30 drrtty">{{kjhx.New}}</text>
 			</navigator>
 		</view>
 
@@ -58,6 +63,11 @@
 		components: {
 
 		},
+		computed:{
+			kjhx(){
+				return this.$store.state.lanser
+			}
+		},
 		methods: {
 
 		},
@@ -67,7 +77,7 @@
 			})
 		},
 		mounted() {
-
+			
 		}
 	}
 </script>
@@ -144,5 +154,9 @@
 		color: #fff;
 		right: 20upx;
 		bottom: 20upx;
+	}
+	.dfrertt{
+		position: relative;
+		top: 4upx;
 	}
 </style>

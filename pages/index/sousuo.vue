@@ -9,7 +9,7 @@
 					<input type="text" value="" v-model="khsdre" placeholder="大家都在搜 孙燕姿" class="fz30  " />
 					<view class="kjjddeert fz28" v-if="khsdre">
 						<view class="ye pd pt20 pm20 bbm">
-							{{$store.state.lanser.Search}}“{{khsdre}}”
+							{{kjhx.Search}}“{{khsdre}}”
 						</view>
 						<view class="z6 pd pt20 pm20 bbm" v-for="sd in 5" @tap="fdgfgf">
 							<icon type="search" size="16" class="cz mr10"></icon>周杰伦
@@ -23,7 +23,7 @@
 				</view>
 			</view>
 			<view class="fz30 z3 ml20">
-				{{$store.state.lanser.Search}}
+				{{kjhx.Search}}
 			</view>
 		</view>
 		<view class="mt60 row pd">
@@ -37,7 +37,7 @@
 		</view>
 		<view class="mt60 pd">
 			<view class="z3 fz32">
-				{{$store.state.lanser.Hot}}{{$store.state.lanser.Search}}
+				{{kjhx.Hot}}{{kjhx.Search}}
 			</view>
 			<publiclist isyhgg="2"></publiclist>
 		</view>
@@ -50,7 +50,7 @@
 		data() {
 			return {
 				idxsw:0,
-				ddfrt:[this.$store.state.lanser.Singers,this.$store.state.lanser.Song],
+				ddfrt:[this.$store.state.lanser.Song,this.$store.state.lanser.Singers],
 				khsdre:''
 			}
 		},
@@ -61,6 +61,11 @@
 			uni.setNavigationBarTitle({
 			    title: this.$store.state.Search
 			})
+		},
+		computed:{
+			kjhx(){
+				return this.$store.state.lanser
+			}
 		},
 		methods: {
 			housd(){

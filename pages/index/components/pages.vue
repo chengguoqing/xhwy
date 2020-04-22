@@ -1,15 +1,12 @@
 <template>
 	<scroll-view scroll-y="true" class="h100">
-		<view class="pt20">
-			<view class="kjhgder">
-				<text v-for="(sd,idx) in kjhder" :key="idx" @tap="hhsf(idx)" class="kjhggdert" :class="idxse==idx?'act':''">{{sd}}</text>
-			</view>
+		<view class="">
 			<view class="pd">
-				<view class="parentse mt40">
+				<view class="parentse ">
 					<navigator class="cdderrty pr" v-for="sd in 10" url="/pages/index/geshouxq">
 						<image src="../../../static/img/fengmian.jpg" mode="aspectFill"></image>
-						<view class="kjhxer">
-							独行工匠
+						<view class="kjhxer dian">
+							独行工匠独行工匠独行工匠独行工匠独行工匠
 						</view>
 					</navigator>
 				</view>
@@ -21,8 +18,7 @@
 	export default {
 		data() {
 			return {
-				idxse: 0,
-				kjhder: [this.$store.state.lanser.All, this.$store.state.lanser.MaleSingerNew,this.$store.state.lanser.FemaleSingerNew,this.$store.state.lanser.Group]
+				idxse: 0
 			}
 		},
 		components: {
@@ -39,9 +35,6 @@
 	}
 </script>
 <style scoped>
-	.kjhgder {
-		padding-left: 30upx;
-	}
 
 	.kjhggdert {
 		border-radius: 20upx;

@@ -15,7 +15,7 @@
 						</view>
 					</view>
 					<view class="mt20" v-if="idx!=0">
-						<view class="f_b" v-if="isyhgg!=2">
+						<view class="f_b" v-if="isyhgg!=2 && sd.IsSelected">
 							<image src="../static/img/zhiding.png" class="cdftyxzer cz" mode="widthFix" @tap="jhhxdrer(idx)"></image>
 							<image src="../static/img/sanchu.png" class="cdftyxzer  cz" mode="widthFix" @tap="hgsert(idx)"></image>
 							
@@ -78,23 +78,23 @@
 		},
 		methods: {
 			kjhser (sd,idx) {
-				uni.showLoading({
-					title:"请稍候…"
-				})
-				setTimeout(a=>{
-					if (idx==1){
-						sd.cls='act'
-					}else{
-						sd.cls=''
-					}
-					uni.hideLoading()
-				},2000)
+				if (idx==1){
+					uni.showLoading({
+						title:"请稍候…"
+					})
+					sd.IsSelected = true
+					this.$emit("xuanze",sd)
+					sd.cls='act'
+				}else{
+					// sd.cls=''
+				}
 			},
 			jhhxdrer (idx) {
 				let xcrtra = this.SongList[0],
 				xcrtrb = this.SongList[idx]
 				this.$set(this.SongList, idx, xcrtra)
 				this.$set(this.SongList, 0, xcrtrb)
+				this.$emit("zhiding",this.SongList[0])
 			},
 			hgsert(idx){
 				let th=this
@@ -104,8 +104,10 @@
 					confirmText:this.$store.state.lanser.OK,
 					success(e) {
 						if(e.confirm){
-							
-							th.jhgsee.splice(idx,1)
+							th.SongList[idx].IsSelected = false
+							th.SongList[idx].cls = ''
+							// th.jhgsee.splice(idx,1)
+							th.$emit("delsd",th.SongList[idx])
 						}
 					}
 				})

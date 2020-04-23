@@ -32,6 +32,16 @@ exports.base = {
 				MessageType: MessageType,
 				MessageContent: null
 			};
+			let Lang = ''
+			Lang = uni.getStorageSync('lanindex')
+			if (Lang == 0){
+				Lang= 'ZH'
+			} else if (Lang == 1){
+				Lang= 'ug'
+			} if (Lang == 2){
+				Lang= 'EN'
+			}
+			Message.Lang = Lang
 			if (null != Value) {
 				var MessageContent = ''
 				if (ty == 2){

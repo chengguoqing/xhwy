@@ -7,6 +7,7 @@ import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 import uniPopup from '@/components/uni-popup/uni-popup.vue'
 import uniCollapse from '@/components/uni-collapse/uni-collapse.vue'
 import uniCollapseItem from '@/components/uni-collapse-item/uni-collapse-item.vue'
+import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue'
 import {
 	base
 } from '@/static/js/base.js'
@@ -33,6 +34,8 @@ Vue.component('uniListItem',uniListItem)
 Vue.component('uniPopup',uniPopup)
 Vue.component('uniCollapse',uniCollapse)
 Vue.component('uniCollapseItem',uniCollapseItem)
+Vue.component('uniLoadMore',uniLoadMore)
+
 Vue.use(base)
 App.mpType = 'app'
 const app = new Vue({

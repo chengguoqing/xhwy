@@ -23,7 +23,7 @@
 				</navigator>
 			</view>
 			<view class="col xdrertty ab">
-				<navigator class="pr" :url='"/pages/index/yuyangyz?title="+kjhx.Language'>
+				<navigator class="pr" :url='"/pages/index/yuyangyz?title="+kjhx.Language+"&fname=Search-Song"'>
 					<image src="../../static/img/gdfgb.png" class="cz"></image>
 					<text class="neijjxne">{{kjhx.Language}}</text>
 				</navigator>
@@ -34,11 +34,11 @@
 				<image src="../../static/img/gdfgc.png" class="w100"></image>
 				<text class="cf fz30 drrtty">{{kjhx.Type}}</text>
 			</navigator>
-			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+kjhx.Hot'>
+			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+kjhx.Hot+"&fname=Search-Hot"'>
 				<image src="../../static/img/gdfgd.png" class="w100"></image>
 				<text class="cf fz30 drrtty">{{kjhx.Hot}}</text>
 			</navigator>
-			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+kjhx.New'>
+			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+kjhx.New+"&fname=Search-New"'>
 				<image src="../../static/img/gdfge.png" class="w100"></image>
 				<text class="cf fz30 drrtty">{{kjhx.New}}</text>
 			</navigator>

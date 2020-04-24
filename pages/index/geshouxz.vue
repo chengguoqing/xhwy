@@ -13,7 +13,9 @@
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}" >
 			<swiper class="h100" @change="jhxerert" :current="xseerr">
 				<swiper-item v-for="(sd,idx) in dhxewer">
-					<pages></pages>
+					<keep-alive>
+						<component :SingerLangId="SingerLangId" :SingerTypeId="SingerTypeId" is="pages" v-if="idx==xseerr" :ref="'sseert'+xseerr"></component>
+					</keep-alive>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -25,29 +27,31 @@
 	export default {
 		data() {
 			return {
+				SingerLangId:1,
+				SingerTypeId:1,
 				xseerr:0,
 				idxse: 0,
 				xrrtxeertx:'',
 				kjhder: [this.$store.state.lanser.All, this.$store.state.lanser.MaleSingerNew,this.$store.state.lanser.FemaleSingerNew,this.$store.state.lanser.Group],
 				dhxewer: [{
 					name:this.$store.state.lanser.All,
-					id:''
+					id:1
 				},{
 					name:this.$store.state.lanser.MainlandSinger,
-					id:''
+					id:2
 				},{
 					name:this.$store.state.lanser.IslandSinger,
-					id:''
+					id:3
 				},{
 					name:this.$store.state.lanser.UyghurSinger,
-					id:''
+					id:4
 				},{
 					name:this.$store.state.lanser.ForeignSinger,
-					id:''
+					id:5
 				},
 				{
 					name:this.$store.state.lanser.Other,
-					id:''
+					id:6
 				}
 				
 				]
@@ -64,9 +68,12 @@
 		methods: {
 			hhsf(idx) {
 				this.idxse = idx
+				this.$store.state.SingerTypeId = idx+1
+				this.$refs['sseert'+this.xseerr][0].iqhjwr()
 			},
 			sddrert(e) {
 				this.xseerr = e
+				this.$store.state.SingerLangId = e +1
 			},
 			jhxerert(e) {
 				this.xseerr = e.detail.current
@@ -76,10 +83,9 @@
 			uni.setNavigationBarTitle({
 			    title: this.$store.state.lanser.Singers
 			});
-			this.xrrtxeertx = uni.getSystemInfoSync().windowHeight - 50
+			this.xrrtxeertx = uni.getSystemInfoSync().windowHeight - 100
 		},
 		mounted() {
-			
 		}
 	}
 </script>

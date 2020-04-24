@@ -1,23 +1,32 @@
 <template>
-	<scroll-view scroll-y="true" class="h100">
+	<scroll-view scroll-y="true" class="h100" refresher-enabled="true" :refresher-triggered="triggered"
+	 :refresher-threshold="100"  @refresherpulling="onPulling" @refresherrefresh="onRefresh"
+	 @refresherrestore="onRestore" @refresherabort="onAbort" @scrolltolower="jjhseer">
 		<view class="">
 			<view class="pd">
 				<view class="parentse ">
-					<navigator class="cdderrty pr" v-for="sd in 10" url="/pages/index/geshouxq">
-						<image src="../../../static/img/fengmian.jpg" mode="aspectFill"></image>
+					<navigator class="cdderrty pr" v-for="sd in SongList" url="/pages/index/geshouxq">
+						<image :src="sd.ImagePaths" mode="aspectFill" v-if="sd.ImagePath"></image>
+						<image src="../../../static/img/morentx.png" mode="aspectFill" v-else></image>
 						<view class="kjhxer dian">
-							独行工匠独行工匠独行工匠独行工匠独行工匠
+							{{sd.SingerName}}
 						</view>
 					</navigator>
 				</view>
 			</view>
 		</view>
+		<uni-load-more iconType="snow" :iconSize="36" :status="loading" v-if="SongList.length>10" />
 	</scroll-view>
 </template>
 <script>
 	export default {
 		data() {
 			return {
+				SongList: [],
+				triggered: true,
+				_freshing: false,
+				pages:1,
+				loading:'more',
 				idxse: 0
 			}
 		},
@@ -25,12 +34,65 @@
 
 		},
 		methods: {
+			async kkjsdddv(a, b, c, d) {
+				let sdeer = await this.post(a, b, c, d)
+				JSON.parse(sdeer.MessageContent).SingerList.map(a=>{
+					if (!a.IsSelected) {
+						a.IsSelected = false
+						a.ImagePaths = uni.getStorageSync('gcook').ImageAddress + a.ImagePath
+						a.cls=""
+					} else {
+						a.cls="act"
+					}
+					this.SongList.push(a)
+				})
+				console.log(this.SongList)
+				this.loading ="more"
+			},
 			hhsf(idx) {
 				this.idxse = idx
+			},
+			initd () {
+				let hhgsd = {}
+				hhgsd.Value = null
+				hhgsd.SingerLangId=this.$store.state.SingerLangId
+				hhgsd.SingerTypeId = this.$store.state.SingerTypeId 
+				hhgsd.PageNo = this.pages
+				hhgsd.ListCount = 20
+				this.kkjsdddv("vod/server/sendmessage", 'Search-Singer', hhgsd, 2)
+			},
+			iqhjwr () {
+				this.SongList = []
+				 this.pages = 1
+					this.initd()
+			},
+			onPulling(e) {
+			},
+			async onRefresh() {
+				if (this._freshing) return;
+				this._freshing = true;
+				setTimeout(() => {
+					this.triggered = false;
+					this._freshing = false;
+				}, 2000)
+			},
+			onAbort() {
+				console.log("onAbort");
+			},
+			onRestore() {
+				this.SongList=[]
+				this.triggered = 'restore'; // 需要重置
+				this.pages=1
+				this.initd()
+			},
+			jjhseer(e){
+				this.pages++
+				this.loading ="loading"
+				this.initd()
 			}
 		},
 		mounted() {
-
+			this.initd()
 		},
 	}
 </script>

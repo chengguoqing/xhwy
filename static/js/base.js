@@ -8,6 +8,7 @@ var OrderId = "0000000"; // 这些需要COOKIE里获取 :OrderId
 exports.base = {
 	install: function(Vue, options) {
 		Vue.prototype.version = "9.2.1"
+		Vue.prototype.imgse = 'https://oybab.net/wechat/GM/'
 		Vue.prototype.parseParam = function(data) {
 			var _result = [];
 			for (var key in data) {
@@ -35,11 +36,11 @@ exports.base = {
 			let Lang = ''
 			Lang = uni.getStorageSync('lanindex')
 			if (Lang == 0){
-				Lang= 'ZH'
+				Lang= 'zh'
 			} else if (Lang == 1){
 				Lang= 'ug'
 			} if (Lang == 2){
-				Lang= 'EN'
+				Lang= 'en'
 			}
 			Message.Lang = Lang
 			if (null != Value) {

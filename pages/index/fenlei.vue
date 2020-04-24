@@ -13,7 +13,7 @@
 			<swiper class="h100" @change="jhxerert" :current="xseerr">
 				<swiper-item v-for="(sd,idx) in dhxewer">
 					<keep-alive>
-						<component is="xzyypage" v-if="idx==xseerr" :SongTypeId="sd.id"></component>
+						<component is="xzyypage" v-if="idx==xseerr" :SongTypeId="sd.id" urls="Search-Type"></component>
 					</keep-alive>
 				</swiper-item>
 			</swiper>

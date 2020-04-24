@@ -9,7 +9,7 @@
 <script>
 	import publiclist from "@/components/publiclist.vue"
 	export default {
-		props: ['SongTypeId'],
+		props: ['SongTypeId','urls'],
 		data() {
 			return {
 				SongList: [],
@@ -39,10 +39,16 @@
 			initsd () {
 				let hhgsd = {}
 				hhgsd.Value = null
-				hhgsd.SongTypeId = this.SongTypeId
+				if (this.urls =='Search-Type'){ // 分类
+					hhgsd.SongTypeId = this.SongTypeId
+				}
+				if (this.urls =='Search-Hot' || this.urls =='Search-New' ||this.urls=='Search-Song'){ // 热门 最新
+					hhgsd.SongLangId = this.SongTypeId
+				}
+				console.log(this.urls =='Search-Hot')
 				hhgsd.PageNo = this.pages
 				hhgsd.ListCount = 20
-				this.kkjsdddv("vod/server/sendmessage", "Search-Type", hhgsd, 2)
+				this.kkjsdddv("vod/server/sendmessage", this.urls, hhgsd, 2)
 			},
 			onPulling(e) {
 			},

@@ -9,7 +9,9 @@
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}">
 			<swiper class="h100" @change="jhxerert" :current="xseerr">
 				<swiper-item v-for="(sd,idx) in dhxewer">
-					<xzyypage></xzyypage>
+					<keep-alive>
+						<component is="xzyypage" v-if="idx==xseerr" :SongTypeId="sd.id" :urls="urls"></component>
+					</keep-alive>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -22,34 +24,35 @@
 			return {
 				xseerr: 0,
 				xrrtxeertx: '',
+				urls:'',
 				dhxewer: [{
 					name:this.$store.state.lanser.All,
-					id: ''
+					id: 1
 				}, {
 					name: this.$store.state.lanser.Country_China,
-					id: ''
+					id: 2
 				}, {
 					name: this.$store.state.lanser.China_GT,
-					id: ''
+					id: 3
 				}, {
 					name: this.$store.state.lanser.CountryChinaUG,
-					id: ''
+					id: 4
 				}, {
 					name: this.$store.state.lanser.CountryKoriya,
-					id: ''
+					id: 5
 				}, {
 					name: this.$store.state.lanser.CountryIndia,
-					id: ''
+					id: 6
 				}, {
 					name: this.$store.state.lanser.CountryUzbik,
-					id: ''
+					id: 7
 				}, {
 					name: this.$store.state.lanser.CountryEnglish,
-					id: ''
+					id: 8
 				},
 				{
 					name:this.$store.state.lanser.Other,
-					id:''
+					id:9
 				}]
 			}
 		},
@@ -68,6 +71,7 @@
 			uni.setNavigationBarTitle({
 			    title: e.title
 			});
+			this.urls = e.fname
 			this.xrrtxeertx = uni.getSystemInfoSync().windowHeight - 50
 		},
 		mounted() {

@@ -12,7 +12,9 @@ const store = new Vuex.Store({
 		hasLogin: false,
 		loginProvider: "",
 		openid: null,
-		lanser: LanguageZH
+		lanser: LanguageZH,
+		SingerTypeId:1,
+		SingerLangId:1
 	},
 	mutations: {
 		setlanser(state,data) {

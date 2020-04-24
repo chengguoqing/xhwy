@@ -19,14 +19,10 @@
 					this.$store.commit('setlanser',a.data)
 				}
 			})
-			uni.getStorage({
-			    key: 'gcook',
-			    success: (a) => {
-					if (!a) {
-						this.getdatas()
-					}
-			    }
-			})
+			var ddfer =uni.getStorageSync('gcook')
+			if (!ddfer) {
+				this.getdatas()
+			}
 		}
 	}
 </script>

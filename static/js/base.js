@@ -80,6 +80,8 @@ exports.base = {
 								complete:(res) => {
 									uni.hideLoading()
 								},
+								crossDomain: true,
+								xhrFields: { withCredentials: true },
 					            success: (res) => {
 									
 					                var result = res.data;
@@ -120,6 +122,8 @@ exports.base = {
 						complete:(res) => {
 							uni.hideLoading()
 						},
+						crossDomain: true,
+						xhrFields: { withCredentials: true },
 						success: (res) => {
 							var result = res.data;
 							if (result.hasOwnProperty('IsExpired') && result.IsExpired == true) {
@@ -160,6 +164,8 @@ exports.base = {
 					url: urls,
 					method: "get",
 					data: canshu,
+					withCredentials: true,
+					xhrFields: { withCredentials: true },
 					success: (res) => {
 						uni.hideLoading()
 						resolve(res.data)

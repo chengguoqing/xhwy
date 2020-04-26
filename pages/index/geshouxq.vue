@@ -4,30 +4,42 @@
 		<view class="kjhhxertxe pr">
 			<image src="../../static/img/bjt.png" class="w100 dsgftyxer" mode="aspectFill"></image>
 			<view class="jjhexertx row">
-				<image src="../../static/img/fengmian.jpg" mode="aspectFill" class="dsfdtyxe"></image>
+				<image :src="femian" mode="aspectFill" class="dsfdtyxe"></image>
 				<view class="col pl40 cf fz32 ftf45yx">
-					华晨宇
+					{{name}}
 				</view>
 			</view>
 		</view>
-		<publiclist></publiclist>
+		<!-- <publiclist></publiclist> -->
+		<view class="sdfdstt" :style="{height:xrrtxeertx+'px'}">
+			<xzyypage urls="Search-SingerSongs" :seartext="Id"></xzyypage>
+		</view>
 	</view>
 </template>
 <script>
+	import xzyypage from "./components/xzyypage.vue"
 	import publiclist from "@/components/publiclist.vue"
 	export default {
 		data() {
 			return {
-				
+				name:'',
+				femian:'',
+				xrrtxeertx:0,
+				Id:''
 			}
 		},
 		components: {
-			publiclist
+			publiclist,
+			xzyypage
 		},
 		methods: {
 			
 		},
-		onLoad() {
+		onLoad(e) {
+			this.name= e.name
+			this.femian = e.femian
+			this.Id = e.id
+			this.xrrtxeertx = uni.getSystemInfoSync().windowHeight - 100
 			uni.setNavigationBarTitle({
 			    title: this.$store.state.lanser.Singers
 			});

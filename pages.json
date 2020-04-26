@@ -1,5 +1,12 @@
 {
 	"pages": [{
+			"path": "pages/loading",
+			"bz": "loader",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},{
 			"path": "pages/index/index",
 			"bz": "首页",
 			"style": {
@@ -28,35 +35,13 @@
 			"path": "pages/index/fenlei",
 			"bz": "分类",
 			"style": {
-				"navigationBarTitleText": "分类",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [ //原生标题栏按钮配置,
-							{
-								"text": "\ue60a",
-								"fontSize": "22",
-								"fontSrc": "/static/fonts/iconfont.ttf"
-							}
-						]
-					}
-				}
+				"navigationBarTitleText": "分类"
 			}
 		}, {
 			"path": "pages/index/yuyangyz",
 			"bz": "语言选择",
 			"style": {
-				"navigationBarTitleText": "语言选择",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [ //原生标题栏按钮配置,
-							{
-								"text": "\ue60a",
-								"fontSize": "22",
-								"fontSrc": "/static/fonts/iconfont.ttf"
-							}
-						]
-					}
-				}
+				"navigationBarTitleText": "语言选择"
 			}
 		}, {
 			"path": "pages/index/geshouxq",
@@ -68,18 +53,7 @@
 			"path": "pages/index/geshouxz",
 			"bz": "歌手选择",
 			"style": {
-				"navigationBarTitleText": "歌手选择",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [ //原生标题栏按钮配置,
-							{
-								"text": "\ue60a",
-								"fontSize": "22",
-								"fontSrc": "/static/fonts/iconfont.ttf"
-							}
-						]
-					}
-				}
+				"navigationBarTitleText": "歌手选择"
 			}
 		}, {
 			"path": "pages/yixuan/index",

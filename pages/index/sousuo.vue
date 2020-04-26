@@ -6,100 +6,169 @@
 			</view>
 			<view class="col  pm10 pr">
 				<view class="bbm pm10 pr">
-					<input type="text" value="" v-model="khsdre" placeholder="大家都在搜 孙燕姿" class="fz30  " />
+					<input type="text" value="" v-model="khsdre" placeholder="大家都在搜 孙燕姿" class="fz30  " @input="hggysd" />
 					<view class="kjjddeert fz28" v-if="khsdre">
 						<view class="ye pd pt20 pm20 bbm">
 							{{kjhx.Search}}“{{khsdre}}”
 						</view>
-						<view class="z6 pd pt20 pm20 bbm" v-for="sd in 5" @tap="fdgfgf">
-							<icon type="search" size="16" class="cz mr10"></icon>周杰伦
+						<view class="z6 pd pt20 pm20 bbm" v-for="sd in SongList" @tap="fdgfgf(sd.Name)">
+							<icon type="search" size="16" class="cz mr10"></icon>{{sd.Name}}
 						</view>
 					</view>
 				</view>
 				<view class="mt10">
 					<view class="f_b fz28 mr40" v-for="(sd,idx) in ddfrt" @tap="dfd(idx)">
-						<text class="kjhxdrrt cz" :class="idx==idxsw?'act':''"></text>{{sd}}
+						<text class="kjhxdrrt cz" :class="idx==idxsw?'act':''"></text>
+						{{sd}}
 					</view>
 				</view>
 			</view>
-			<view class="fz30 z3 ml20">
+			<view class="fz30 z3 ml20" @tap="hiuhhwe">
 				{{kjhx.Search}}
 			</view>
 		</view>
-		<view class="mt60 row pd">
-			<view class="fz32 z3 col">
-				搜索历史
+		<view class="" v-if="skkjde.length>0">
+			<view class="mt60 row pd">
+				<view class="fz32 z3 col">
+					搜索历史
+				</view>
+				<image src="../../static/img/sanchu.png" class="kjjxerer" mode="widthFix" @tap="qihsd"></image>
 			</view>
-			<image src="../../static/img/sanchu.png" class="kjjxerer" mode="widthFix"></image>
-		</view>
-		<view class="pl30 mt20">
-			<text class="hhggxerert" v-for="sd in 4">五月天</text>
+			<view class="pl30 mt20">
+				<text class="hhggxerert" v-for="sd in skkjde" @tap="khsdre=sd">{{sd}}</text>
+			</view>
 		</view>
 		<view class="mt60 pd">
 			<view class="z3 fz32">
 				{{kjhx.Hot}}{{kjhx.Search}}
 			</view>
-			<publiclist isyhgg="2"></publiclist>
+			<view class="" :style="{height:xrrtxeertx+'px'}">
+				<component is="xzyypage" SongTypeId="1" urls="Search-Hot"></component>
+			</view>
+
 		</view>
-	
+
 	</view>
 </template>
 <script>
 	import publiclist from "@/components/publiclist.vue"
+	import xzyypage from "./components/xzyypage.vue"
 	export default {
 		data() {
 			return {
-				idxsw:0,
-				ddfrt:[this.$store.state.lanser.Song,this.$store.state.lanser.Singers],
-				khsdre:''
+				SongList: [],
+				xrrtxeertx: '',
+				seartext: "",
+				idxsw: 0,
+				ddfrt: [this.$store.state.lanser.All,this.$store.state.lanser.Song, this.$store.state.lanser.Singers],
+				khsdre: '',
+				skkjde: []
 			}
 		},
 		components: {
-			publiclist
+			publiclist,
+			xzyypage
 		},
 		onLoad() {
 			uni.setNavigationBarTitle({
-			    title: this.$store.state.Search
+				title: this.$store.state.Search
 			})
+			this.xrrtxeertx = uni.getSystemInfoSync().windowHeight - 250
 		},
-		computed:{
-			kjhx(){
+		computed: {
+			kjhx() {
 				return this.$store.state.lanser
 			}
 		},
 		methods: {
-			housd(){
+			housd() {
 				uni.navigateBack({
-					
+
 				})
 			},
-			dfd(idx){
+			dfd(idx) {
 				this.idxsw = idx
 			},
-			fdgfgf(){
+			fdgfgf(ihhdf) {
 				uni.navigateTo({
-					url:'/pages/index/sousuojieguo?ihhdf='+this.khsdre
+					url: '/pages/index/sousuojieguo?ihhdf=' + ihhdf +'&type='+this.idxsw
 				})
+			},
+			async kkjsdddv(a, b, c, d) {
+				let sdeer = await this.post(a, b, c, d)
+				this.SongList = []
+				JSON.parse(sdeer.MessageContent).KeyList.map(a => {
+					if (!a.IsSelected) {
+						a.IsSelected = false
+						a.cls = ""
+					} else {
+						a.cls = "act"
+					}
+					this.SongList.push(a)
+				})
+				console.log(this.SongList)
+				this.loading = "more"
+			},
+			hggysd(e) {
+				let hhgsd = {}
+				hhgsd.PageNo = this.pages
+				hhgsd.ListCount = 20
+				hhgsd.Value = e.detail.value
+				hhgsd.SearchType = this.idxsw
+				this.kkjsdddv("vod/server/sendmessage", 'Search-Key', hhgsd, 2)
+			},
+			// 搜索按钮触发
+			hiuhhwe() {
+				if (!this.khsdre) {
+					uni.showToast({
+						title: "请输入关键字",
+						icon: "none"
+					})
+					return
+				}
+				// 获取 搜索历史
+				let getsd = uni.getStorageSync("sslkd") || []
+				getsd.unshift(this.khsdre)
+				this.skkjde =getsd
+				// 当前的搜索添加缓存
+				uni.setStorageSync('sslkd', getsd)
+				this.fdgfgf(this.khsdre)
+				this.khsdre = ''
+			},
+			// 清除缓存
+			qihsd() {
+				let th = this
+				uni.showModal({
+					content: '确定清空搜索历史吗?',
+					success: function(res) {
+						if (res.confirm) {
+							uni.removeStorageSync('sslkd')
+							th.skkjde = []
+						}
+					}
+				});
 			}
 		},
 		mounted() {
-			
+			this.skkjde = uni.getStorageSync("sslkd")
 		}
 	}
 </script>
 <style scoped>
-	.fgfyxer{
+	.fgfyxer {
 		background: #fff;
 		position: sticky;
 		top: 22upx;
-		z-index: 1000;
+		z-index: 10;
 	}
-	.fanhui{
+
+	.fanhui {
 		width: 40upx;
 		position: relative;
 		top: 6upx;
 	}
-	.kjhxdrrt{
+
+	.kjhxdrrt {
 		display: inline-block;
 		width: 20upx;
 		height: 20upx;
@@ -107,13 +176,16 @@
 		border: 1px solid #FFD33E;
 		margin-right: 10upx;
 	}
-	.kjhxdrrt.act{
+
+	.kjhxdrrt.act {
 		background: #FFD33E;
 	}
-	.kjjxerer{
+
+	.kjjxerer {
 		width: 46upx;
 	}
-	.hhggxerert{
+
+	.hhggxerert {
 		background: #F2F2F2;
 		color: #777777;
 		font-size: 26upx;
@@ -121,13 +193,14 @@
 		border-radius: 20upx;
 		margin-right: 30upx;
 	}
-	.kjjddeert{
+
+	.kjjddeert {
 		position: absolute;
 		left: 0;
 		top: 55upx;
 		background: #fff;
 		min-height: 200upx;
 		width: 100%;
-		box-shadow: 0 0 20upx rgba(0,0,0,0.1);
+		box-shadow: 0 0 20upx rgba(0, 0, 0, 0.1);
 	}
 </style>

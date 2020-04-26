@@ -1,28 +1,25 @@
 <script>
 	export default {
 		methods: {
-			async getdatas(){
-				let hhgghse = await this.get('https://oybab.net/wechat/GM')
-				uni.setStorage({
-					key: 'gcook',
-					data: hhgghse,
-					success: () => {
-						
-					}
-				})
-			}
+			
 		},
 		onLaunch() {
-			uni.getStorage({
-				key:'lanindex',
-				success: (a) => {
-					this.$store.commit('setlanser',a.data)
-				}
-			})
-			var ddfer =uni.getStorageSync('gcook')
-			if (!ddfer) {
-				this.getdatas()
+			var ddfer = uni.getStorageSync('gcook')
+			var times = uni.getStorageSync('times')
+			 // 缓存了5小时清除缓存
+			let cerertr =  new Date().getTime()
+			if((cerertr -times) >(1000*60*60*5)||!times){
+				uni.clearStorage();
+				uni.reLaunch({
+				    url: '/pages/loading'
+				});
 			}
+			if (!ddfer.Lang){
+				uni.reLaunch({
+				    url: '/pages/loading'
+				});
+			}
+			uni.setStorageSync('',new Date().getTime())
 		}
 	}
 </script>

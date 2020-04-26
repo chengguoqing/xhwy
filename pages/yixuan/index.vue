@@ -12,34 +12,45 @@
 				</view>
 			</view>
 		</view>
-
-		<publiclist :isyhgg="1" v-if="kjhse==0"></publiclist>
-		<publiclist v-if="kjhse==1"></publiclist>
+		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}">
+			<swiper class="h100" @change="jhxerert" :current="kjhse">
+				<swiper-item v-for="(sd,idx) in urlsd">
+					<keep-alive>
+						<component is="xzyypage" v-if="idx==kjhse"  :urls="sd"></component>
+					</keep-alive>
+				</swiper-item>
+			</swiper>
+		</view>
+		<!-- <publiclist v-if="kjhse==1"></publiclist> -->
 	</view>
 </template>
 <script>
 	import publiclist from "@/components/publiclist.vue"
+	import xzyypage from "@/pages/index/components/xzyypage.vue"
 	export default {
 		data() {
 			return {
+				urlsd: ['TheList-Selected', 'TheList-Singed'],
+				xrrtxeertx: '',
 				kjhse: 0
 			}
 		},
-		computed:{
-			kjhx(){
+		computed: {
+			kjhx() {
 				return this.$store.state.lanser
 			}
 		},
 		components: {
-			publiclist
+			publiclist,
+			xzyypage
 		},
 		methods: {
-
+			jhxerert(e) {
+				this.kjhse = e.detail.current
+			}
 		},
-		onLoad() {
-			uni.setNavigationBarTitle({
-			    title: this.$store.state.Selected
-			})
+		onLoad(e) {
+			this.xrrtxeertx = uni.getSystemInfoSync().windowHeight - 50
 		},
 		mounted() {
 

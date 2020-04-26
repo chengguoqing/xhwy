@@ -11,8 +11,8 @@
 		</navigator>
 		<swiper class="mt20 ddryyxer deerty ov" indicator-active-color="#FFD33E" indicator-color="#fff" :indicator-dots="true"
 		 :autoplay="true" circular :interval="3000" :duration="1000">
-			<swiper-item v-for="(sd,idx) in 5" :key="idx">
-				<image src="../../static/img/banner.png" class="w100 h100 cz"></image>
+			<swiper-item v-for="(sd,idx) in banners" :key="idx">
+				<image :src="sd.ImagePath" class="w100 h100 cz"></image>
 			</swiper-item>
 		</swiper>
 		<view class="mt30 row">
@@ -50,7 +50,7 @@
 	export default {
 		data() {
 			return {
-
+				indexfo:[]
 			}
 		},
 		onShareAppMessage: function(res) {
@@ -66,18 +66,22 @@
 		computed:{
 			kjhx(){
 				return this.$store.state.lanser
+			},
+			banners () {
+				return this.$store.state.indexbanner
 			}
 		},
 		methods: {
 
 		},
 		onLoad() {
+		},
+		mounted() {
 			uni.setNavigationBarTitle({
 			    title: this.$store.state.Select
 			})
-		},
-		mounted() {
-			
+			let sdr = uni.getStorageSync('lanindex')
+			this.$store.commit('setlanser', sdr || 0)
 		}
 	}
 </script>

@@ -8,12 +8,14 @@
 			<view v-for="(sd,idx) in dhxewer" :key="idx" @tap="sddrert(idx)" :class="idx==xseerr?'act':''" class="xwerrtxe fz30 z6 pr cen  ml30 f_b cz">
 				{{sd.name}}
 			</view>
+			<text class="sdfrtyxe"></text>
+			<icon type="search" size="20" class="dsftryteer" @tap="isSearch=true"></icon>
 		</scroll-view>
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}">
 			<swiper class="h100" @change="jhxerert" :current="xseerr">
 				<swiper-item v-for="(sd,idx) in dhxewer">
 					<keep-alive>
-						<component is="xzyypage" v-if="idx==xseerr" :SongTypeId="sd.id" urls="Search-Type"></component>
+						<component is="xzyypage" :isSearch="isSearch" @closertr="isSearch=false" v-if="idx==xseerr" :SongTypeId="sd.id" urls="Search-Type"></component>
 					</keep-alive>
 				</swiper-item>
 			</swiper>
@@ -25,6 +27,8 @@
 	export default {
 		data() {
 			return {
+				isSearch:false, // 是否显示输入框
+				seartext:'',
 				xseerr: 0,
 				xrrtxeertx: '',
 				dhxewer: [{
@@ -87,5 +91,5 @@
 	}
 </script>
 <style scoped>
-
+	
 </style>

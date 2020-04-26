@@ -64,8 +64,8 @@
 					</view>
 				</view>
 			</view>
-			
-			
+
+
 			<view class="row cen mt60">
 				<view class="col" @tap='kkjsdddv("vod/server/sendmessage", "Control-Repeat", null)'>
 					<image src="../../static/img/fgfgg.png" class="kkjxeert"></image>
@@ -92,8 +92,8 @@
 					</view>
 				</view>
 			</view>
-			
-			
+
+
 			<view class="row cen mt60">
 				<view class="col" @tap="ljhad">
 					<image src="../../static/img/fgfgk.png" class="kkjxeert"></image>
@@ -101,8 +101,8 @@
 						{{kjhx.Bluetooth}}
 					</view>
 				</view>
-				
-				
+
+
 				<view class="col" @tap="dfdg=true">
 					<image src="../../static/img/sdfdsfa.png" class="kkjxeert"></image>
 					<view class="z6 fz28">
@@ -123,15 +123,15 @@
 				</view> -->
 			</view>
 		</view>
-	<view class="hhghgxert" v-if="dfdg">
-		<view class="kjhxertyx pd">
-			<view class="kjhjxderert bgff pd pt30 ">
-				<textarea value=""  class="fz30 z3 fdrtyuser w100 pt20" :placeholder="kjhx.TypeContentInHere" />
-				<view class="row fz32 z9 cen fdgtyy7sze">
+		<view class="hhghgxert" v-if="dfdg">
+			<view class="kjhxertyx pd">
+				<view class="kjhjxderert bgff pd pt30 ">
+					<textarea value="" class="fz30 z3 fdrtyuser w100 pt20" :placeholder="kjhx.TypeContentInHere" v-model="fasohgheer" />
+					<view class="row fz32 z9 cen fdgtyy7sze">
 					<view class="col"  @tap="dfdg=false">
 						{{kjhx.Close}}
 					</view>
-					<view class="col ye" @tap="dfdg=false">
+					<view class="col ye" @tap="fasongder">
 						{{kjhx.SendMessage}}
 					</view>
 				</view>
@@ -144,7 +144,8 @@
 	export default {
 		data() {
 			return {
-				dfdg:false
+				dfdg:false,
+				fasohgheer:''
 			}
 		},
 		components: {
@@ -161,6 +162,13 @@
 			})
 		},
 		methods: {
+			jkhjhbnxeer(e){
+				console.log(e)
+			},
+			// 发送图片
+			async fasongimg(){
+				await this.post('vod/Server/UploadFile','Image-Upload',null,3)
+			},
 			ljhad(){
 				uni.showActionSheet({
 					itemList:[this.$store.state.lanser.EnableBluetooth,this.$store.state.lanser.DisableBluetooth],
@@ -178,12 +186,28 @@
 			skkdkdfer(){
 					uni.showActionSheet({
 						itemList:[this.$store.state.lanser.UploadFile,this.$store.state.lanser.UploadImage],
-						itemColor:"#FFD33E"
+						itemColor:"#FFD33E",
+						success: (e) => {
+							if (e.tapIndex == 1){
+								this.fasongimg()
+							}
+						}
 					})
 			},
 			async kkjsdddv(a,b,c){
 				let sdeer = await this.post(a,b,c)
-				console.log(sdeer)
+			},
+			// 发送内容
+			async fasongder(){
+				if (!this.fasohgheer){
+					uni.showToast({
+						icon:"none",
+						title:'请输入发送的内容'
+					})
+					 return
+				}
+				await this.kkjsdddv("vod/server/sendmessage", "Message-Scroll", this.fasohgheer)
+				this.dfdg = false
 			}
 		},
 		mounted() {

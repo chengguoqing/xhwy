@@ -14,12 +14,12 @@
 		<view class="hhghgxert" v-if="dfdg">
 			<view class="kjhxertyx pd">
 				<view class="kjhjxderert bgff pd pt30 ">
-					<textarea value=""  class="fz30 z3 fdrtyuser w100 pt20" :placeholder="kjhx.TypeContentInHere" />
+					<textarea value=""  class="fz30 z3 fdrtyuser w100 pt20" :placeholder="kjhx.TypeContentInHere" v-model="fasohgheer" />
 					<view class="row fz32 z9 cen fdgtyy7sze">
 						<view class="col"  @tap="dfdg=false">
 							{{kjhx.Close}}
 						</view>
-						<view class="col ye" @tap="dfdg=false">
+						<view class="col ye" @tap="fasongder">
 							{{kjhx.SendMessage}}
 						</view>
 					</view>
@@ -32,6 +32,7 @@
 	export default {
 		data() {
 			return {
+				fasohgheer:'',
 				dfdg:false
 			}
 		},
@@ -45,6 +46,21 @@
 						this.$store.commit('setlanser',a.tapIndex)
 					}
 				})
+			},
+			async kkjsdddv(a,b,c){
+				let sdeer = await this.post(a,b,c)
+			},
+			// 发送内容
+			async fasongder(){
+				if (!this.fasohgheer){
+					uni.showToast({
+						icon:"none",
+						title:'请输入发送的内容'
+					})
+					 return
+				}
+				await this.kkjsdddv("https://oybab.net/Wechat/Advice", "Message-Advice", this.fasohgheer)
+				this.dfdg = false
 			}
 		},
 		computed:{

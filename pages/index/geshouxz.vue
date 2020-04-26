@@ -7,14 +7,22 @@
 			</view>
 		</scroll-view>
 		
-			<view class="kjhgder pt20 pm20">
+			<view class="kjhgder pt20 pm20 pr">
 				<text v-for="(sd,idx) in kjhder" :key="idx" @tap="hhsf(idx)" class="kjhggdert" :class="idxse==idx?'act':''">{{sd}}</text>
+				<icon type="search" size="20" class="jjhhxerrt" @tap="isSearch=true"></icon>
+			</view>
+			<view class="pd pm20" v-if="isSearch">
+				<view class="sdfsdtyxer pr">
+					<icon type="search" size="20" class="jjhhxerrt ab"></icon>
+					<input confirm-type="search" v-model="seartext" class="sdftweert"  placeholder="大家都在搜 孙燕姿" @confirm="sjjheert" @blur="sjjheert"/>
+					<icon type="clear" class="jjhhxerrt ac" size="18" @tap="seartext='';isSearch=false"></icon>
+				</view>
 			</view>
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}" >
 			<swiper class="h100" @change="jhxerert" :current="xseerr">
 				<swiper-item v-for="(sd,idx) in dhxewer">
 					<keep-alive>
-						<component :SingerLangId="SingerLangId" :SingerTypeId="SingerTypeId" is="pages" v-if="idx==xseerr" :ref="'sseert'+xseerr"></component>
+						<component  is="pages" v-if="idx==xseerr" :ref="'sseert'+xseerr"></component>
 					</keep-alive>
 				</swiper-item>
 			</swiper>
@@ -27,6 +35,8 @@
 	export default {
 		data() {
 			return {
+				isSearch:false, // 是否显示输入框
+				seartext:'',
 				SingerLangId:1,
 				SingerTypeId:1,
 				xseerr:0,
@@ -77,6 +87,10 @@
 			},
 			jhxerert(e) {
 				this.xseerr = e.detail.current
+			},
+			sjjheert () {
+				this.$store.state.seartext = this.seartext
+				this.$refs['sseert'+this.xseerr][0].iqhjwr()
 			}
 		},
 		onLoad() {
@@ -112,4 +126,5 @@
 			padding-top: 0;
 			margin-top: 0 !important;
 		}
+		
 </style>

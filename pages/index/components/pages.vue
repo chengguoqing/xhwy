@@ -5,7 +5,7 @@
 		<view class="">
 			<view class="pd">
 				<view class="parentse ">
-					<navigator class="cdderrty pr" v-for="sd in SongList" url="/pages/index/geshouxq">
+					<navigator class="cdderrty pr" v-for="sd in SongList" :url='"/pages/index/geshouxq?name=" + sd.SingerName + "&femian="+sd.ImagePaths+"&id="+sd.Id'>
 						<image :src="sd.ImagePaths" mode="aspectFill" v-if="sd.ImagePath"></image>
 						<image src="../../../static/img/morentx.png" mode="aspectFill" v-else></image>
 						<view class="kjhxer dian">
@@ -56,15 +56,16 @@
 				let hhgsd = {}
 				hhgsd.Value = null
 				hhgsd.SingerLangId=this.$store.state.SingerLangId
-				hhgsd.SingerTypeId = this.$store.state.SingerTypeId 
+				hhgsd.SingerTypeId = this.$store.state.SingerTypeId
+				hhgsd.Value = this.$store.state.seartext
 				hhgsd.PageNo = this.pages
 				hhgsd.ListCount = 20
 				this.kkjsdddv("vod/server/sendmessage", 'Search-Singer', hhgsd, 2)
 			},
 			iqhjwr () {
 				this.SongList = []
-				 this.pages = 1
-					this.initd()
+				this.pages = 1
+				this.initd()
 			},
 			onPulling(e) {
 			},

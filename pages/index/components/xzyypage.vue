@@ -1,57 +1,81 @@
 <template>
+	<view class="h100">
 	<scroll-view scroll-y="true" class="h100" refresher-enabled="true" :refresher-triggered="triggered"
-	 :refresher-threshold="100"  @refresherpulling="onPulling" @refresherrefresh="onRefresh"
-	 @refresherrestore="onRestore" @refresherabort="onAbort" @scrolltolower="jjhseer">
-		<publiclist :SongList="SongList" v-if="SongList" @zhiding="zhiding" @delsd="delsd" @xuanze="xuanze"></publiclist>
-		<uni-load-more iconType="snow" :iconSize="36" :status="loading" v-if="SongList.length>10" />
+	 :refresher-threshold="100" @refresherpulling="onPulling" @refresherrefresh="onRefresh" @refresherrestore="onRestore"
+	 @refresherabort="onAbort" @scrolltolower="jjhseer" >
+			<view v-if="SongList.length>0">
+				<view class="pd pm20 pt20" v-if="isSearch">
+					<view class="sdfsdtyxer pr">
+						<icon type="search" size="20" class="jjhhxerrt ab"></icon>
+						<input confirm-type="search" v-model="seartext" class="sdftweert" placeholder="大家都在搜 孙燕姿" @confirm="sjjheert"
+						 @blur="sjjheert" />
+						<icon type="clear" class="jjhhxerrt ac" size="18" @tap="closert"></icon>
+					</view>
+				</view>
+				<publiclist :SongList="SongList" v-if="SongList" @zhiding="zhiding" @delsd="delsd" @xuanze="xuanze"></publiclist>
+				<uni-load-more iconType="snow" :iconSize="36" :status="loading" v-if="SongList.length>10" />
+						
+			</view>
+		<view class="fz26 z9 cen pt20"  v-if="SongList.length<=0">
+		空空如也~
+	</view>
 	</scroll-view>
+	
+	
+		
+	</view>
 </template>
 <script>
 	import publiclist from "@/components/publiclist.vue"
 	export default {
-		props: ['SongTypeId','urls'],
+		props: ['SongTypeId', 'urls', 'isSearch','seartext','SearchType'],
 		data() {
 			return {
 				SongList: [],
 				triggered: true,
 				_freshing: false,
-				pages:1,
-				loading:'more'
+				pages: 1,
+				loading: 'more'
 			}
 		},
 		components: {
 			publiclist
 		},
 		methods: {
+			// 搜索
+			closert() {
+				this.seartext = ''
+				this.$emit("closertr")
+			},
 			async kkjsdddv(a, b, c, d) {
 				let sdeer = await this.post(a, b, c, d)
-				JSON.parse(sdeer.MessageContent).SongList.map(a=>{
+				JSON.parse(sdeer.MessageContent).SongList.map(a => {
 					if (!a.IsSelected) {
 						a.IsSelected = false
-						a.cls=""
+						a.cls = ""
 					} else {
-						a.cls="act"
+						a.cls = "act"
 					}
 					this.SongList.push(a)
 				})
-				this.loading ="more"
+				this.loading = "more"
 			},
-			initsd () {
+			initsd() {
 				let hhgsd = {}
 				hhgsd.Value = null
-				if (this.urls =='Search-Type'){ // 分类
+				if (this.urls == 'Search-Type') { // 分类
 					hhgsd.SongTypeId = this.SongTypeId
 				}
-				if (this.urls =='Search-Hot' || this.urls =='Search-New' ||this.urls=='Search-Song'){ // 热门 最新
+				if (this.urls == 'Search-Hot' || this.urls == 'Search-New' || this.urls == 'Search-Song') { // 热门 最新
 					hhgsd.SongLangId = this.SongTypeId
 				}
-				console.log(this.urls =='Search-Hot')
 				hhgsd.PageNo = this.pages
 				hhgsd.ListCount = 20
+				hhgsd.Value = this.seartext
+				hhgsd.SearchType = this.SearchType || 0
 				this.kkjsdddv("vod/server/sendmessage", this.urls, hhgsd, 2)
 			},
-			onPulling(e) {
-			},
+			onPulling(e) {},
 			async onRefresh() {
 				if (this._freshing) return;
 				this._freshing = true;
@@ -61,34 +85,39 @@
 				}, 2000)
 			},
 			onRestore() {
-				this.SongList=[]
+				this.SongList = []
 				this.triggered = 'restore'; // 需要重置
-				this.pages=1
+				this.pages = 1
 				this.initsd()
 				console.log("onRestore");
 			},
 			onAbort() {
 				console.log("onAbort");
 			},
-			jjhseer(e){
+			jjhseer(e) {
 				this.pages++
-				this.loading ="loading"
+				this.loading = "loading"
 				this.initsd()
 			},
 			// 置顶
-			async zhiding (data){
+			async zhiding(data) {
 				await this.post("vod/server/sendmessage", "Song-Top", data.Id)
 			},
 			// 删除
-			async delsd (data) {
+			async delsd(data) {
 				await this.post("vod/server/sendmessage", "Song-Remove", data.Id)
 			},
 			// 选择
-			async xuanze (data){
+			async xuanze(data) {
 				await this.post("vod/server/sendmessage", "Song-Select", data.Id)
 				uni.hideLoading()
+			},
+			sjjheert() { // 搜索觸發
+				this.pages = 1
+				this.SongList = []
+				this.initsd()
 			}
-			
+
 		},
 		mounted() {
 			this.initsd()

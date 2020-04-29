@@ -11,10 +11,10 @@
 							{{sd.SongName}}
 						</view>
 						<view class="z9 fz24 mt10">
-							{{sd.Id}}
+							{{sd.SingerName}}
 						</view>
 					</view>
-					<view class="mt20" v-if="idx!=0">
+					<view class="mt20" v-if="dsfrttyx">
 						<view class="f_b" v-if="isyhgg!=2 && sd.IsSelected">
 							<image src="../static/img/zhiding.png" class="cdftyxzer cz" mode="widthFix" @tap="jhhxdrer(idx)"></image>
 							<image src="../static/img/sanchu.png" class="cdftyxzer  cz" mode="widthFix" @tap="hgsert(idx)"></image>
@@ -39,6 +39,10 @@
 			},
 			SongList:{
 				type:Array
+			},
+			dsfrttyx:{
+				type:Boolean,
+				default:true
 			}
 		},
 		data() {

@@ -1,45 +1,53 @@
 <template>
-	<view class="h100">
-	<scroll-view scroll-y="true" class="h100" refresher-enabled="true" :refresher-triggered="triggered"
-	 :refresher-threshold="100" @refresherpulling="onPulling" @refresherrefresh="onRefresh" @refresherrestore="onRestore"
-	 @refresherabort="onAbort" @scrolltolower="jjhseer" >
+	<view class="h100" v-if="isjihs">
+		<scroll-view scroll-y="true" class="h100" refresher-enabled="true" :refresher-triggered="triggered"
+		 :refresher-threshold="100" @refresherpulling="onPulling" @refresherrefresh="onRefresh" @refresherrestore="onRestore"
+		 @refresherabort="onAbort" @scrolltolower="jjhseer">
 			<view v-if="SongList.length>0">
 				<view class="pd pm20 pt20" v-if="isSearch">
 					<view class="sdfsdtyxer pr">
 						<icon type="search" size="20" class="jjhhxerrt ab"></icon>
-						<input confirm-type="search" v-model="seartext" class="sdftweert" placeholder="大家都在搜 孙燕姿" @confirm="sjjheert"
+						<input confirm-type="search" v-model="seartext" class="sdftweert" placeholder="" @confirm="sjjheert"
 						 @blur="sjjheert" />
 						<icon type="clear" class="jjhhxerrt ac" size="18" @tap="closert"></icon>
 					</view>
 				</view>
-				<publiclist :SongList="SongList" v-if="SongList" @zhiding="zhiding" @delsd="delsd" @xuanze="xuanze"></publiclist>
-				<uni-load-more iconType="snow" :iconSize="36" :status="loading" v-if="SongList.length>10" />
-						
+				<publiclist :SongList="SongList" v-if="SongList" @zhiding="zhiding" @delsd="delsd" @xuanze="xuanze" :isyhgg="isyhgg"></publiclist>
+				<uni-load-more :contentText="contentText" iconType="snow" :iconSize="36" :status="loading" v-if="SongList.length>10" />
+
 			</view>
-		<view class="fz26 z9 cen pt20"  v-if="SongList.length<=0">
-		空空如也~
-	</view>
-	</scroll-view>
-	
-	
-		
+			<view class="fz26 z9 cen pt20" v-if="SongList.length<=0">
+				{{kjhx.EmptyData}}
+			</view>
+		</scroll-view>
 	</view>
 </template>
 <script>
 	import publiclist from "@/components/publiclist.vue"
 	export default {
-		props: ['SongTypeId', 'urls', 'isSearch','seartext','SearchType'],
+		props: ['SongTypeId', 'urls', 'isSearch', 'seartext', 'SearchType','isyhgg'],
 		data() {
 			return {
+				isjihs:false,
 				SongList: [],
 				triggered: true,
 				_freshing: false,
 				pages: 1,
-				loading: 'more'
+				loading: 'more',
+				contentText: {
+					contentdown: '------',
+					contentrefresh: this.$store.state.lanser.Loading,
+					contentnomore: '------'
+				}
 			}
 		},
 		components: {
 			publiclist
+		},
+		computed: {
+			kjhx() {
+				return this.$store.state.lanser
+			}
 		},
 		methods: {
 			// 搜索
@@ -58,6 +66,7 @@
 					}
 					this.SongList.push(a)
 				})
+				this.$emit('huiojd',this.SongList.length)
 				this.loading = "more"
 			},
 			initsd() {
@@ -73,6 +82,7 @@
 				hhgsd.ListCount = 20
 				hhgsd.Value = this.seartext
 				hhgsd.SearchType = this.SearchType || 0
+				this.isjihs= true
 				this.kkjsdddv("vod/server/sendmessage", this.urls, hhgsd, 2)
 			},
 			onPulling(e) {},

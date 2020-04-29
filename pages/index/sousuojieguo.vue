@@ -8,6 +8,11 @@
 					<view>{{kjhx.Singers}}：<text class="ye f_b">{{sd.SingerName}}</text></view>
 				</uni-list-item>
 			</uni-list>
+			<uni-list v-if="typese==0">
+				<uni-list-item :thumb="sd.ImagePaths" @tap="tiosjjsd(sd.SingerName,sd.ImagePaths,sd.Id)" v-for="sd in kkjhjjdd">
+					<view>{{kjhx.Singers}}：<text class="ye f_b">{{sd.SingerName}}</text></view>
+				</uni-list-item>
+			</uni-list>
 			<publiclist  :SongList="SongList" v-if="typese==1||typese==0" @zhiding="zhiding" @delsd="delsd" @xuanze="xuanze"></publiclist>
 			<uni-load-more iconType="snow" :iconSize="36" :status="loading" v-if="SongList.length>10" />
 		</scroll-view>
@@ -27,7 +32,8 @@
 				_freshing: false,
 				pages: 1,
 				ddrrtt: '',
-				cansu:''
+				cansu:'',
+				kkjhjjdd:[]
 			}
 		},
 		components: {
@@ -59,7 +65,22 @@
 					}
 					this.SongList.push(a)
 				})
-				console.log(this.SongList)
+				if (this.typese == 0){
+					JSON.parse(sdeer.MessageContent).SingerList.map(a => {
+						if (!a.IsSelected) {
+							a.IsSelected = false
+							if (a.ImagePath) {
+								a.ImagePaths = uni.getStorageSync('gcook').ImageAddress + a.ImagePath
+							} else {
+								a.ImagePaths = 'https://oybab.net/Files/Images/original.png'
+							}
+							a.cls = ""
+						} else {
+							a.cls = "act"
+						}
+						this.kkjhjjdd.push(a)
+					})
+				}
 				this.loading = "more"
 			},
 			gethhhgs(url) {

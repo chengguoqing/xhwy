@@ -14,16 +14,15 @@
 			<view class="pd pm20" v-if="isSearch">
 				<view class="sdfsdtyxer pr">
 					<icon type="search" size="20" class="jjhhxerrt ab"></icon>
-					<input confirm-type="search" v-model="seartext" class="sdftweert"  placeholder="大家都在搜 孙燕姿" @confirm="sjjheert" @blur="sjjheert"/>
+					<input confirm-type="search" v-model="seartext" class="sdftweert"  @confirm="sjjheert" @blur="sjjheert"/>
 					<icon type="clear" class="jjhhxerrt ac" size="18" @tap="seartext='';isSearch=false"></icon>
 				</view>
 			</view>
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}" >
 			<swiper class="h100" @change="jhxerert" :current="xseerr">
 				<swiper-item v-for="(sd,idx) in dhxewer">
-					<keep-alive>
 						<component  is="pages" v-if="idx==xseerr" :ref="'sseert'+xseerr"></component>
-					</keep-alive>
+				
 				</swiper-item>
 			</swiper>
 		</view>
@@ -42,7 +41,7 @@
 				xseerr:0,
 				idxse: 0,
 				xrrtxeertx:'',
-				kjhder: [this.$store.state.lanser.All, this.$store.state.lanser.MaleSingerNew,this.$store.state.lanser.FemaleSingerNew,this.$store.state.lanser.Group],
+				kjhder: [this.$store.state.lanser.All, this.$store.state.lanser.MaleSingerNew,this.$store.state.lanser.FemaleSingerNew,this.$store.state.lanser.Group,this.$store.state.lanser.Other],
 				dhxewer: [{
 					name:this.$store.state.lanser.All,
 					id:1
@@ -91,6 +90,7 @@
 			sjjheert () {
 				this.$store.state.seartext = this.seartext
 				this.$refs['sseert'+this.xseerr][0].iqhjwr()
+				this.seartext = ''
 			}
 		},
 		onLoad() {

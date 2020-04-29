@@ -12,7 +12,7 @@
 		<swiper class="mt20 ddryyxer deerty ov" indicator-active-color="#FFD33E" indicator-color="#fff" :indicator-dots="true"
 		 :autoplay="true" circular :interval="3000" :duration="1000">
 			<swiper-item v-for="(sd,idx) in banners" :key="idx">
-				<image :src="sd.ImagePath" class="w100 h100 cz"></image>
+				<image :src="sd.ImagePath" class="w100 h100 cz" @tap="jhgswe(sd.LinkAddress)"></image>
 			</swiper-item>
 		</swiper>
 		<view class="mt30 row">
@@ -73,13 +73,18 @@
 		},
 		methods: {
 
+			jhgswe(url){
+				console.log(url)
+				if(!url){
+					return
+				}
+				window.location.href = url
+			}
 		},
 		onLoad() {
 		},
 		mounted() {
-			uni.setNavigationBarTitle({
-			    title: this.$store.state.Select
-			})
+			
 			let sdr = uni.getStorageSync('lanindex')
 			this.$store.commit('setlanser', sdr || 0)
 		}

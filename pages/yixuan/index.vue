@@ -15,9 +15,7 @@
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}">
 			<swiper class="h100" @change="jhxerert" :current="kjhse">
 				<swiper-item v-for="(sd,idx) in urlsd">
-					<keep-alive>
-						<component is="xzyypage" v-if="idx==kjhse"  :urls="sd"></component>
-					</keep-alive>
+					<component is="xzyypage" v-if="idx==kjhse" :urls="sd" :isyhgg="idx==0?'1':''"></component>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -57,6 +55,8 @@
 		}
 	}
 </script>
+<style>
+</style>
 <style scoped>
 	.jhggxseert {
 		top: 0;

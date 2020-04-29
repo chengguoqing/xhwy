@@ -11,10 +11,8 @@
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}">
 			<swiper class="h100" @change="jhxerert" :current="xseerr">
 				<swiper-item v-for="(sd,idx) in dhxewer">
-					<keep-alive>
 						<component is="xzyypage" v-if="idx==xseerr" :isSearch="isSearch" @closertr="isSearch=false"  :SongTypeId="sd.id" :urls="urls"></component>
 					
-					</keep-alive>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -52,11 +50,11 @@
 					id: 7
 				}, {
 					name: this.$store.state.lanser.CountryEnglish,
-					id: 8
+					id: 9
 				},
 				{
 					name:this.$store.state.lanser.Other,
-					id:9
+					id:10
 				}]
 			}
 		},

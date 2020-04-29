@@ -73,7 +73,7 @@
 						{{kjhx.Replay}}
 					</view>
 				</view>
-				<view class="col" @tap='kkjsdddv()'>
+				<view class="col" @tap='kkjsdddv("vod/server/sendmessage", "Control-SongMode", null)'>
 					<image src="../../static/img/fgfgh.png" class="kkjxeert"></image>
 					<view class="z6 fz28">
 						{{kjhx.SongMode}}
@@ -132,12 +132,16 @@
 						{{kjhx.Close}}
 					</view>
 					<view class="col ye" @tap="fasongder">
-						{{kjhx.SendMessage}}
+						{{kjhx.Send}}
 					</view>
 				</view>
 			</view>
 		</view>
 	</view>
+	
+	  <view ref="input" class="input">  
+	
+	        </view> 
 	</view>
 </template>
 <script>
@@ -161,13 +165,25 @@
 			    title: this.$store.state.Control
 			})
 		},
+		onShow(){
+			var dxcr = document.getElementsByClassName("uni-actionsheet__action")
+			   dxcr[0].children[0].innerText =`${this.kjhx.Cancel}`
+		},
 		methods: {
 			jkhjhbnxeer(e){
 				console.log(e)
 			},
 			// 发送图片
-			async fasongimg(){
-				await this.post('vod/Server/UploadFile','Image-Upload',null,3)
+			fasongimg(){
+				uni.chooseImage({
+				    success: async (chooseImageRes) => {
+				        const tempFilePaths = chooseImageRes.tempFilePaths;
+						await this.post('vod/Server/UploadFile','Image-Upload',null,3,tempFilePaths[0])
+						uni.showToast({
+							title:this.$store.state.lanser.SuccessDescription
+						})
+					}
+				})
 			},
 			ljhad(){
 				uni.showActionSheet({
@@ -188,6 +204,9 @@
 						itemList:[this.$store.state.lanser.UploadFile,this.$store.state.lanser.UploadImage],
 						itemColor:"#FFD33E",
 						success: (e) => {
+							if (e.tapIndex == 0){
+								this.kkjhhnss()
+							}
 							if (e.tapIndex == 1){
 								this.fasongimg()
 							}
@@ -208,10 +227,21 @@
 				}
 				await this.kkjsdddv("vod/server/sendmessage", "Message-Scroll", this.fasohgheer)
 				this.dfdg = false
+				this.fasohgheer = ''
+			},
+			kkjhhnss (){
+				uni.chooseVideo({
+				    success: async (res) => {
+				        const tempFilePaths = res.tempFilePath;
+				        uni.showLoading({
+				        	title:'图片上传中'
+				        })
+						await this.post('vod/Server/UploadFile','File-Upload',null,3,tempFilePaths)
+					}
+				})
 			}
 		},
 		mounted() {
-			
 		}
 	}
 </script>

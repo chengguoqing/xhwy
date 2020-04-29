@@ -8,7 +8,7 @@
 					<navigator class="cdderrty pr" v-for="sd in SongList" :url='"/pages/index/geshouxq?name=" + sd.SingerName + "&femian="+sd.ImagePaths+"&id="+sd.Id'>
 						<image :src="sd.ImagePaths" mode="aspectFill" v-if="sd.ImagePath"></image>
 						<image src="../../../static/img/morentx.png" mode="aspectFill" v-else></image>
-						<view class="kjhxer dian">
+						<view class="kjhxer ">
 							{{sd.SingerName}}
 						</view>
 					</navigator>

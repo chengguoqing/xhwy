@@ -20,7 +20,7 @@
 							{{kjhx.Close}}
 						</view>
 						<view class="col ye" @tap="fasongder">
-							{{kjhx.SendMessage}}
+							{{kjhx.Send}}
 						</view>
 					</view>
 				</view>
@@ -61,6 +61,7 @@
 				}
 				await this.kkjsdddv("https://oybab.net/Wechat/Advice", "Message-Advice", this.fasohgheer)
 				this.dfdg = false
+				this.fasohgheer = ''
 			}
 		},
 		computed:{
@@ -69,11 +70,14 @@
 			}
 		},
 		onShow() {
+			var dxcr = document.getElementsByClassName("uni-actionsheet__action")
+			   dxcr[0].children[0].innerText =`${this.kjhx.Cancel}`
+			
+		},
+		mounted() {
 			uni.setNavigationBarTitle({
 			    title: this.$store.state.Other
 			})
-		},
-		mounted() {
 		}
 	}
 </script>

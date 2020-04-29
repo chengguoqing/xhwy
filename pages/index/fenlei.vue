@@ -14,9 +14,8 @@
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}">
 			<swiper class="h100" @change="jhxerert" :current="xseerr">
 				<swiper-item v-for="(sd,idx) in dhxewer">
-					<keep-alive>
 						<component is="xzyypage" :isSearch="isSearch" @closertr="isSearch=false" v-if="idx==xseerr" :SongTypeId="sd.id" urls="Search-Type"></component>
-					</keep-alive>
+			
 				</swiper-item>
 			</swiper>
 		</view>
@@ -51,10 +50,10 @@
 					id: 6
 				}, {
 					name: this.$store.state.lanser.SongTypeDrama,
-					id:7
+					id:8
 				}, {
 					name: this.$store.state.lanser.DJ,
-					id: 8
+					id: 7
 				},
 				{
 					name:this.$store.state.lanser.Other,

@@ -19,13 +19,18 @@ exports.base = {
 			return _result.join('&');
 		};
 		// ty ==3 文件上传
-		Vue.prototype.post = function(Address, MessageType, Value, ty) {
+		Vue.prototype.post = function(Address, MessageType, Value, ty, filePath) {
 			var ddfer = uni.getStorageSync('gcook')
 			var ServerAddress = ddfer.ServerAddress; //COOKIE里的获取后把后缀加上, 形成完整的地址 :ServerAddress
 			var SessionId = ddfer.SessionId; // 这些需要COOKIE里获取 :SessionId
 			var ClientId = ddfer.ClientId; // 这些需要COOKIE里获取 :ClientId
 			var OrderId = ddfer.OrderId; // 这些需要COOKIE里获取 :OrderId
 			// 创建一个JSON
+			if (filePath!=6){
+				uni.showLoading({
+					title:this.$store.state.lanser.Loading
+				})
+			}
 			var Message = {
 				SessionId: SessionId,
 				ClientId: ClientId,
@@ -64,53 +69,54 @@ exports.base = {
 			}
 			return new Promise((resolve, reject) => {
 				if (ty == 3) {
-					uni.chooseImage({
-					    success: (chooseImageRes) => {
-					        const tempFilePaths = chooseImageRes.tempFilePaths;
-					        uni.showLoading({
-					        	title:'图片上传中'
-					        })
-							uni.uploadFile({
-					            url: sddee, //仅为示例，非真实的接口地址
-					            filePath: tempFilePaths[0],
-					            name: 'input-file',
-					            formData: {
-									Message: JSON.stringify(Message)
-								},
-								complete:(res) => {
-									uni.hideLoading()
-								},
-								crossDomain: true,
-								xhrFields: { withCredentials: true },
-					            success: (res) => {
-									
-					                var result = res.data;
-					                if (result.hasOwnProperty('IsExpired') && result.IsExpired == true) {
-					                	uni.showToast({
-					                		icon: "none",
-					                		title: "这情况就是回话过期, 需要重新扫码了!"
-					                	})
-					                	return
-					                }
-					                if (result.hasOwnProperty('IsError') && result.IsError == true) {
-					                	uni.showToast({
-					                		icon: "none",
-					                		title: "操作失败了, 应该是服务器发生错误了!"
-					                	})
-					                	return
-					                }
-					                if (result.hasOwnProperty('Result') && result.Result == true) {
-					                	if (ty != 2) {
-					                		uni.showToast({
-					                			title: "操作成功！"
-					                		})
-					                	}
-					                }
-					                resolve(result)
-					            }
-					        });
-					    }
+					uni.uploadFile({
+						url: sddee, //仅为示例，非真实的接口地址
+						filePath: filePath,
+						name: 'input-file',
+						formData: {
+							Message: JSON.stringify(Message)
+						},
+						complete: (res) => {
+							uni.hideLoading()
+						},
+						crossDomain: true,
+						xhrFields: {
+							withCredentials: true
+						},
+						success: (res) => {
+
+							var result = res.data;
+							if (result.hasOwnProperty('IsExpired') && result.IsExpired == true) {
+								uni.showModal({
+								    content: this.$store.state.lanser.ExpiredDescription,
+									showCancel:false,
+									confirmText:this.$store.state.lanser.OK,
+								    success: function (res) {
+								    }
+								});
+								return
+							}
+							if (result.hasOwnProperty('IsError') && result.IsError == true) {
+								uni.showModal({
+								    content: this.$store.state.lanser.FailedDescription,
+									showCancel:false,
+									confirmText:this.$store.state.lanser.OK,
+								    success: function (res) {
+								    }
+								});
+								return
+							}
+							if (result.hasOwnProperty('Result') && result.Result == true) {
+								if (ty != 2) {
+									uni.showToast({
+										title: this.$store.state.lanser.SuccessDescription
+									})
+								}
+							}
+							resolve(result)
+						}
 					});
+
 				} else {
 					uni.request({
 						url: sddee,
@@ -119,31 +125,39 @@ exports.base = {
 							"content-type": "application/x-www-form-urlencoded"
 						},
 						data: Message,
-						complete:(res) => {
+						complete: (res) => {
 							uni.hideLoading()
 						},
 						crossDomain: true,
-						xhrFields: { withCredentials: true },
+						xhrFields: {
+							withCredentials: true
+						},
 						success: (res) => {
 							var result = res.data;
 							if (result.hasOwnProperty('IsExpired') && result.IsExpired == true) {
-								uni.showToast({
-									icon: "none",
-									title: "这情况就是回话过期, 需要重新扫码了!"
-								})
+								uni.showModal({
+								    content: this.$store.state.lanser.ExpiredDescription,
+									showCancel:false,
+									confirmText:this.$store.state.lanser.OK,
+								    success: function (res) {
+								    }
+								});
 								return
 							}
 							if (result.hasOwnProperty('IsError') && result.IsError == true) {
-								uni.showToast({
-									icon: "none",
-									title: "操作失败了, 应该是服务器发生错误了!"
-								})
+								uni.showModal({
+								    content: this.$store.state.lanser.FailedDescription,
+									showCancel:false,
+									confirmText:this.$store.state.lanser.OK,
+								    success: function (res) {
+								    }
+								});
 								return
 							}
 							if (result.hasOwnProperty('Result') && result.Result == true) {
 								if (ty != 2) {
 									uni.showToast({
-										title: "操作成功！"
+										title:this.$store.state.lanser.SuccessDescription
 									})
 								}
 							}
@@ -165,7 +179,9 @@ exports.base = {
 					method: "get",
 					data: canshu,
 					withCredentials: true,
-					xhrFields: { withCredentials: true },
+					xhrFields: {
+						withCredentials: true
+					},
 					success: (res) => {
 						uni.hideLoading()
 						resolve(res.data)

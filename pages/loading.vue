@@ -12,10 +12,13 @@
 			async getdatas() {
 				let hhgghse = await this.get('https://oybab.net/wechat/GM')
 				if (!hhgghse.Lang) {
-					uni.showToast({
-						icon:'none',
-						title:"获取登录信息失败"
-					})
+					uni.showModal({
+					    content: this.$store.state.lanser.ExpiredDescription,
+						showCancel:false,
+						confirmText:this.$store.state.lanser.OK,
+					    success: function (res) {
+					    }
+					});
 					uni.hideLoading()
 					return
 				}
@@ -36,7 +39,7 @@
 				})
 			}
 		},
-		onLoad: () => {
+		onLoad: () => { 
 
 		},
 		mounted() {

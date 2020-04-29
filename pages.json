@@ -8,9 +8,9 @@
 			}
 		},{
 			"path": "pages/index/index",
-			"bz": "首页",
+			"bz": "外星球TaxkiPilanet",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "外星球TaxkiPilanet"
 				/* #ifdef  H5 */
 				,"navigationStyle": "custom"
 				/* #endif */

@@ -1,12 +1,12 @@
 <template>
-	<view class="btm pt20">
+	<view class="btm ">
 		<view class="pd row fgfyxer">
 			<view class="pr20">
 				<image src="../../static/img/fanhui.png" class="fanhui " @tap="housd" mode="widthFix"></image>
 			</view>
 			<view class="col  pm10 pr">
 				<view class="bbm pm10 pr">
-					<input type="text" value="" v-model="khsdre" placeholder="大家都在搜 孙燕姿" class="fz30  " @input="hggysd" />
+					<input type="text" value="" v-model="khsdre" :placeholder="tishid" class="fz30  " @input="hggysd" />
 					<view class="kjjddeert fz28" v-if="khsdre">
 						<view class="ye pd pt20 pm20 bbm">
 							{{kjhx.Search}}“{{khsdre}}”
@@ -30,7 +30,7 @@
 		<view class="" v-if="skkjde.length>0">
 			<view class="mt60 row pd">
 				<view class="fz32 z3 col">
-					搜索历史
+					{{kjhx.SearchHistory}}
 				</view>
 				<image src="../../static/img/sanchu.png" class="kjjxerer" mode="widthFix" @tap="qihsd"></image>
 			</view>
@@ -38,12 +38,11 @@
 				<text class="hhggxerert" v-for="sd in skkjde" @tap="khsdre=sd">{{sd}}</text>
 			</view>
 		</view>
-		<view class="mt60 pd">
+		<view class="mt60 pd" v-show="SongListsd">
 			<view class="z3 fz32">
 				{{kjhx.Hot}}{{kjhx.Search}}
 			</view>
-			<view class="" :style="{height:xrrtxeertx+'px'}">
-				<component is="xzyypage" SongTypeId="1" urls="Search-Hot"></component>
+			<publiclist :SongList="SongListsd" v-if="SongListsd" :dsfrttyx="false"></publiclist>
 			</view>
 
 		</view>
@@ -56,13 +55,16 @@
 	export default {
 		data() {
 			return {
+				kjjnxr:false,
 				SongList: [],
+				SongListsd:'',
 				xrrtxeertx: '',
 				seartext: "",
 				idxsw: 0,
 				ddfrt: [this.$store.state.lanser.All,this.$store.state.lanser.Song, this.$store.state.lanser.Singers],
 				khsdre: '',
-				skkjde: []
+				skkjde: [],
+				tishid:''
 			}
 		},
 		components: {
@@ -81,6 +83,28 @@
 			}
 		},
 		methods: {
+			drtrtxe(data){
+				if (data>0) {
+					this.kjjnxr = true
+				}
+			},
+			// 大家都在搜
+			async dajiasd(){
+				let hhgsd = {}
+				hhgsd.PageNo = 1
+				hhgsd.ListCount = 20
+				let sdeer = await this.post("vod/server/sendmessage", 'Search-Main', hhgsd, 2)
+				let hjhggsd = JSON.parse(sdeer.MessageContent)
+				if (!hjhggsd.LikeSearchName){
+					this.tishid = this.kjhx.SearchDescription
+				}else {
+					this.tishid =this.$store.state.lanser.EverybodySearching + hjhggsd.LikeSearchName
+				}
+				if (hjhggsd.SongList.length>0){
+					this.SongListsd = hjhggsd.SongList
+				}
+				
+			},
 			housd() {
 				uni.navigateBack({
 
@@ -94,8 +118,8 @@
 					url: '/pages/index/sousuojieguo?ihhdf=' + ihhdf +'&type='+this.idxsw
 				})
 			},
-			async kkjsdddv(a, b, c, d) {
-				let sdeer = await this.post(a, b, c, d)
+			async kkjsdddv(a, b, c, d,e) {
+				let sdeer = await this.post(a, b, c, d,e)
 				this.SongList = []
 				JSON.parse(sdeer.MessageContent).KeyList.map(a => {
 					if (!a.IsSelected) {
@@ -115,7 +139,7 @@
 				hhgsd.ListCount = 20
 				hhgsd.Value = e.detail.value
 				hhgsd.SearchType = this.idxsw
-				this.kkjsdddv("vod/server/sendmessage", 'Search-Key', hhgsd, 2)
+				this.kkjsdddv("vod/server/sendmessage", 'Search-Key', hhgsd, 2,6)
 			},
 			// 搜索按钮触发
 			hiuhhwe() {
@@ -150,6 +174,7 @@
 			}
 		},
 		mounted() {
+			this.dajiasd()
 			this.skkjde = uni.getStorageSync("sslkd")
 		}
 	}
@@ -158,7 +183,8 @@
 	.fgfyxer {
 		background: #fff;
 		position: sticky;
-		top: 22upx;
+		padding-top: 22upx;
+		top: 0;
 		z-index: 10;
 	}
 

@@ -20,6 +20,9 @@
 				});
 			}
 			uni.setStorageSync('',new Date().getTime())
+			
+			let sdr = uni.getStorageSync('lanindex')
+			this.$store.commit('setlanser', sdr || 0)
 		}
 	}
 </script>

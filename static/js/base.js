@@ -70,7 +70,7 @@ exports.base = {
 			return new Promise((resolve, reject) => {
 				if (ty == 3) {
 					uni.uploadFile({
-						url: sddee, //仅为示例，非真实的接口地址
+						url: sddee+"/", //仅为示例，非真实的接口地址
 						filePath: filePath,
 						name: 'input-file',
 						formData: {
@@ -79,12 +79,7 @@ exports.base = {
 						complete: (res) => {
 							uni.hideLoading()
 						},
-						crossDomain: true,
-						xhrFields: {
-							withCredentials: true
-						},
 						success: (res) => {
-
 							var result = res.data;
 							if (result.hasOwnProperty('IsExpired') && result.IsExpired == true) {
 								uni.showModal({
@@ -179,9 +174,6 @@ exports.base = {
 					method: "get",
 					data: canshu,
 					withCredentials: true,
-					xhrFields: {
-						withCredentials: true
-					},
 					success: (res) => {
 						uni.hideLoading()
 						resolve(res.data)

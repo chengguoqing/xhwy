@@ -1,5 +1,19 @@
 {
 	"pages": [{
+			"path": "pages/test",
+			"bz": "loader",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},{
+			"path": "pages/loading",
+			"bz": "loader",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},{
 			"path": "pages/loading",
 			"bz": "loader",
 			"style": {

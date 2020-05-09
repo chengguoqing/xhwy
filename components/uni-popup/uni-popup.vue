@@ -122,7 +122,7 @@
 							show: false
 						})
 						this.showPopup = false
-					}, 300)
+					}, 500)
 				})
 			},
 			onTap() {

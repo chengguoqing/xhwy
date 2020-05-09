@@ -1,103 +1,29 @@
 {
 	"pages": [{
-			"path": "pages/test",
-			"bz": "loader",
-			"style": {
-				"navigationBarTitleText": "",
-				"navigationStyle": "custom"
-			}
-		},{
-			"path": "pages/loading",
-			"bz": "loader",
-			"style": {
-				"navigationBarTitleText": "",
-				"navigationStyle": "custom"
-			}
-		},{
-			"path": "pages/loading",
-			"bz": "loader",
-			"style": {
-				"navigationBarTitleText": "",
-				"navigationStyle": "custom"
-			}
-		},{
-			"path": "pages/index/index",
-			"bz": "外星球TaxkiPilanet",
-			"style": {
-				"navigationBarTitleText": "外星球TaxkiPilanet"
-				/* #ifdef  H5 */
-				,"navigationStyle": "custom"
-				/* #endif */
-			}
-		}, {
-			"path": "pages/index/sousuojieguo",
-			"bz": "搜索结果",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		}, {
-			"path": "pages/index/sousuo",
-			"bz": "搜索",
-			"style": {
-				"navigationBarTitleText": "搜索"
-				/* #ifdef  H5 */
-				,"navigationStyle": "custom"
-				/* #endif */
-			}
-		},
-		{
-			"path": "pages/index/fenlei",
-			"bz": "分类",
-			"style": {
-				"navigationBarTitleText": "分类"
-			}
-		}, {
-			"path": "pages/index/yuyangyz",
-			"bz": "语言选择",
-			"style": {
-				"navigationBarTitleText": "语言选择"
-			}
-		}, {
-			"path": "pages/index/geshouxq",
-			"bz": "歌手详情",
-			"style": {
-				"navigationBarTitleText": "歌手详情"
-			}
-		}, {
-			"path": "pages/index/geshouxz",
-			"bz": "歌手选择",
-			"style": {
-				"navigationBarTitleText": "歌手选择"
-			}
-		}, {
-			"path": "pages/yixuan/index",
-			"bz": "已选",
-			"style": {
-				"navigationBarTitleText": "已选"
-				/* #ifdef  H5 */
-				,"navigationStyle": "custom"
-				/* #endif */
-			}
-		}, {
-			"path": "pages/kongzhi/index",
-			"bz": "控制",
-			"style": {
-				"navigationBarTitleText": "控制"
-				/* #ifdef  H5 */
-				,"navigationStyle": "custom"
-				/* #endif */
-			}
-		}, {
-			"path": "pages/qita/index",
-			"bz": "其他",
-			"style": {
-				"navigationBarTitleText": "其他"
-				/* #ifdef  H5 */
-				,"navigationStyle": "custom"
-				/* #endif */
-			}
+		"path": "pages/index/index",
+		"bz": "index",
+		"style": {
+			"navigationBarTitleText": "学海无涯"
 		}
-	],
+	}, {
+		"path": "pages/user/cjhd",
+		"bz": "创建活动",
+		"style": {
+			"navigationBarTitleText": "创建活动"
+		}
+	}, {
+		"path": "pages/user/wdhd",
+		"bz": "我的活动",
+		"style": {
+			"navigationStyle": "custom"
+		}
+	}, {
+		"path": "pages/user/index",
+		"bz": "用户中心",
+		"style": {
+			"navigationStyle": "custom"
+		}
+	}],
 	"tabBar": {
 		"color": "#8C9093",
 		"selectedColor": "#111111",
@@ -106,26 +32,48 @@
 			"pagePath": "pages/index/index",
 			"iconPath": "static/img/bottom/dsfdsa_a.png",
 			"selectedIconPath": "static/img/bottom/dsfdsb_a.png",
-			"text": "点歌"
+			"text": "首页"
 		}, {
-			"pagePath": "pages/yixuan/index",
+			"pagePath": "pages/user/index",
 			"iconPath": "static/img/bottom/dsfdsa_b.png",
 			"selectedIconPath": "static/img/bottom/dsfdsb_b.png",
-			"text": "已选"
-		}, {
-			"pagePath": "pages/kongzhi/index",
-			"iconPath": "static/img/bottom/dsfdsa_c.png",
-			"selectedIconPath": "static/img/bottom/dsfdsb_c.png",
-			"text": "控制"
-		}, {
-			"pagePath": "pages/qita/index",
-			"iconPath": "static/img/bottom/dsfdsa_d.png",
-			"selectedIconPath": "static/img/bottom/dsfdsb_d.png",
-			"text": "其他"
+			"text": "我的"
 		}]
 	},
 	"globalStyle": {
 		"navigationBarBackgroundColor": "#fff",
 		"navigationBarTextStyle": "black"
+		// #ifdef MP-WEIXIN
+		, "usingComponents": {
+					"van-cell-group": "/wxcomponents/cell-group/index",
+					"van-row": "/wxcomponents/row/index",
+					"van-col": "/wxcomponents/col/index",
+					"van-field": "/wxcomponents/field/index",
+					"van-cell": "/wxcomponents/cell/index",
+					"van-icon": "/wxcomponents/icon/index",
+					"van-transition": "/wxcomponents/transition/index",
+					"van-checkbox": "/wxcomponents/checkbox/index",
+					"van-checkbox-group": "/wxcomponents/checkbox-group/index",
+					"van-search": "/wxcomponents/search/index",
+					"van-stepper": "/wxcomponents/stepper/index",
+					"van-dialog": "/wxcomponents/dialog/index",
+					"van-swipe-cell": "/wxcomponents/swipe-cell/index",
+					"van-toast": "/wxcomponents/toast/index",
+					"van-tab": "/wxcomponents/tab/index",
+					"van-tabs": "/wxcomponents/tabs/index",
+					"van-button": "/wxcomponents/button/index",
+					"van-radio": "/wxcomponents/radio/index",
+					"van-radio-group": "/wxcomponents/radio-group/index",
+					"van-datetime-picker": "/wxcomponents/datetime-picker/index",
+					"van-switch": "/wxcomponents/switch/index",
+					"van-area": "/wxcomponents/area/index",
+					"van-popup": "/wxcomponents/popup/index",
+					"van-rate": "/wxcomponents/rate/index",
+					"van-goods-action": "/wxcomponents/goods-action/index",
+					"van-goods-action-icon": "/wxcomponents/goods-action-icon/index",
+					"van-goods-action-button": "/wxcomponents/goods-action-button/index",
+					"van-steps": "/wxcomponents/steps/index"
+				}
+				//#endif
 	}
 }

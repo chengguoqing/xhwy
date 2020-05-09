@@ -1,171 +1,160 @@
 <template>
-	<view class="pd pt20">
-		<navigator class="kjhhxeret fz26" url="/pages/index/sousuo">
-			<!-- #ifdef MP-WEIXIN || APP-PLUS -->
-			<icon type="search" size="16" class="dfrertt" />
-			<!-- #endif -->
-			<!-- #ifdef H5 -->
-			<icon type="search" size="16" class="cz" />
-			<!-- #endif -->
-			<text class="cz ml10 ddfrrttyx"> {{kjhx.SearchDescription}}</text>
-		</navigator>
-		<swiper class="mt20 ddryyxer deerty ov" indicator-active-color="#FFD33E" indicator-color="#fff" :indicator-dots="true"
-		 :autoplay="true" circular :interval="3000" :duration="1000">
-			<swiper-item v-for="(sd,idx) in banners" :key="idx">
-				<image :src="sd.ImagePath" class="w100 h100 cz" @tap="jhgswe(sd.LinkAddress)"></image>
-			</swiper-item>
-		</swiper>
-		<view class="mt30 row">
-			<view class="col xdrertty">
-				<navigator class="pr" url="/pages/index/geshouxz">
-					<image src="../../static/img/gdfga.png" class="cz"></image>
-					<text class="neijjxne">{{kjhx.Singers}}</text>
+	<view class="dxddf pm40">
+		<uni-swiper-dot :info="info" :current="current" :mode="mode" :dots-styles="dotsStyles" field="content">
+			<swiper class="swiper-box pr" @change="change">
+				<swiper-item v-for="(item, index) in info" :key="index">
+					<view class="swiper-item w100 h100">
+						<image class="w100 h100" :src="item.url" />
+					</view>
+				</swiper-item>
+			</swiper>
+		</uni-swiper-dot>
+		<view class="pd kjjhnxefr">
+			<view class="kjhnxertxe row">
+				<navigator url="/pages/user/wdhd" class="col dfgrtxeer aa pt20 pm20">
+					<image src="../../static/img/dsfdsa.png" class="loakderr cz"></image>
+					<text class="fz32 z3 ml10">我的活动</text>
 				</navigator>
+				<view class="col dfgrtxeer pt20 pm20">
+					<image src="../../static/img/dsfdsb.png" class="loakderr cz "></image>
+					<text class="fz32 z3 ml10">我的班级</text>
+				</view>
 			</view>
-			<view class="col xdrertty ab">
-				<navigator class="pr" :url='"/pages/index/yuyangyz?title="+kjhx.Language+"&fname=Search-Song"'>
-					<image src="../../static/img/gdfgb.png" class="cz"></image>
-					<text class="neijjxne">{{kjhx.Language}}</text>
-				</navigator>
+			<view class="pt20 row ">
+				<image src="../../static/img/laba.png" class="labasert cz"></image>
+				<view class="col fz26 z3 pl10 dian pl20 sdrttxer">
+					今天,做一个学生,上课、集体活动、挥洒青春集体活挥洒青春集体活挥洒青春集体活
+				</view>
 			</view>
-		</view>
-		<view class="mt40 parentse">
-			<navigator class="kkhjhxr pr" :url='"/pages/index/fenlei?title="+kjhx.Type'>
-				<image src="../../static/img/gdfgc.png" class="w100"></image>
-				<text class="cf fz30 drrtty">{{kjhx.Type}}</text>
-			</navigator>
-			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+kjhx.Hot+"&fname=Search-Hot"'>
-				<image src="../../static/img/gdfgd.png" class="w100"></image>
-				<text class="cf fz30 drrtty">{{kjhx.Hot}}</text>
-			</navigator>
-			<navigator class="kkhjhxr pr"  :url='"/pages/index/yuyangyz?title="+kjhx.New+"&fname=Search-New"'>
-				<image src="../../static/img/gdfge.png" class="w100"></image>
-				<text class="cf fz30 drrtty">{{kjhx.New}}</text>
-			</navigator>
-		</view>
 
+			<view class="mt20 pr">
+				<image src="../../static/img/fdj.png" class="faddrrttx"></image>
+				<input class="jjjhgeert fz30" type="text" value="" placeholder="请输入活动的名称" />
+			</view>
+			<view class="mt20 bgff jhhxrert row">
+				<view class="col cen sdfsdrtt pr" :class="idxdd==idx?'act':''" v-for="(sd,idx) in timnse" @tap="qiehnnmsd(idx)">
+					{{sd}}
+				</view>
+			</view>
+			
+			<activelist  v-for="sd in 10" @pinglun="pinglun"></activelist>
+		</view>
+		<pinglun ref="jhdrrtt"></pinglun>
 	</view>
 </template>
+
 <script>
+	import uniSection from '@/components/uni-section/uni-section.vue'
+	import uniSwiperDot from '@/components/uni-swiper-dot/uni-swiper-dot.vue'
+	import activelist from "@/components/activelist.vue"
+	import pinglun from "@/components/pinglun.vue"
 	export default {
+		components: {
+			uniSection,
+			uniSwiperDot,
+			activelist,
+			pinglun
+		},
 		data() {
 			return {
-				indexfo:[]
+				info: [{
+						url: 'https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png'
+					},
+					{
+						url: 'https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png'
+					},
+					{
+						url: 'https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png'
+					}
+				],
+				current: 0,
+				mode: 'round',
+				dotsStyles: {
+					backgroundColor: 'rgba(255,255,255,0.8)',
+					border: '1px #f8f8f8 solid',
+					color: '#fff',
+					selectedBackgroundColor: '#fff',
+					selectedBorder: '1px #f8f8f8 solid'
+				},
+				idxdd:0,
+				timnse:['热门活动','最新活动']
 			}
 		},
-		onShareAppMessage: function(res) {
-			// 来自页面内分享按钮
+		onShareAppMessage(res) {
 			return {
-				title: "獨行工匠",
-				path: "/pages/index/index"
+				title: '独行工匠工作室',
+				imageUrl:'https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png',
+				path: '/pages/index/index'
 			}
 		},
-		components: {
-
-		},
-		computed:{
-			kjhx(){
-				return this.$store.state.lanser
-			},
-			banners () {
-				return this.$store.state.indexbanner
-			}
-		},
+		onLoad() {},
 		methods: {
-
-			jhgswe(url){
-				console.log(url)
-				if(!url){
-					return
-				}
-				window.location.href = url
+			pinglun(){
+				this.$refs.jhdrrtt.open()
+			},
+			change(e) {
+				this.current = e.detail.current
+			},
+			qiehnnmsd(idx){
+				this.idxdd = idx
 			}
-		},
-		onLoad() {
-		},
-		mounted() {
-			
-			let sdr = uni.getStorageSync('lanindex')
-			this.$store.commit('setlanser', sdr || 0)
 		}
 	}
 </script>
+
 <style scoped>
-	.ddfrrttyx {
-		position: relative;
-		bottom: 3upx;
+	.swiper-box {
+		height: 340upx;
 	}
 
-	.kjhhxeret {
-		height: 70upx;
-		line-height: 70upx;
-		border-radius: 60upx;
-		text-align: center;
-		color: #B1B1B1;
-		background: #F2F3F4
-	}
-
-	.ddryyxer {
-		height: 320upx;
+	.kjhnxertxe {
 		border-radius: 8upx;
-		overflow: hidden;
+		background: #fff;
 	}
 
-	.deerty {
+	.kjjhnxefr {
+		position: relative;
+		z-index: 5;
+		margin-top: -50upx;
+	}
+
+	.dfgrtxeer {
+		padding-left: 60upx;
+	}
+
+	.dfgrtxeer.aa {
+		border-right: 1px solid #E0E0E0;
+	}
+
+	.loakderr {
+		width: 66upx;
+		height: 66upx;
+	}
+
+	.labasert {
+		width: 44upx;
+		height: 44upx;
+	}
+
+	.sdrttxer {
+		line-height: 44upx;
+	}
+
+	.jjjhgeert {
+		padding-left: 100upx;
+		height: 80upx;
+		background: #fff;
 		border-radius: 8upx;
 	}
 
-	.xdrertty {
-		padding-right: 15upx;
-
-		height: 100upx;
-	}
-
-	.xdrertty.ab {
-		padding-right: 0;
-		padding-left: 15upx;
-	}
-
-	.xdrertty image {
-		width: 100%;
-
-		height: 100upx;
+	.faddrrttx {
+		width: 46upx;
+		height: 46upx;
 		position: absolute;
+		left: 24upx;
+		top: 18upx;
+		z-index: 10;
 	}
 
-	.neijjxne {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 100;
-		font-size: 32upx;
-		line-height: 100upx;
-		text-align: center;
-		color: #fff;
-	}
-
-	.parentse {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: 1fr;
-		grid-column-gap: 40upx;
-		grid-row-gap: 0px;
-	}
-
-	.kkhjhxr image {
-		height: 200upx;
-	}
-
-	.drrtty {
-		position: absolute;
-		color: #fff;
-		right: 20upx;
-		bottom: 20upx;
-	}
-	.dfrertt{
-		position: relative;
-		top: 4upx;
-	}
+	
 </style>

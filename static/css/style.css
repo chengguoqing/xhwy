@@ -1,123 +1,111 @@
-@font-face {
-    font-family: 'oybab tuz';
-    src: url('https://oybab.net/res/fonts/oybabtuz-webfont.eot');
-    src: url('https://oybab.net/res/fonts/oybabtuz-webfont.eot?#iefix') format('embedded-opentype'),url('https://oybab.net/res/fonts/oybabtuz-webfont.woff') format('woff'),url('https://oybab.net/res/fonts/oybabtuz-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal
+
+page{
+	background: #F0F0F0;
 }
-view,div{
-	  font-family:"oybab tuz";
-	  font-style:normal;
+uni-page-head,.uni-page-head{
+	z-index: 9999;
 }
-.jhggxseert {
-		height: 88upx;
-		line-height: 80upx;
-		border-top: 1px solid #F9F9FA;
-		border-bottom: 10upx solid #F2F3F4;
-		position: sticky;
-		top: 0;
-		/* #ifdef H5 */
-		top: 88upx;
-		/* #endif */
-		left: 0;
-		background: #fff;
-		z-index: 100;
-	
+.uni-swiper__warp,.uni-swiper__dots-box{
+	z-index: 4;
+}
+.uni-swiper__dots-box{
+	position: absolute;
+	background-color: rgba(0,0,0,0.5);
+	left: inherit !important;
+	padding: 10upx 20upx;
+	border-radius: 40upx;
+	right: 20upx !important;
+	bottom: 60upx !important;
+}
+.sfdsdttx {
+		border-radius: 40upx;
+		background: #47D1A3;
+		color: #fff;
+		width: 114upx;
+		height: 42upx;
+		line-height: 42upx;
+		font-size: 24upx;
+		text-align: center;
+		display: inline-block;
 	}
-	.vrrttyyu{
-		background: red;
-		padding-right: 200upx;
+	.jhhxrert {
+		border-top-left-radius: 8upx;
+		border-top-right-radius: 8upx;
+		line-height: 96upx;
+		font-size: 36upx;
+		color: #808080;
 	}
-	
-	.xwerrtxe.act {
-		color: #FFD33E;
+	.sdfsdrtt.act{
+		color: #000000;
 	}
-	
-	.xwerrtxe.act::after {
+	.sdfsdrtt.act::after{
 		content: ' ';
+		width: 46upx;
+		height: 6upx;
+		background: #1A75F6;
 		position: absolute;
 		left: 0;
-		bottom: 0;
-		border-radius: 40upx;
-		background: #FFD33E;
-		height: 6upx;
-		width: 100%;
-	}
-	
-	.dfvgdftyxe5r {
-		height: 100%;
-	}
-	.khjxrrt{
-		width: 100upx;
-		position: fixed;
 		right: 0;
-		/* #ifdef H5 */
-		top: 88upx;
-		/* #endif */
-		z-index: 1000;
+		margin: auto;
+		bottom: 0;
+	}
+	.kjhxdrrt{
+		border-radius: 8upx;
 		background: #fff;
-		height: 88upx;
-		text-align: center;
-		line-height: 70upx;
+		min-height:580upx ;
 	}
-	.fgrtyyxe{
+	.sdfdrtxwe{
+		padding-top: 176upx;
+	}
+	.jhbbnxdf{
+		width: 292upx;
+		height: 84upx;
+		border-radius: 80upx;
+		line-height: 84upx;
+		border:1px solid #1A75F6;
+		color: #1A75F6;
 		display: inline-block;
-		width: 140upx;
-		height:50upx;
 	}
 	
-	.hhghgxert{
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(0,0,0,0.5);
-		z-index: 100;
+	.userinput{
+		height: 88upx;
+		border-radius: 8upx;
+		border: 1px solid #CCCCCC;
+		padding-left: 30upx;
+		margin-top: 16upx;
+	}
+	.userinput.ab{
+		height: 134upx;
+		padding-top: 20upx;
+	}
+	.userinput.ac{
+		line-height: 88upx;
 	}
 	
-	.jjhhxerrt{
+	.closderert{
 		position: absolute;
 		right: 20upx;
-		top: 30upx;
+		top: 26upx;
 	}
-	.jjhhxerrt.ab{
-		right: inherit;
-		left: 20upx;
-		top: 10upx;
+	
+	.fanhuier{
+		background: #1A75F6;
+		color: #fff;
+		font-size: 28upx;
+		color: #fff;
+		position: fixed;
+		right: 20upx;
+		bottom: 80upx;
+		padding: 8upx 40upx;
+		z-index: 5;
+		border-radius: 40upx;
 	}
-	.jjhhxerrt.ac{
-		top: 14upx;
-	}
-	.sdftweert{
-		height: 60upx;
-		background: #F2F3F4;
-		border-radius: 60upx;
-		padding-left: 80upx;
-		font-size: 26upx;
-		
-	}
-	.sdfrtyxe{
-		display: inline-block;
-		width: 100upx;
-		height: 50upx;
-	}
-	.dsftryteer{
+	.jjhhdrtrts{
+		height: 130upx;
 		background: #fff;
 		position: fixed;
-		right: 0upx;
+		left: 0;
 		top: 0;
-		/* #ifdef H5 */
-		top: 88upx;
-		/* #endif */
-		z-index: 100;
-		padding: 10upx;
-		padding-bottom: 0;
-		padding-right: 20upx;
+		width: 100%;
+		z-index: 1000;
 	}
-	
-	
-	
-		.dsfsdtytxx .kjjhxher {
-			display: none;
-		}

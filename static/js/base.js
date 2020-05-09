@@ -228,7 +228,7 @@ exports.base = {
 				Minutes = time.getMinutes() < 10 ? 0 + '' + time.getMinutes() : time.getMinutes(),
 				Seconds = time.getSeconds() < 10 ? 0 + '' + time.getSeconds() : time.getSeconds()
 			Month < 10 ? Month = 0 + '' + Month : ''
-			return Year + "-" + Month + "-" + Data + " " + hour + ":" + Minutes + ":" + Seconds
+			return Year + "年" + Month + "月" + Data + "日 " + hour + ":" + Minutes + ":" + Seconds
 		}
 
 

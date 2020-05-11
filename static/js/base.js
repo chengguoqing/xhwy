@@ -26,9 +26,9 @@ exports.base = {
 			var ClientId = ddfer.ClientId; // 这些需要COOKIE里获取 :ClientId
 			var OrderId = ddfer.OrderId; // 这些需要COOKIE里获取 :OrderId
 			// 创建一个JSON
-			if (filePath!=6){
+			if (filePath != 6) {
 				uni.showLoading({
-					title:this.$store.state.lanser.Loading
+					title: this.$store.state.lanser.Loading
 				})
 			}
 			var Message = {
@@ -70,7 +70,7 @@ exports.base = {
 			return new Promise((resolve, reject) => {
 				if (ty == 3) {
 					uni.uploadFile({
-						url: sddee+"/", //仅为示例，非真实的接口地址
+						url: sddee + "/", //仅为示例，非真实的接口地址
 						filePath: filePath,
 						name: 'input-file',
 						formData: {
@@ -83,21 +83,19 @@ exports.base = {
 							var result = res.data;
 							if (result.hasOwnProperty('IsExpired') && result.IsExpired == true) {
 								uni.showModal({
-								    content: this.$store.state.lanser.ExpiredDescription,
-									showCancel:false,
-									confirmText:this.$store.state.lanser.OK,
-								    success: function (res) {
-								    }
+									content: this.$store.state.lanser.ExpiredDescription,
+									showCancel: false,
+									confirmText: this.$store.state.lanser.OK,
+									success: function(res) {}
 								});
 								return
 							}
 							if (result.hasOwnProperty('IsError') && result.IsError == true) {
 								uni.showModal({
-								    content: this.$store.state.lanser.FailedDescription,
-									showCancel:false,
-									confirmText:this.$store.state.lanser.OK,
-								    success: function (res) {
-								    }
+									content: this.$store.state.lanser.FailedDescription,
+									showCancel: false,
+									confirmText: this.$store.state.lanser.OK,
+									success: function(res) {}
 								});
 								return
 							}
@@ -131,28 +129,26 @@ exports.base = {
 							var result = res.data;
 							if (result.hasOwnProperty('IsExpired') && result.IsExpired == true) {
 								uni.showModal({
-								    content: this.$store.state.lanser.ExpiredDescription,
-									showCancel:false,
-									confirmText:this.$store.state.lanser.OK,
-								    success: function (res) {
-								    }
+									content: this.$store.state.lanser.ExpiredDescription,
+									showCancel: false,
+									confirmText: this.$store.state.lanser.OK,
+									success: function(res) {}
 								});
 								return
 							}
 							if (result.hasOwnProperty('IsError') && result.IsError == true) {
 								uni.showModal({
-								    content: this.$store.state.lanser.FailedDescription,
-									showCancel:false,
-									confirmText:this.$store.state.lanser.OK,
-								    success: function (res) {
-								    }
+									content: this.$store.state.lanser.FailedDescription,
+									showCancel: false,
+									confirmText: this.$store.state.lanser.OK,
+									success: function(res) {}
 								});
 								return
 							}
 							if (result.hasOwnProperty('Result') && result.Result == true) {
 								if (ty != 2) {
 									uni.showToast({
-										title:this.$store.state.lanser.SuccessDescription
+										title: this.$store.state.lanser.SuccessDescription
 									})
 								}
 							}
@@ -331,7 +327,19 @@ exports.base = {
 			})
 		}
 
-
+		Vue.prototype.hfs = function(urls) {
+			// 判断是否登录
+			let user_info = uni.getStorageSync('userinfo')
+			if (user_info) {
+				uni.navigateTo({
+					url: urls
+				})
+			} else {
+				uni.navigateTo({
+					url: '/pages/public/souquan?urls=' + urls
+				})
+			}
+		}
 
 		Vue.prototype.getClipbordText = function(call) {
 

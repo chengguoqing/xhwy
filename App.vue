@@ -4,7 +4,10 @@
 			
 		},
 		onLaunch() {
-			
+			let userinfo = uni.getStorageSync('userinfo')
+			if (userinfo){
+				this.$store.commit('setuserinfo',userinfo)
+			}
 		}
 	}
 </script>

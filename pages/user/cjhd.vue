@@ -6,7 +6,6 @@
 				<text class="ml10">活动主题</text>
 			</view>
 			<input type="text" value="" placeholder="请输入活动主题" class="fz30 userinput" />
-
 		</view>
 		<view class="mt30">
 			<view class="fz30">
@@ -20,7 +19,6 @@
 				<text class="ml10">图片</text>
 			</view>
 			<view class="mt20">
-				
 				<view class="jjhghsedert pr fl mr10 mb20" v-for="(sd,idx) in tupoojs">
 					<image :src="sd" class="w100 h100 " ></image>
 					<image src="../../static/img/close.png" class="cloasert" @tap="clossert(idx)"></image>
@@ -93,6 +91,7 @@
 			</view>
 		</van-popup>
 		<!-- 添加标签 -->
+		<!-- #ifdef MP-WEIXIN -->
 		<van-popup :show="biaoqian" @close="biaoqian=false" position="bottom" >
 			<view class="bgff pr dsfrttysew">
 				 <icon type="clear" size="20" class="closderert" @tap="biaoqian=false"/>
@@ -116,12 +115,10 @@
 							</view>
 						</view>
 					</view>
-					
-					
 				</view>
 			</view>
 		</van-popup>
-		
+		<!-- #endif -->
 	</view>
 </template>
 <script>
@@ -223,88 +220,5 @@
 	}
 </script>
 <style scoped>
-	.jjhghsedert{
-		border: 1px solid #CCCCCC;
-		border-radius: 8upx;
-		width: 152upx;
-		height: 152upx;
-		line-height: 152upx;
-		text-align: center;
-	}
-	.kjnxertrt{
-		width: 72upx;
-		height: 72upx;
-	}
-	.dsfdsrtfs{
-		display: inline-block;
-		text-align: center;
-		width: 144upx;
-		line-height: 50upx;
-		border-radius: 40upx;
-		background:#1A75F6 ;
-		color: #fff;
-		font-size: 24upx;
-	}
-	.kjhnxderrt{
-		position: relative;
-		border-radius: 40upx;
-		color: #1A75F6;
-		background-color:#EAF2FE ;
-		font-size: 26upx;
-		display: inline-block;
-		padding: 10upx 20upx;
-		margin-right: 15upx;
-		margin-bottom: 26upx;
-	}
-	.cloasert{
-		width: 36upx;
-		height: 36upx;
-		position: absolute;
-		right: -15upx;
-		top:-15upx
-	}
-	.dsfsdrtt{
-		width: 30upx;
-		position: relative;
-		top: -4upx;
-	}
-	.kjhnxeertx{
-		line-height: 90upx;
-		height: 90upx;
-		border-radius: 80upx;
-		border: 1px solid #1A75F6;
-		color: #1A75F6;
-		overflow: hidden;
-		font-size: 32upx;
-		text-align: center;
-	}
-	.fdgdttxeer{
-		width: 270upx;
-		
-	}
-	.dfrtxeertr{
-		background: #1A75F6;
-		color: #fff;
-	}
-	.quiejdertr{
-		position: absolute;
-		right: 0;
-		top: 0;
-		width: 142upx;
-		height: 88upx;
-		background:#1A75F6 ;
-		color: #fff;
-		text-align: center;
-		line-height: 100upx !important;
-		border-radius: 8upx;
-		font-size: 32upx;
-		z-index: 1000;
-	}
-	.kjhnxderrt.acte{
-		background: #F4F4F4;
-		color: #808080;
-	}
-	.dsfrttysew{
-		min-height: 400upx;
-	}
+	
 </style>

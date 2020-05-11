@@ -1,7 +1,12 @@
 <template>
 	<view class="pm40">
-		<view class="jjhhdrtrts" v-if="gdse>70">
-			
+		 <!--  -->
+		<view class="jjhhdrtrts pd">
+			<view class="bgsddrrt" v-if="gdse>70"></view>
+			<view class="pr" @tap="uni.navigateBack()">
+				<image src="../../static/img/left.png" mode="widthFix" class="leistrrt cz"></image>
+				<text class="fz32 z3 ml10">我的活动</text>
+			</view>
 		</view>
 		<usertop isbianji></usertop>
 		<view class="btm bgff jhhxrert row">
@@ -35,7 +40,6 @@
 			</view>
 		</view>
 
-		<text class="fanhuier" @tap="fanhuid">返回</text>
 <pinglun ref="jhdrrtt"></pinglun>
 	</view>
 </template>

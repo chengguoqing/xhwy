@@ -11,23 +11,24 @@
 		</uni-swiper-dot>
 		<view class="pd kjjhnxefr">
 			<view class="kjhnxertxe row">
-				<navigator url="/pages/user/wdhd" class="col dfgrtxeer aa pt20 pm20">
+				<view @tap="hfs('/pages/user/wdhd')" class="col dfgrtxeer aa pt20 pm20">
 					<image src="../../static/img/dsfdsa.png" class="loakderr cz"></image>
 					<text class="fz32 z3 ml10">我的活动</text>
-				</navigator>
+				</view>
 				<view class="col dfgrtxeer pt20 pm20">
 					<image src="../../static/img/dsfdsb.png" class="loakderr cz "></image>
 					<text class="fz32 z3 ml10">我的班级</text>
 				</view>
 			</view>
-			<view class="pt20 row ">
-				<image src="../../static/img/laba.png" class="labasert cz"></image>
-				<view class="col fz26 z3 pl10 dian pl20 sdrttxer">
-					今天,做一个学生,上课、集体活动、挥洒青春集体活挥洒青春集体活挥洒青春集体活
-				</view>
-			</view>
-
-			<view class="mt20 pr">
+		</view>
+	
+			<van-notice-bar
+			  left-icon="../../static/img/laba.png"
+			  text="今天,做一个学生,上课、集体活动、挥洒青春集体活挥洒青春集体活挥洒青春集体活"
+			>
+			</van-notice-bar>
+	<view class="pd"> 
+			<view class=" pr">
 				<image src="../../static/img/fdj.png" class="faddrrttx"></image>
 				<input class="jjjhgeert fz30" type="text" value="" placeholder="请输入活动的名称" />
 			</view>
@@ -54,6 +55,11 @@
 			uniSwiperDot,
 			activelist,
 			pinglun
+		},
+		computed:{
+			user_info(){
+				return this.$store.state.user_info
+			}
 		},
 		data() {
 			return {

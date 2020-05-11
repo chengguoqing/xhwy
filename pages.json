@@ -1,23 +1,53 @@
 {
 	"pages": [{
+		"path": "pages/user/myClass",
+		"bz": "我的班级",
+		"style": {
+			"navigationStyle": "custom"
+		}
+	},{
+		"path": "pages/user/noticeTemplate",
+		"bz": "选择 通知模板",
+		"style": {
+				"navigationBarTitleText": "选择 通知模板"
+		}
+	},{
+		"path": "pages/user/teacherRegistration",
+		"bz": "老师注册",
+		"style": {
+			"navigationBarTitleText": "老师注册"
+		}
+	},{
 		"path": "pages/index/index",
 		"bz": "index",
 		"style": {
 			"navigationBarTitleText": "学海无涯"
 		}
-	}, {
-		"path": "pages/user/cjhd",
-		"bz": "创建活动",
-		"style": {
-			"navigationBarTitleText": "创建活动"
-		}
-	}, {
+	},{
 		"path": "pages/user/wdhd",
 		"bz": "我的活动",
 		"style": {
 			"navigationStyle": "custom"
 		}
 	}, {
+		"path": "pages/public/getphone",
+		"bz": "授权登录",
+		"style": {
+			"navigationBarTitleText": "授权登录"
+		}
+	}, {
+		"path": "pages/public/souquan",
+		"bz": "授权登录",
+		"style": {
+			"navigationBarTitleText": "授权登录"
+		}
+	},{
+		"path": "pages/user/cjhd",
+		"bz": "创建活动",
+		"style": {
+			"navigationBarTitleText": "创建活动"
+		}
+	},  {
 		"path": "pages/user/index",
 		"bz": "用户中心",
 		"style": {
@@ -72,7 +102,8 @@
 					"van-goods-action": "/wxcomponents/goods-action/index",
 					"van-goods-action-icon": "/wxcomponents/goods-action-icon/index",
 					"van-goods-action-button": "/wxcomponents/goods-action-button/index",
-					"van-steps": "/wxcomponents/steps/index"
+					"van-steps": "/wxcomponents/steps/index",
+					"van-notice-bar": "/wxcomponents/notice-bar/index"
 				}
 				//#endif
 	}

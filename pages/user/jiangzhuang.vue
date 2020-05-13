@@ -1,6 +1,7 @@
+<!-- 奖状 -->
 <template>
-    <view>
-        <web-view src="http://www.baidu.com"></web-view>
+    <view class="btm pt100 bgff pm40 pd">
+        <image :src="imgurl+'jiangzhuang.png'" class="w100" mode="widthFix"></image>
     </view>
 </template>
 <script>
@@ -8,6 +9,11 @@
         data() {
             return {}
         },
+		computed:{
+			imgurl(){
+				return this.$store.state.imgurl
+			}
+		},
         components: {},
         methods: {},
         mounted() {}

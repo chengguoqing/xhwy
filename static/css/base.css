@@ -1,6 +1,7 @@
 view,
 navigator,
 input,
+text,
 textarea,
 image {
 	box-sizing: border-box !important;
@@ -356,8 +357,8 @@ p {
 }
 
 .pd {
-	padding-left: 30upx;
-	padding-right: 30upx;
+	padding-left: 20upx;
+	padding-right: 20upx;
 }
 
 .auo {
@@ -365,7 +366,7 @@ p {
 }
 
 .mt140 {
-	margin-top: 140px;
+	margin-top: 140upx;
 }
 
 input {
@@ -533,7 +534,7 @@ input {
 }
 
 .mt180 {
-	margin-top: 360upx;
+	margin-top: 180upx;
 }
 
 .mt110 {
@@ -541,11 +542,11 @@ input {
 }
 
 .mt120 {
-	margin-top: 240upx;
+	margin-top: 120upx;
 }
 
 .mt130 {
-	margin-top: 260upx;
+	margin-top: 130upx;
 }
 
 .ml10 {

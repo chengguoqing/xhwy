@@ -16,6 +16,7 @@ uni-page-head,.uni-page-head{
 	border-radius: 40upx;
 	right: 20upx !important;
 	bottom: 60upx !important;
+	z-index: 100 !important;
 }
 .sfdsdttx {
 		border-radius: 40upx;
@@ -241,4 +242,13 @@ uni-page-head,.uni-page-head{
 	}
 	.dsfrttysew{
 		min-height: 400upx;
+	}
+	
+	.dsfsttse .uni-searchbar__box{
+		background: #D9D9D9 !important;
+		height: 80upx !important;
+		border-radius: 60upx !important;
+	}
+	.dsfsttse .uni-searchbar__cancel{
+		line-height: 80upx !important;
 	}

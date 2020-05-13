@@ -21,11 +21,11 @@
 			<view class="mt20">
 				<view class="jjhghsedert pr fl mr10 mb20" v-for="(sd,idx) in tupoojs">
 					<image :src="sd" class="w100 h100 " ></image>
-					<image src="../../static/img/close.png" class="cloasert" @tap="clossert(idx)"></image>
+					<image :src="imgurl+'close.png'" class="cloasert" @tap="clossert(idx)"></image>
 				</view>
 				
 				<view class="jjhghsedert fl" @tap="upimgsd">
-					<image src="../../static/img/upicon.png" class="kjnxertrt cz" ></image>
+					<image :src="imgurl+'upicon.png'" class="kjnxertrt cz" ></image>
 				</view>
 				<view class="qc">
 					
@@ -43,7 +43,7 @@
 			<view class="mt20">
 				<view class="kjhnxderrt" v-for="(sd,idx) in xzbq">
 					{{sd}}
-					<image src="../../static/img/close.png" class="cloasert" @tap="gunhas(idx)"></image>
+					<image :src="imgurl+'close.png'" class="cloasert" @tap="gunhas(idx)"></image>
 				</view>
 			</view>
 		</view>
@@ -53,7 +53,7 @@
 				<view class="col tr">
 					<text class="z3 " v-if="kkjasda">{{kkjasda}}</text>
 					<text class="z9 " v-else>请选择</text>
-					<image src="../../static/img/right.png" class="dsfsdrtt cz" mode="widthFix"></image>
+					<image :src="imgurl+'right.png'" class="dsfsdrtt cz" mode="widthFix"></image>
 				</view>
 			</view>
 			
@@ -63,7 +63,7 @@
 				<view class="col tr">
 					<text class="z3 " v-if="kkjasdb">{{kkjasdb}}</text>
 					<text class="z9 " v-else>请选择</text>
-					<image src="../../static/img/right.png" class="dsfsdrtt cz" mode="widthFix"></image>
+					<image :src="imgurl+'right.png'" class="dsfsdrtt cz" mode="widthFix"></image>
 				</view>
 			 </view>
 			 
@@ -140,6 +140,11 @@
 				kjhsdd:'',
 				xzbq:[],// 用户选择的标签
 				jhhsdrtr:[] // 缓存的标签
+			}
+		},
+		computed:{
+			imgurl(){
+				return this.$store.state.imgurl
 			}
 		},
 		components: {},

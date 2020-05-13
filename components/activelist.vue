@@ -6,7 +6,7 @@
 			</view>
 			<view class="pr">
 				<button class="sdfdsrtt" open-type="share"></button>
-				<image class="ml10 cttxeert cz" src="../static/img/fenxiang.png" mode="widthFix" @tap="fx"></image>
+				<image class="ml10 cttxeert cz" :src="imgurl+'fenxiang.png'" mode="widthFix" @tap="fx"></image>
 			</view>
 		</view>
 		<view class="fz24 z6 dianer mt20">
@@ -19,14 +19,14 @@
 		</view>
 		<view class="mt20 row">
 			<view class="">
-				<image v-if="dinas" @tap="diansnsd(1)" src="../static/img/hzhsda.png" mode="widthFix" class="ikxeert cz"></image>
-				<image v-else @tap="diansnsd(2)" src="../static/img/yidian.png" mode="widthFix" class="ikxeert cz"></image>
+				<image v-if="dinas" @tap="diansnsd(1)" :src="imgurl+'hzhsda.png'" mode="widthFix" class="ikxeert cz"></image>
+				<image v-else @tap="diansnsd(2)" :src="imgurl+'yidian.png'" mode="widthFix" class="ikxeert cz"></image>
 
 
 				<text class="fz32 z3 cz ml5">6</text>
 			</view>
 			<view class=" ml20" @tap="pinglld">
-				<image src="../static/img/hzhsdb.png" mode="widthFix" class="ikxeert cz"></image>
+				<image :src="imgurl+'hzhsdb.png'" mode="widthFix" class="ikxeert cz"></image>
 				<text class="fz32 z3 cz ml5">6</text>
 			</view>
 			<view class="col tr">
@@ -34,7 +34,7 @@
 					进行中
 				</view>
 				<navigator class="f_b" v-if="isbian" url="/pages/user/cjhd?tys=2">
-					<image src="../static/img/bianji.png" class="jhjjderrt cz" mode="widthFix"></image>
+					<image :src="imgurl+'bianji.png'" class="jhjjderrt cz" mode="widthFix"></image>
 				</navigator>
 			</view>
 		</view>
@@ -55,6 +55,11 @@
 			}
 		},
 		components: {},
+		computed:{
+			imgurl(){
+				return this.$store.state.imgurl
+			}
+		},
 		methods: {
 			fx() {
 

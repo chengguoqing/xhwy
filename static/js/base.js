@@ -340,6 +340,11 @@ exports.base = {
 				})
 			}
 		}
+		
+		Vue.prototype.ht = function(urls) {
+			uni.navigateBack()
+		}
+		Vue.prototype.imgurl='https://testcheng.oss-cn-shanghai.aliyuncs.com/xhwy/'
 
 		Vue.prototype.getClipbordText = function(call) {
 

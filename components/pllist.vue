@@ -3,7 +3,7 @@
 	<div>
 
 		<view class="bbm pt20 pm20 row pd" v-for="sd in 10">
-			<image src="../static/img/banner.png" class="yj userdrr cz"></image>
+			<image :src="imgurl+'banner.png'" class="yj userdrr cz"></image>
 			<view class="col pl20">
 				<view class="fz28 z3">
 					小胖墩
@@ -15,7 +15,7 @@
 					<text class="z9">10分钟前</text>
 					<text class="ml10" @tap="pinglld">回复TA</text>
 					<view class="col tr">
-						<image src="../static/img/dgg.png" class="dinghgdder cz" mode="widthFix"></image>
+						<image :src="imgurl+'dgg.png'" class="dinghgdder cz" mode="widthFix"></image>
 						<text class="fz24 cz">100</text>
 					</view>
 				</view>
@@ -29,6 +29,11 @@
 			return {}
 		},
 		components: {},
+		computed:{
+			imgurl(){
+				return this.$store.state.imgurl
+			}
+		},
 		methods: {
 			// 评论按钮触发
 			pinglld () {

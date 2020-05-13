@@ -1,5 +1,42 @@
 {
 	"pages": [{
+		"path": "pages/user/entryEntries",
+		"bz": "录入参赛作品",
+		"style": {
+			"navigationBarTitleText": "录入参赛作品"
+		}
+	},{
+		"path": "pages/index/index",
+		"bz": "index",
+		"style": {
+			"navigationBarTitleText": "学海无涯"
+		}
+	},{
+		"path": "pages/user/cansai",
+		"bz": "比赛作品",
+		"style": {
+			"navigationBarTitleText": "比赛作品",
+			"navigationStyle": "custom"
+		}
+	},{
+		"path": "pages/user/jiangzhuang",
+		"bz": "奖状",
+		"style": {
+			"navigationBarTitleText": "奖状"
+		}
+	},{
+		"path": "pages/user/transcript",
+		"bz": "成绩单",
+		"style": {
+			"navigationBarTitleText": "成绩单"
+		}
+	},{
+		"path": "pages/user/afterSummary",
+		"bz": "考后总结",
+		"style": {
+			"navigationBarTitleText": "考后总结"
+		}
+	},{
 		"path": "pages/user/myClass",
 		"bz": "我的班级",
 		"style": {
@@ -16,12 +53,6 @@
 		"bz": "老师注册",
 		"style": {
 			"navigationBarTitleText": "老师注册"
-		}
-	},{
-		"path": "pages/index/index",
-		"bz": "index",
-		"style": {
-			"navigationBarTitleText": "学海无涯"
 		}
 	},{
 		"path": "pages/user/wdhd",

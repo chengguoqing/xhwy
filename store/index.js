@@ -4,7 +4,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
-		user_info:'' // 用户信息
+		user_info:'', // 用户信息
+		imgurl:'https://testcheng.oss-cn-shanghai.aliyuncs.com/xhwy/'
 	},
 	mutations: {
 		setuserinfo(state,data) {

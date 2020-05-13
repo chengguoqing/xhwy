@@ -1,35 +1,38 @@
 <template>
-	<view class="dxddf pm40">
+	<view class="dxddf pm40"> 
 		<uni-swiper-dot :info="info" :current="current" :mode="mode" :dots-styles="dotsStyles" field="content">
 			<swiper class="swiper-box pr" @change="change">
-				<swiper-item v-for="(item, index) in info" :key="index">
-					<view class="swiper-item w100 h100">
-						<image class="w100 h100" :src="item.url" />
+				<swiper-item v-for="sd in info">
+					<view class="swiper-item w100 h100 pr" @tap="hfs(sd.turl)">
+						<text class="jhhhbdrt">{{sd.name}}</text>
+						<image class="w100 h100" :src="sd.url" />
 					</view>
 				</swiper-item>
+				
+				
 			</swiper>
 		</uni-swiper-dot>
 		<view class="pd kjjhnxefr">
 			<view class="kjhnxertxe row">
 				<view @tap="hfs('/pages/user/wdhd')" class="col dfgrtxeer aa pt20 pm20">
-					<image src="../../static/img/dsfdsa.png" class="loakderr cz"></image>
+					<image :src="imgurl+'dsfdsa.png'" class="loakderr cz"></image>
 					<text class="fz32 z3 ml10">我的活动</text>
 				</view>
-				<view class="col dfgrtxeer pt20 pm20">
-					<image src="../../static/img/dsfdsb.png" class="loakderr cz "></image>
+				<view @tap="hfs('/pages/user/myClass')" class="col dfgrtxeer pt20 pm20">
+					<image :src="imgurl+'dsfdsb.png'" class="loakderr cz "></image>
 					<text class="fz32 z3 ml10">我的班级</text>
 				</view>
 			</view>
 		</view>
 	
 			<van-notice-bar
-			  left-icon="../../static/img/laba.png"
+			  :left-icon= "imgurl+'laba.png'" 
 			  text="今天,做一个学生,上课、集体活动、挥洒青春集体活挥洒青春集体活挥洒青春集体活"
 			>
 			</van-notice-bar>
 	<view class="pd"> 
 			<view class=" pr">
-				<image src="../../static/img/fdj.png" class="faddrrttx"></image>
+				<image :src="imgurl+'fdj.png'" class="faddrrttx"></image>
 				<input class="jjjhgeert fz30" type="text" value="" placeholder="请输入活动的名称" />
 			</view>
 			<view class="mt20 bgff jhhxrert row">
@@ -59,19 +62,24 @@
 		computed:{
 			user_info(){
 				return this.$store.state.user_info
+			},
+			imgurl(){
+				return this.$store.state.imgurl
 			}
 		},
 		data() {
 			return {
 				info: [{
+						name:'录入参赛作品',
+						turl:'/pages/user/entryEntries',
 						url: 'https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png'
 					},
 					{
+						name:'录入参赛作品',
+						turl:'/pages/user/entryEntries',
 						url: 'https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png'
 					},
-					{
-						url: 'https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png'
-					}
+					
 				],
 				current: 0,
 				mode: 'round',
@@ -161,6 +169,14 @@
 		top: 18upx;
 		z-index: 10;
 	}
-
+	.jhhhbdrt{
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 100upx;
+		font-size: 60upx;
+		z-index: 100;
+		color: red;
+	}
 	
 </style>

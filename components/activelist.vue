@@ -1,31 +1,29 @@
 <template>
 	<view class="mt20 bgff dsfdsrtze">
 		<view class="row">
-			<view class="col dian fz32">
+			<view class="col dian fz32" @tap="yijserrt">
 				《一次体验活动》
 			</view>
 			<view class="pr">
 				<button class="sdfdsrtt" open-type="share"></button>
-				<image class="ml10 cttxeert cz" :src="imgurl+'fenxiang.png'" mode="widthFix" @tap="fx"></image>
+				<image class="ml10 cttxeert cz" :src="imgurl+'fenxiang.png'" mode="widthFix" @tap.stop="fx"></image>
 			</view>
 		</view>
-		<view class="fz24 z6 dianer mt20">
+		<view class="fz24 z6 dianer mt20" @tap="yijserrt">
 			_六年级语文_语文_小学教育_教育专区
 		</view>
 		<view class="jkhhsdr mt20">
-			<view class="" v-for="sd in 3">
+			<view class="" v-for="sd in 3" @tap.stop="fangdase">
 				<image src="https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png" mode="aspectFill" class="sdfsdrtyd w100"></image>
 			</view>
 		</view>
 		<view class="mt20 row">
 			<view class="">
-				<image v-if="dinas" @tap="diansnsd(1)" :src="imgurl+'hzhsda.png'" mode="widthFix" class="ikxeert cz"></image>
-				<image v-else @tap="diansnsd(2)" :src="imgurl+'yidian.png'" mode="widthFix" class="ikxeert cz"></image>
-
-
+				<image v-if="dinas" @tap.stop="diansnsd(1)" :src="imgurl+'hzhsda.png'" mode="widthFix" class="ikxeert cz"></image>
+				<image v-else @tap.stop="diansnsd(2)" :src="imgurl+'yidian.png'" mode="widthFix" class="ikxeert cz"></image>
 				<text class="fz32 z3 cz ml5">6</text>
 			</view>
-			<view class=" ml20" @tap="pinglld">
+			<view class=" ml20" @tap.stop="pinglld">
 				<image :src="imgurl+'hzhsdb.png'" mode="widthFix" class="ikxeert cz"></image>
 				<text class="fz32 z3 cz ml5">6</text>
 			</view>
@@ -45,9 +43,13 @@
 	export default {
 		props: {
 			isbian: { // 是否显示编辑按钮
-				type: Object,
+				type: Boolean,
 				default: false
-			}
+			},
+			isxq: { // 是否为详情
+				type: Boolean,
+				default: false
+			},
 		},
 		data() {
 			return {
@@ -75,7 +77,22 @@
 			// 评论按钮触发
 			pinglld () {
 				this.$emit("pinglun")
+			},
+			// 列表点击事件
+			yijserrt(){
+				if(!this.isxq) {
+					uni.navigateTo({
+						url:'/pages/hd/xq'
+					})
+				}
+			},
+			// 图片点击放大
+			fangdase (){
+				uni.previewImage({
+					urls:["https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png" ]
+				})
 			}
+			
 		},
 
 		mounted() {}

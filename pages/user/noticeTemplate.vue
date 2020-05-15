@@ -20,6 +20,7 @@
 		methods: {
 			kjhsd(idx){
 				this.idxsd = idx
+				this.hfs('/pages/hd/tz')
 			}
 		},
 		computed:{

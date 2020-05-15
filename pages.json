@@ -1,15 +1,39 @@
 {
 	"pages": [{
-		"path": "pages/user/entryEntries",
-		"bz": "录入参赛作品",
-		"style": {
-			"navigationBarTitleText": "录入参赛作品"
-		}
-	},{
 		"path": "pages/index/index",
 		"bz": "index",
 		"style": {
 			"navigationBarTitleText": "学海无涯"
+		}
+	},{
+		"path": "pages/hd/tz",
+		"bz": "发布通知",
+		"style": {
+			"navigationBarTitleText": "发布通知"
+		}
+	},{
+		"path": "pages/public/video",
+		"bz": "视频浏览",
+		"style": {
+			"navigationBarTitleText": "视频浏览"
+		}
+	},{
+		"path": "pages/hd/xq",
+		"bz": "活动详情",
+		"style": {
+			"navigationBarTitleText": "活动详情"
+		}
+	},{
+		"path": "pages/index/zx",
+		"bz": "资讯",
+		"style": {
+			"navigationBarTitleText": "资讯"
+		}
+	},{
+		"path": "pages/user/entryEntries",
+		"bz": "录入参赛作品",
+		"style": {
+			"navigationBarTitleText": "录入参赛作品"
 		}
 	},{
 		"path": "pages/user/cansai",

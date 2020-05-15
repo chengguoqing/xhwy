@@ -1,7 +1,9 @@
 var url_d = "https://v.zulinma.com/v1/",
 	urlse = 'http://yapi.demo.qunar.com/mock/53256/'
+import {upfile} from "./upfile.js"
 exports.base = {
 	install: function(Vue, options) {
+		Vue.prototype.upfile = upfile
 		Vue.prototype.version = "9.2.1"
 		Vue.prototype.imgse = 'https://oybab.net/wechat/GM/'
 		Vue.prototype.parseParam = function(data) {

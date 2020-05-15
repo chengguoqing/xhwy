@@ -24,12 +24,27 @@
 				</view>
 			</view>
 		</view>
+		<view class="kkjcertt row pd pt20 pm20">
+			<image :src="imgurl+'laba.png'"  class="dsfsdttxer cz"></image>
+			<view class="jjhhbxedft fz30 z3 pl10 col">
+				<swiper  :interval="3000" :duration="1000" autoplay circular vertical class="h100 ov">
+					<swiper-item v-for="sd in 5">
+						<navigator class="dian dfsdttxerr" url="/pages/index/zx">
+							今天,做一个学生,上课、集体活动、挥洒青春集体活挥洒青春集体活挥洒青春集体活
+						</navigator>
+					</swiper-item>
+				</swiper>
+				<!-- <view class="dian">
+					今天,做一个学生,上课、集体活动、挥洒青春集体活挥洒青春集体活挥洒青春集体活
+				</view> -->
+			</view>
+		</view>
 	
-			<van-notice-bar
+		<!-- 	<van-notice-bar
 			  :left-icon= "imgurl+'laba.png'" 
 			  text="今天,做一个学生,上课、集体活动、挥洒青春集体活挥洒青春集体活挥洒青春集体活"
 			>
-			</van-notice-bar>
+			</van-notice-bar> -->
 	<view class="pd"> 
 			<view class=" pr">
 				<image :src="imgurl+'fdj.png'" class="faddrrttx"></image>
@@ -178,5 +193,17 @@
 		z-index: 100;
 		color: red;
 	}
-	
+	.kkjcertt{
+	}
+	.dsfsdttxer{
+		height: 48upx;
+		width: 48upx;
+	}
+	.jjhhbxedft{
+		height: 48upx;
+		line-height: 48upx;
+	}
+	.dfsdttxerr{
+		background: #F0F0F0 !important;
+	}
 </style>

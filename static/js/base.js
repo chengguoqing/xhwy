@@ -21,146 +21,29 @@ exports.base = {
 			return _result.join('&');
 		};
 		// ty ==3 文件上传
-		Vue.prototype.post = function(Address, MessageType, Value, ty, filePath) {
-			var ddfer = uni.getStorageSync('gcook')
-			var ServerAddress = ddfer.ServerAddress; //COOKIE里的获取后把后缀加上, 形成完整的地址 :ServerAddress
-			var SessionId = ddfer.SessionId; // 这些需要COOKIE里获取 :SessionId
-			var ClientId = ddfer.ClientId; // 这些需要COOKIE里获取 :ClientId
-			var OrderId = ddfer.OrderId; // 这些需要COOKIE里获取 :OrderId
-			// 创建一个JSON
-			if (filePath != 6) {
-				uni.showLoading({
-					title: this.$store.state.lanser.Loading
-				})
-			}
-			var Message = {
-				SessionId: SessionId,
-				ClientId: ClientId,
-				OrderId: OrderId,
-				MessageType: MessageType,
-				MessageContent: null
-			};
-			let Lang = ''
-			Lang = uni.getStorageSync('lanindex')
-			if (Lang == 0) {
-				Lang = 'zh'
-			} else if (Lang == 1) {
-				Lang = 'ug'
-			}
-			if (Lang == 2) {
-				Lang = 'en'
-			}
-			Message.Lang = Lang
-			if (null != Value) {
-				var MessageContent = ''
-				if (ty == 2) {
-					MessageContent = Value
-				} else {
-					MessageContent = {
-						Value: Value
-					};
-				}
-				// 这个MessageContent就是一个JSON, 我们把它转成string字符串  (虽然它现在值Value是个string, 但是如果以后获取歌曲或歌手时, 它是个Json, 具体JSON格式看协议, 搜索之所以用JSON主要是用于发送, 要获取的页, 获取列表数量...等)
-				Message.MessageContent = JSON.stringify(MessageContent);
-			}
-			let sddee = ''
-			if (Address.indexOf("http") >= 0) {
-				sddee = Address
-			} else {
-				sddee = ServerAddress + Address
-			}
+		Vue.prototype.post = function(url,datas) {
+		
 			return new Promise((resolve, reject) => {
-				if (ty == 3) {
-					uni.uploadFile({
-						url: sddee + "/", //仅为示例，非真实的接口地址
-						filePath: filePath,
-						name: 'input-file',
-						formData: {
-							Message: JSON.stringify(Message)
-						},
-						complete: (res) => {
-							uni.hideLoading()
-						},
-						success: (res) => {
-							var result = res.data;
-							if (result.hasOwnProperty('IsExpired') && result.IsExpired == true) {
-								uni.showModal({
-									content: this.$store.state.lanser.ExpiredDescription,
-									showCancel: false,
-									confirmText: this.$store.state.lanser.OK,
-									success: function(res) {}
-								});
-								return
-							}
-							if (result.hasOwnProperty('IsError') && result.IsError == true) {
-								uni.showModal({
-									content: this.$store.state.lanser.FailedDescription,
-									showCancel: false,
-									confirmText: this.$store.state.lanser.OK,
-									success: function(res) {}
-								});
-								return
-							}
-							if (result.hasOwnProperty('Result') && result.Result == true) {
-								if (ty != 2) {
-									uni.showToast({
-										title: this.$store.state.lanser.SuccessDescription
-									})
-								}
-							}
-							resolve(result)
-						}
-					});
-
-				} else {
+				
 					uni.request({
-						url: sddee,
+						url: url,
 						method: "POST",
 						header: {
 							"content-type": "application/x-www-form-urlencoded"
 						},
-						data: Message,
+						data: datas,
 						complete: (res) => {
 							uni.hideLoading()
 						},
-						crossDomain: true,
-						xhrFields: {
-							withCredentials: true
-						},
 						success: (res) => {
-							var result = res.data;
-							if (result.hasOwnProperty('IsExpired') && result.IsExpired == true) {
-								uni.showModal({
-									content: this.$store.state.lanser.ExpiredDescription,
-									showCancel: false,
-									confirmText: this.$store.state.lanser.OK,
-									success: function(res) {}
-								});
-								return
-							}
-							if (result.hasOwnProperty('IsError') && result.IsError == true) {
-								uni.showModal({
-									content: this.$store.state.lanser.FailedDescription,
-									showCancel: false,
-									confirmText: this.$store.state.lanser.OK,
-									success: function(res) {}
-								});
-								return
-							}
-							if (result.hasOwnProperty('Result') && result.Result == true) {
-								if (ty != 2) {
-									uni.showToast({
-										title: this.$store.state.lanser.SuccessDescription
-									})
-								}
-							}
+						
 							resolve(result)
 						},
 						fail: (res) => {
-							console.log(res)
+						
 						}
 					});
-				}
+				
 
 			})
 		}

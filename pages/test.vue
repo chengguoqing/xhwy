@@ -45,6 +45,7 @@
         mounted() {
 		}
     }
+https://open.weixin.qq.com/connect/qrconnect?appid=wx594da6705be69ded&redirect_uri=http%3a%2f%2fapi.zmlaodong.com%2f&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect 
 
 </script>
 <style  scoped>

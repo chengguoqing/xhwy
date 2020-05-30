@@ -153,9 +153,14 @@
 				uni.setNavigationBarTitle({
 					title:'编辑活动'
 				})
+				this.getxq(e.id)
 			}
 		},
 		methods: {
+			async getxq(id){
+				let res = await this.post('/activity/activityDetail/'+id)
+				let resd = res.data
+			},
 			onInput(event) {
 			    this.currentDate = event.detail
 			  },

@@ -1,9 +1,15 @@
 {
-	"pages": [{
+	"pages": [ {
 		"path": "pages/index/index",
 		"bz": "index",
 		"style": {
 			"navigationBarTitleText": "学海无涯"
+		}
+	},{
+		"path": "pages/user/wdhd",
+		"bz": "我的活动",
+		"style": {
+			"navigationStyle": "custom"
 		}
 	},{
 		"path": "pages/hd/tz",
@@ -79,12 +85,6 @@
 			"navigationBarTitleText": "老师注册"
 		}
 	},{
-		"path": "pages/user/wdhd",
-		"bz": "我的活动",
-		"style": {
-			"navigationStyle": "custom"
-		}
-	}, {
 		"path": "pages/public/getphone",
 		"bz": "授权登录",
 		"style": {

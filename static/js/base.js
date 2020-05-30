@@ -1,6 +1,8 @@
-var url_d = "https://v.zulinma.com/v1/",
+var url_d = "http://test.api.zmlaodong.com",
 	urlse = 'http://yapi.demo.qunar.com/mock/53256/'
-import {upfile} from "./upfile.js"
+import {
+	upfile
+} from "./upfile.js"
 exports.base = {
 	install: function(Vue, options) {
 		Vue.prototype.upfile = upfile
@@ -20,31 +22,24 @@ exports.base = {
 			}
 			return _result.join('&');
 		};
-		// ty ==3 文件上传
-		Vue.prototype.post = function(url,datas) {
-		
+		Vue.prototype.post = function(url, datas) {
 			return new Promise((resolve, reject) => {
-				
-					uni.request({
-						url: url,
-						method: "POST",
-						header: {
-							"content-type": "application/x-www-form-urlencoded"
-						},
-						data: datas,
-						complete: (res) => {
-							uni.hideLoading()
-						},
-						success: (res) => {
-						
-							resolve(result)
-						},
-						fail: (res) => {
-						
-						}
-					});
-				
+				uni.request({
+					url: url_d + url,
+					method: "POST",
+					data: datas,
+					header: {
+						"Content-Type":'application/json',
+						"userId": 1
+					},
+					complete: (res) => {},
+					success: (res) => {
+						resolve(res.data)
+					},
+					fail: (res) => {
 
+					}
+				});
 			})
 		}
 		Vue.prototype.get = function(urls, canshu, ty) {
@@ -101,7 +96,7 @@ exports.base = {
 
 		Vue.prototype.time_d = function(t) {
 			let time = new Date()
-			time.setTime(t * 1000)
+			time.setTime(t)
 			let Year = time.getFullYear(),
 				Month = time.getMonth() + 1,
 				Data = time.getDate() < 10 ? 0 + '' + time.getDate() : time.getDate(),
@@ -225,11 +220,11 @@ exports.base = {
 				})
 			}
 		}
-		
+
 		Vue.prototype.ht = function(urls) {
 			uni.navigateBack()
 		}
-		Vue.prototype.imgurl='https://testcheng.oss-cn-shanghai.aliyuncs.com/xhwy/'
+		Vue.prototype.imgurl = 'https://testcheng.oss-cn-shanghai.aliyuncs.com/xhwy/'
 
 		Vue.prototype.getClipbordText = function(call) {
 

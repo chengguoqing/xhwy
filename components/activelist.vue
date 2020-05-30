@@ -1,8 +1,9 @@
 <template>
-	<view class="mt20 bgff dsfdsrtze">
+	<view class="">
+	<view class="mt20 bgff dsfdsrtze" v-for="sd in listdata">
 		<view class="row">
 			<view class="col dian fz32" @tap="yijserrt">
-				《一次体验活动》
+				{{sd.activitySubject}}
 			</view>
 			<view class="pr">
 				<button class="sdfdsrtt" open-type="share"></button>
@@ -10,38 +11,55 @@
 			</view>
 		</view>
 		<view class="fz24 z6 dianer mt20" @tap="yijserrt">
-			_六年级语文_语文_小学教育_教育专区
+			{{sd.activityDesc}}
 		</view>
 		<view class="jkhhsdr mt20">
-			<view class="" v-for="sd in 3" @tap.stop="fangdase">
-				<image src="https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png" mode="aspectFill" class="sdfsdrtyd w100"></image>
+			<view class="" v-for="(sf,idx) in sd.activityImgList" @tap.stop="fangdase(sf.imgUrl)" v-if="idx<3">
+
+				<image :src="sf.imgUrl" mode="aspectFill" class="sdfsdrtyd w100"></image>
 			</view>
 		</view>
 		<view class="mt20 row">
-			<view class="">
+<!-- 			<view class="">
 				<image v-if="dinas" @tap.stop="diansnsd(1)" :src="imgurl+'hzhsda.png'" mode="widthFix" class="ikxeert cz"></image>
 				<image v-else @tap.stop="diansnsd(2)" :src="imgurl+'yidian.png'" mode="widthFix" class="ikxeert cz"></image>
 				<text class="fz32 z3 cz ml5">6</text>
-			</view>
-			<view class=" ml20" @tap.stop="pinglld">
+			</view> -->
+			<view class=" " @tap.stop="pinglld">
 				<image :src="imgurl+'hzhsdb.png'" mode="widthFix" class="ikxeert cz"></image>
-				<text class="fz32 z3 cz ml5">6</text>
+				<text class="fz32 z3 cz ml5">{{sd.commentNum}}</text>
 			</view>
 			<view class="col tr">
-				<view class="sfdsdttx">
-					进行中
+				<view class="sfdsdttx" :class="hggklse(sd.activityEndTime).code==-1?'act':''">
+					{{hggklse(sd.activityEndTime).text}} 
 				</view>
-				<navigator class="f_b" v-if="isbian" url="/pages/user/cjhd?tys=2">
+				<navigator class="f_b" v-if="isbian" :url="'/pages/user/cjhd?tys=2&id='+sd.id">
 					<image :src="imgurl+'bianji.png'" class="jhjjderrt cz" mode="widthFix"></image>
 				</navigator>
 			</view>
 		</view>
-		
+		<view class="" v-if="ispl&&sd.activityCommentList.length>0">
+			<view class="fz28 btm pd pt20 mt20">
+				评论
+			</view>
+			<pllist :datalist="sd.activityCommentList"></pllist>
+		</view>
+	</view>
+	
 	</view>
 </template>
 <script>
+	import pllist from "@/components/pllist.vue"
 	export default {
 		props: {
+			listdata:{
+				type:Array,
+				default: []
+			},
+			ispl: { // 是否显示评论列表
+				type: Boolean,
+				default: false
+			},
 			isbian: { // 是否显示编辑按钮
 				type: Boolean,
 				default: false
@@ -56,7 +74,9 @@
 				dinas: true
 			}
 		},
-		components: {},
+		components: {
+			pllist
+		},
 		computed:{
 			imgurl(){
 				return this.$store.state.imgurl
@@ -87,14 +107,29 @@
 				}
 			},
 			// 图片点击放大
-			fangdase (){
+			fangdase (url){
 				uni.previewImage({
-					urls:["https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png" ]
+					urls:[url]
 				})
+			},
+			hggklse (datae){
+				let hhjher = {}
+				let dfjhea = new Date(datae)
+				dfjhea= dfjhea.getTime()
+				let dfjheb = new Date()
+				dfjheb= dfjheb.getTime()
+				if (dfjheb>dfjhea){
+					hhjher.code=-1
+					hhjher.text="已结束"
+				}
+				if (dfjheb<dfjhea){
+					hhjher.code=0
+					hhjher.text="进行中"
+				}
+				return hhjher
 			}
 			
 		},
-
 		mounted() {}
 	}
 </script>

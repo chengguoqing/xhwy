@@ -2,7 +2,7 @@
 <template>
 	<div>
 
-		<view class="bbm pt20 pm20 row pd" v-for="sd in 10">
+		<view class="bbm pt20 pm20 row pd" v-for="sd in datalist">
 			<image :src="imgurl+'banner.png'" class="yj userdrr cz"></image>
 			<view class="col pl20">
 				<view class="fz28 z3">
@@ -25,6 +25,12 @@
 </template>
 <script>
 	export default {
+		props: {
+			datalist:{
+				type:Array,
+				default: []
+			}
+		},
 		data() {
 			return {}
 		},

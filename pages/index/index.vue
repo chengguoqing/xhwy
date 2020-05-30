@@ -1,15 +1,15 @@
 <template>
-	<view class="dxddf pm40"> 
+	<view class="dxddf pm40">
 		<uni-swiper-dot :info="info" :current="current" :mode="mode" :dots-styles="dotsStyles" field="content">
 			<swiper class="swiper-box pr" @change="change">
 				<swiper-item v-for="sd in info">
-					<view class="swiper-item w100 h100 pr" @tap="hfs(sd.turl)">
-						<text class="jhhhbdrt">{{sd.name}}</text>
-						<image class="w100 h100" :src="sd.url" />
+					<!-- @tap="hfs(sd.turl)" -->
+					<view class="swiper-item w100 h100 pr">
+						<image class="w100 h100" :src="sd.url" mode="aspectFill" />
 					</view>
 				</swiper-item>
-				
-				
+
+
 			</swiper>
 		</uni-swiper-dot>
 		<view class="pd kjjhnxefr">
@@ -25,12 +25,12 @@
 			</view>
 		</view>
 		<view class="kkjcertt row pd pt20 pm20">
-			<image :src="imgurl+'laba.png'"  class="dsfsdttxer cz"></image>
+			<image :src="imgurl+'laba.png'" class="dsfsdttxer cz"></image>
 			<view class="jjhhbxedft fz30 z3 pl10 col">
-				<swiper  :interval="3000" :duration="1000" autoplay circular vertical class="h100 ov">
-					<swiper-item v-for="sd in 5">
-						<navigator class="dian dfsdttxerr" url="/pages/index/zx">
-							今天,做一个学生,上课、集体活动、挥洒青春集体活挥洒青春集体活挥洒青春集体活
+				<swiper :interval="3000" :duration="1000" autoplay circular vertical class="h100 ov">
+					<swiper-item v-for="sd in zixun">
+						<navigator class="dian dfsdttxerr" :url="'/pages/index/zx?id='+sd.id">
+							{{sd.informationSubject}}
 						</navigator>
 					</swiper-item>
 				</swiper>
@@ -39,24 +39,24 @@
 				</view> -->
 			</view>
 		</view>
-	
+
 		<!-- 	<van-notice-bar
 			  :left-icon= "imgurl+'laba.png'" 
 			  text="今天,做一个学生,上课、集体活动、挥洒青春集体活挥洒青春集体活挥洒青春集体活"
 			>
 			</van-notice-bar> -->
-	<view class="pd"> 
+		<view class="pd">
 			<view class=" pr">
 				<image :src="imgurl+'fdj.png'" class="faddrrttx"></image>
-				<input class="jjjhgeert fz30" type="text" value="" placeholder="请输入活动的名称" />
+				<input class="jjjhgeert fz30" confirm-type="search" @confirm="sousodrt" type="text" value="" placeholder="请输入活动的名称" />
 			</view>
 			<view class="mt20 bgff jhhxrert row">
 				<view class="col cen sdfsdrtt pr" :class="idxdd==idx?'act':''" v-for="(sd,idx) in timnse" @tap="qiehnnmsd(idx)">
 					{{sd}}
 				</view>
 			</view>
-			
-			<activelist  v-for="sd in 10" @pinglun="pinglun"></activelist>
+
+			<activelist :listdata="listdata" @pinglun="pinglun"></activelist>
 		</view>
 		<pinglun ref="jhdrrtt"></pinglun>
 	</view>
@@ -74,28 +74,22 @@
 			activelist,
 			pinglun
 		},
-		computed:{
-			user_info(){
+		computed: {
+			user_info() {
 				return this.$store.state.user_info
 			},
-			imgurl(){
+			imgurl() {
 				return this.$store.state.imgurl
 			}
 		},
 		data() {
 			return {
-				info: [{
-						name:'录入参赛作品',
-						turl:'/pages/user/entryEntries',
-						url: 'https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png'
-					},
-					{
-						name:'录入参赛作品',
-						turl:'/pages/user/entryEntries',
-						url: 'https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png'
-					},
-					
-				],
+				bannersd: '',
+				isddr: '',
+				zixun:'',
+				activityVal: '', // 搜索的值
+				listdata: '',
+				info: [],
 				current: 0,
 				mode: 'round',
 				dotsStyles: {
@@ -105,27 +99,66 @@
 					selectedBackgroundColor: '#fff',
 					selectedBorder: '1px #f8f8f8 solid'
 				},
-				idxdd:0,
-				timnse:['热门活动','最新活动']
+				idxdd: 0,
+				timnse: ['热门活动', '最新活动']
 			}
 		},
 		onShareAppMessage(res) {
 			return {
 				title: '独行工匠工作室',
-				imageUrl:'https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png',
+				imageUrl: 'https://testcheng.oss-cn-shanghai.aliyuncs.com/banner.png',
 				path: '/pages/index/index'
 			}
 		},
-		onLoad() {},
+		onLoad() {
+			this.geihuodong()
+			this.getbanner()
+			this.getzixun()
+		},
 		methods: {
-			pinglun(){
+			pinglun() {
 				this.$refs.jhdrrtt.open()
 			},
 			change(e) {
 				this.current = e.detail.current
 			},
-			qiehnnmsd(idx){
+			qiehnnmsd(idx) {
 				this.idxdd = idx
+				this.geihuodong()
+			},
+			// 活动列表
+			async geihuodong(type) {
+				let dstad = {}
+				dstad.activityType = this.idxdd + 1
+				dstad.activityVal = this.activityVal
+				let res = await this.post('/activity/activityListApp', dstad)
+				this.listdata = res.data
+			},
+			sousodrt(e) {
+				this.activityVal = e.detail.value
+				this.geihuodong()
+			},
+			// 头部的banner
+			async getbanner() {
+				let res = await this.post('/homePage/homePageList')
+				let hggse = []
+				res.data.map(a => {
+					let dftty = {}
+					dftty.name = ''
+					dftty.turl = ''
+					dftty.url = a.imgUrl
+					hggse.push(dftty)
+
+				})
+				this.info = hggse
+			},
+			// 咨询
+			async getzixun() {
+				let data = {}
+				data.pageNum = 1
+				data.pageSize = 10
+				let res = await this.post('/information/informationList', data)
+				this.zixun = res.data
 			}
 		}
 	}
@@ -184,7 +217,8 @@
 		top: 18upx;
 		z-index: 10;
 	}
-	.jhhhbdrt{
+
+	.jhhhbdrt {
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -193,17 +227,20 @@
 		z-index: 100;
 		color: red;
 	}
-	.kkjcertt{
-	}
-	.dsfsdttxer{
+
+	.kkjcertt {}
+
+	.dsfsdttxer {
 		height: 48upx;
 		width: 48upx;
 	}
-	.jjhhbxedft{
+
+	.jjhhbxedft {
 		height: 48upx;
 		line-height: 48upx;
 	}
-	.dfsdttxerr{
+
+	.dfsdttxerr {
 		background: #F0F0F0 !important;
 	}
 </style>

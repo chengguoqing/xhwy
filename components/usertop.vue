@@ -6,12 +6,12 @@
 		<view class="drtterrt">
 			<view class="jjhhxdef bgff pd">
 				<view class="">
-					<image :src="imgurl+'banner.png'" class="yj usericdert"></image>
+					<image :src="user_info.avatarUrl" class="yj usericdert"></image>
 					<text class="jjhhhcrr fz24" @tap="gehuanbj">点击图片，更换背景</text>
 				</view>
 
 				<view class="fz36 z3 mt20 row">
-					独行工匠
+					{{user_info.nickName}}
 					<!-- 班级 -->
 					<view class="col pr" v-if="banji">
 						<image :src="imgurl+'sdfdsdsfa.png'" class="jjhdrtrx ml20 cz"></image>
@@ -50,7 +50,7 @@
 		data() {
 			return {
 				jjhsd:false,
-				bjurl: 'https://testcheng.oss-cn-shanghai.aliyuncs.com/bgtp.png',
+				bjurl: '',
 				bgtps:[
 					'https://testcheng.oss-cn-shanghai.aliyuncs.com/bg1.png',
 					'https://testcheng.oss-cn-shanghai.aliyuncs.com/bg2.png',
@@ -67,6 +67,9 @@
 		computed:{
 			imgurl(){
 				return this.$store.state.imgurl
+			},
+			user_info() {
+				return this.$store.state.user_info
 			}
 		},
 		methods: {
@@ -75,12 +78,13 @@
 				this.jjhsd=true
 			},
 			kjjdddf(sd){
+				uni.setStorageSync('bjurl',sd)
 				this.bjurl = sd
 				this.jjhsd=false
 			}
 		},
 		mounted() {
-			
+			this.bjurl = uni.getStorageSync('bjurl')|| 'https://testcheng.oss-cn-shanghai.aliyuncs.com/bgtp.png'
 		}
 	}
 </script>

@@ -26,14 +26,9 @@
 					</navigator>
 				</view>
 
-				<view class="tl pt10" v-else>
-					<activelist isbian @pinglun="pinglun"></activelist>
-					<view class="fz28 btm pd pt20">
-						评论
-					</view>
-					<pllist @pinglun="pinglun"></pllist>
-
-
+				<view class="tl " v-else>
+					<activelist :isbian="idxdd==0?true:''" @pinglun="pinglun" :listdata="listdata" :ispl="true"></activelist>
+					
 				</view>
 
 
@@ -46,11 +41,11 @@
 <script>
 	import usertop from "@/components/usertop.vue"
 	import activelist from "@/components/activelist.vue"
-	import pllist from "@/components/pllist.vue"
 	import pinglun from "@/components/pinglun.vue"
 	export default {
 		data() {
 			return {
+				listdata:'',
 				jjhsd: true,
 				idxdd: 0,
 				timnse: ['发起的活动', '参与的活动'],
@@ -61,11 +56,10 @@
 		components: {
 			usertop,
 			activelist,
-			pllist,
 			pinglun
 		},
-		computed:{
-			imgurl(){
+		computed: {
+			imgurl() {
 				return this.$store.state.imgurl
 			}
 		},
@@ -75,16 +69,31 @@
 			},
 			qiehnnmsd(idx) {
 				this.idxdd = idx
+				this.getdata()
 			},
 			onClose() {
-				console.log(222)
+
 			},
 			fanhuid() {
 				uni.navigateBack();
+			},
+			async getdata(ty) {
+				let datad ={}
+				datad.userId =1
+				let qurl = "/activity/myActivityList"
+				if (this.idxdd == 1){
+					qurl = "/activity/myPartakeActivityList"
+				}
+				let res = await this.post(qurl)
+				this.listdata = res.data
+				console.log(this.listdata)
 			}
 		},
 		onPageScroll: function(e) { //nvue暂不支持滚动监听，可用bindingx代替
 			this.gdse = e.scrollTop
+		},
+		onLoad() {
+			this.getdata()
 		},
 		mounted() {
 
@@ -92,5 +101,7 @@
 	}
 </script>
 <style scoped>
-
+	.kjhxdrrt{
+		background:transparent !important;
+	}
 </style>

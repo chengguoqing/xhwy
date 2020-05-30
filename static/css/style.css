@@ -29,6 +29,9 @@ uni-page-head,.uni-page-head{
 		text-align: center;
 		display: inline-block;
 	}
+	.sfdsdttx.act{
+		background: #E0E0E0;
+	}
 	.jhhxrert {
 		border-top-left-radius: 8upx;
 		border-top-right-radius: 8upx;
@@ -265,3 +268,4 @@ uni-page-head,.uni-page-head{
 		width: 80upx;
 		height: 80upx;
 	}
+	

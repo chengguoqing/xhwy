@@ -31,8 +31,9 @@
         components: {},
         methods: {
 			getuserrtw(e){
-				uni.setStorageSync('userinfo',e)
-				this.$store.commit('setuserinfo',e)
+				console.log(e.detail.userInfo)
+				uni.setStorageSync('userinfo',e.detail.userInfo)
+				this.$store.commit('setuserinfo',e.detail.userInfo)
 				let th=this
 				uni.redirectTo({
 					url:th.urls

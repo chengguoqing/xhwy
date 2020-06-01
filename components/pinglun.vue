@@ -6,13 +6,12 @@
         		<view class="row pt20 pm20 pd">
         			 <icon type="clear" size="20" class="closderert" @tap="jjhsd=false"/>
 					<view class="col tr">
-						<van-button type="primary" size="small" @tap="jjhsd=false" >发布</van-button>
+						<van-button type="primary" size="small" @tap="fasong" >发布</van-button>
 					</view>
 				</view>
 				<view class=" pd">
-					<textarea value="" placeholder="请输入评论内容" class="dsfdstyyxe w100 fz30" />
+					<textarea v-model="commentContent" placeholder="请输入评论内容" class="dsfdstyyxe w100 fz30" />
 				</view>
-        	
         	</view>
         </van-popup>
         <!-- #endif -->
@@ -20,8 +19,10 @@
 </template>
 <script>
     export default {
+		props:['activityId'],
         data() {
             return {
+				commentContent:'',
 				jjhsd:false,
 			}
         },
@@ -32,9 +33,18 @@
 			},
 			open(){
 				this.jjhsd = true
+			},
+			async fasong () {
+				let cshu = {}
+				cshu.activityId = this.activityId
+				cshu.commentContent = this.commentContent
+				let res = await this.post('/activity/addActivityComment', cshu)
+				this.jjhsd=false
 			}
 		},
-        mounted() {}
+        mounted() {
+			
+		}
     }
 
 </script>

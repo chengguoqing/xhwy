@@ -119,6 +119,7 @@
 			</view>
 		</van-popup>
 		<!-- #endif -->
+		
 	</view>
 </template>
 <script>
@@ -178,7 +179,7 @@
 				  }
 				  this.jjhsd=false
 			  },
-			  // 上传图片按钮触发
+			  // 上传图片按钮触发 999
 			  upimgsd() {
 				  uni.chooseImage({
 				  	count:1,

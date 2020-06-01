@@ -35,7 +35,7 @@
 			</view>
 		</view>
 
-		<pinglun ref="jhdrrtt"></pinglun>
+			<pinglun ref="jhdrrtt" :activityId="activityId"></pinglun>
 	</view>
 </template>
 <script>
@@ -45,6 +45,7 @@
 	export default {
 		data() {
 			return {
+				activityId:'',
 				listdata:'',
 				jjhsd: true,
 				idxdd: 0,
@@ -64,7 +65,8 @@
 			}
 		},
 		methods: {
-			pinglun() {
+			pinglun(e) {
+				this.activityId = e
 				this.$refs.jhdrrtt.open()
 			},
 			qiehnnmsd(idx) {

@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <view class="bgkkjsdrer"></view>
+	<div>
+		<view class="bgkkjsdrer"></view>
 		<view class="pr">
 			<view class="kdsfsdt cen">
 				<image :src="imgurl+'logo.png'" class="loofrrty"></image>
@@ -10,45 +10,51 @@
 			</view>
 			<view class="mt20 pd">
 				<button class="jjjdrrtt fz30" open-type="getUserInfo" @getuserinfo="getuserrtw">
-				<image :src="imgurl+'weixin.png'" class="weixeddr cz mr10"></image>	授权微信用户信息
+					<image :src="imgurl+'weixin.png'" class="weixeddr cz mr10"></image> 授权微信用户信息
 				</button>
 			</view>
 		</view>
-    </div>
+	</div>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-				urls:''
+	export default {
+		data() {
+			return {
+				urls: '',
+				codes:''
 			}
-        },
-		computed:{
-			imgurl(){
+		},
+		computed: {
+			imgurl() {
 				return this.$store.state.imgurl
 			}
 		},
-        components: {},
-        methods: {
-			getuserrtw(e){
+		components: {},
+		methods: {
+			getuserrtw(e) {
+				
 				console.log(e.detail.userInfo)
-				uni.setStorageSync('userinfo',e.detail.userInfo)
-				this.$store.commit('setuserinfo',e.detail.userInfo)
-				let th=this
+				uni.setStorageSync('userinfo', e.detail.userInfo)
+				this.$store.commit('setuserinfo', e.detail.userInfo)
+				let th = this
 				uni.redirectTo({
-					url:th.urls
+					url: th.urls
 				})
 			}
 		},
 		onLoad(e) {
 			this.urls = e.urls
+			wx.login({
+				success(res) {
+					console.log(res)
+				}
+			})
 		},
-        mounted() {}
-    }
-
+		mounted() {}
+	}
 </script>
-<style  scoped>
-	.bgkkjsdrer{
+<style scoped>
+	.bgkkjsdrer {
 		position: fixed;
 		left: 0;
 		top: 0;
@@ -57,20 +63,24 @@
 		z-index: 1;
 		background: #fff;
 	}
-	.kdsfsdt{
+
+	.kdsfsdt {
 		margin-top: 240upx;
 	}
-	.loofrrty{
+
+	.loofrrty {
 		width: 240upx;
 		height: 240upx;
 	}
-	.jjjdrrtt{
+
+	.jjjdrrtt {
 		background: #19AD56;
 		color: #fff;
 		height: 90upx;
 		line-height: 90upx;
 	}
-	.weixeddr{
+
+	.weixeddr {
 		width: 52upx;
 		height: 52upx;
 	}

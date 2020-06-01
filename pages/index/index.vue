@@ -8,8 +8,6 @@
 						<image class="w100 h100" :src="sd.url" mode="aspectFill" />
 					</view>
 				</swiper-item>
-
-
 			</swiper>
 		</uni-swiper-dot>
 		<view class="pd kjjhnxefr">
@@ -58,7 +56,7 @@
 
 			<activelist :listdata="listdata" @pinglun="pinglun"></activelist>
 		</view>
-		<pinglun ref="jhdrrtt"></pinglun>
+		<pinglun ref="jhdrrtt" :activityId="activityId"></pinglun>
 	</view>
 </template>
 
@@ -84,6 +82,7 @@
 		},
 		data() {
 			return {
+				activityId:'',
 				bannersd: '',
 				isddr: '',
 				zixun:'',
@@ -116,7 +115,8 @@
 			this.getzixun()
 		},
 		methods: {
-			pinglun() {
+			pinglun(e) {
+				this.activityId = e
 				this.$refs.jhdrrtt.open()
 			},
 			change(e) {
@@ -244,3 +244,4 @@
 		background: #F0F0F0 !important;
 	}
 </style>
+s

@@ -1,5 +1,17 @@
 {
-	"pages": [ {
+	"pages": [{
+		"path": "pages/public/souquan",
+		"bz": "授权登录",
+		"style": {
+			"navigationBarTitleText": "授权登录"
+		}
+	}, {
+		"path": "pages/public/getphone",
+		"bz": "授权登录",
+		"style": {
+			"navigationBarTitleText": "授权登录"
+		}
+	},{
 		"path": "pages/index/index",
 		"bz": "index",
 		"style": {
@@ -84,19 +96,7 @@
 		"style": {
 			"navigationBarTitleText": "老师注册"
 		}
-	},{
-		"path": "pages/public/getphone",
-		"bz": "授权登录",
-		"style": {
-			"navigationBarTitleText": "授权登录"
-		}
 	}, {
-		"path": "pages/public/souquan",
-		"bz": "授权登录",
-		"style": {
-			"navigationBarTitleText": "授权登录"
-		}
-	},{
 		"path": "pages/user/cjhd",
 		"bz": "创建活动",
 		"style": {

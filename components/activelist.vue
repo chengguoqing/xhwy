@@ -25,7 +25,7 @@
 				<image v-else @tap.stop="diansnsd(2)" :src="imgurl+'yidian.png'" mode="widthFix" class="ikxeert cz"></image>
 				<text class="fz32 z3 cz ml5">6</text>
 			</view> -->
-			<view class=" " @tap.stop="pinglld">
+			<view class=" " @tap.stop="pinglld(sd.id)">
 				<image :src="imgurl+'hzhsdb.png'" mode="widthFix" class="ikxeert cz"></image>
 				<text class="fz32 z3 cz ml5">{{sd.commentNum}}</text>
 			</view>
@@ -95,8 +95,8 @@
 				}
 			},
 			// 评论按钮触发
-			pinglld () {
-				this.$emit("pinglun")
+			pinglld (id) {
+				this.$emit("pinglun",id)
 			},
 			// 列表点击事件
 			yijserrt(){
